@@ -72,7 +72,7 @@ points(x=31, y=2.52, pch=4, col="black", lwd=2)
 oring$fail <- as.numeric(oring$n_fail > 0)
 
 ## plot reformatted data
-plot(oring$temp, oring$fail, pch = 20,
+plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
      xlab = "Temperature (deg F)", ylab = "O-Ring Failure")
 
 ## Fit a GLM with logistic link
@@ -82,7 +82,7 @@ summary(logisticMod)
 ## plot the fit
 plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
      xlab = "Temperature (deg F)", ylab = "O-Ring Failure")
-curve(predict(logisticMod, data.frame(temp=x), type="response"), add=TRUE)
+curve(predict(logisticMod, data.frame(temp=x), type="response"), add=TRUE, col="red", lwd=2)
 
 ## Predict the probability of failure for the Challenger launch day
 predict(logisticMod, launchDay, type="response")
