@@ -1,9 +1,10 @@
 ---
 title: "Intro to Data Analysis with R: Session 3"
-#author: "Chris Galbraith"
-date: "October 20, 2017"
-output: ioslides_presentation
 subtitle: UCI Data Science Initiative
+date: "October 20, 2017"
+#author: "Chris Galbraith"
+output: slidy_presentation
+smaller: yes
 ---
 
 ```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
@@ -18,6 +19,7 @@ knitr::opts_chunk$set(echo = FALSE)
 2. T-Tests
 
 3. Linear Regression
+
     + Fitting Models
     + Interpretation
     + Diagnostics
@@ -47,8 +49,7 @@ dnorm(x = 0, mean = 0, sd = 1)
 ```
 
 
-##
-Let's try plotting a normal curve...
+## Standard Normal Distribution
 ```{r echo=TRUE, fig.height = 4.5, fig.align='center'}  
 x <- seq(from = -3, to = 3, by = 0.05)
 y <- dnorm(x, mean = 0, sd = 1)
@@ -108,12 +109,11 @@ sd(oneSampData)
 ```
 
 
-##  One-Sample T-Test (True Mean Equal to 0)
+##  One-Sample T-Test ($H_0: \mu = 0$)
 ```{r echo=TRUE}
 oneSampTest.0 <- t.test(oneSampData) 
 oneSampTest.0
 ```
-
 
 ```{r echo=TRUE}
 names(oneSampTest.0) 
@@ -122,9 +122,10 @@ oneSampTest.0$estimate
 ```  
 
 
-##  One-Sample T-Test (True Mean Equal to $\mu$)
+##  One-Sample T-Test ($H_0: \mu = a$)
 ```{r echo=TRUE}
-oneSampTest.mu <- t.test(oneSampData, mu = 0.3)
+a <- 0.3
+oneSampTest.mu <- t.test(oneSampData, mu = a)
 oneSampTest.mu
 ```  
 
