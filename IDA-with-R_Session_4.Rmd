@@ -21,52 +21,6 @@ knitr::opts_chunk$set(echo = FALSE)
     + Prediction
 
 
-## Line Charts
-```{r echo=TRUE}
-cars = c(2,3,4,3,5)
-plot(cars, type = "o")
-```
-
-
-## Line Charts - Change Some Attributes
-```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), 
-     xlab="Months", ylab="Sales in Millions",
-     main="Autos Sales")
-```
-
-
-## Line Charts - Add Another Line
-```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), 
-     xlab="Months", ylab="Sales in Millions",
-     main="Autos Sales")
-suvs = c(1,4,3,3,4)
-lines(suvs, type="o", col="blue", lty=2, pch=6)
-```
-
-
-## Line Charts - Add a Horizontal Line
-```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), 
-     xlab="Months", ylab="Sales in Millions",
-     main="Autos Sales")
-lines(suvs, type="o", col="blue", lty=2, pch=6)
-abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
-```
-
-
-## Line Charts - Add Legend
-```{r echo=TRUE}
-plot(cars, type="o", col="red", ylim=c(0.5,5), 
-     xlab="Months", ylab="Sales in Millions",
-     main="Autos Sales")
-lines(suvs, type="o", col="blue", lty=2, pch=6)
-abline(h=c(3,4), lty=2, col="darkgrey") # h for horizontal
-legend(4.2, 1.2, c("cars","suvs"), col=c("red","blue"), lty=1:2, pch=c(1,6), bty="n")
-```
-
-
 ##  Logistic Regression - Data
 + `glm()` is used to fit generalized linear models (logistic regression in this example).
 + Logistic regression is used to model the probability of a binary outcome.
