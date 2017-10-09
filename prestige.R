@@ -41,7 +41,7 @@ Prestige <- na.omit(Prestige)  # exclude any rows with NAs (one row here for ath
 summary(Prestige$type)
 
 ## Save new version of Prestige to file
-write.table()
+write.csv(Prestige, file="./data/prestige_v2.csv")
 
 ####################################################################################
 ################## Exploratory Data Analysis (EDA) #################################

@@ -9,6 +9,7 @@ smaller: yes
 
 ```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+setwd("./dev/IDA-with-R")
 ```
 
 
@@ -140,59 +141,39 @@ Two sample t-tests are categorized into 3 groups:
   + Paired T-Test (one-sample t-test on differences)
 
 
-##  Two-Sample T-Test (Un-equal Variances)
+##  Two-Sample T-Test (Create & Plot Data)
 ```{r echo = TRUE}
 Samp1 <- rnorm(300, mean = 2.5, sd = 1)
 Samp2 <- rnorm(500, mean = 3.0, sd = 1) # notice: not the same sample size
-t.test(Samp1, Samp2)  # default assump: unequal variances
-```
-
-
-##  Two-Sample T-Test (Equal Variances)
-```{r echo = TRUE}
-t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
-```
-
-
-##  Two-Sample T-Test (Paired T Test)
-```{r echo = TRUE}
-t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
-```
-
-
-## Basic Histogram
-```{r echo = TRUE}
-hist(Samp1)
-```
-
-
-## Relative Frequency Histogram
-With line at the mean
-```{r echo = TRUE}
-hist(Samp1, main = "Density of Samp1", freq = F, col = "grey") 
-abline(v = mean(Samp1), col = "red", lwd = 2)
-```
-
-
-## Overlayed Histograms with a Legend
-```{r echo = TRUE}
-hist(Samp1, main = "Densities of Samp1 and Samp2", freq = F, col = "grey", xlab="") 
-abline(v = mean(Samp1), col = "red", lwd = 2)
-hist(Samp2, freq = F, add = T)
-abline(v = mean(Samp2), col = "blue", lwd = 2)
-legend("topright", legend = c("Samp1", "Samp2"),
-       fill = c("grey","white"), bty = "n", cex = 1.3)
-```
-
-
-## Overlayed Density Plots
-```{r echo=TRUE}
 plot(density(Samp1), col="red", main="Densities of Samp1 and Samp2", xlab="")
 abline(v = mean(Samp1), col = "red", lwd = 2, lty=2)
 lines(density(Samp2), col="blue")
 abline(v = mean(Samp2), col = "blue", lwd = 2, lty = 2)
 legend("topright", legend = c("Samp1", "Samp2"),
        fill = c("red","blue"), bty = "n", cex = 1.3)
+```
+
+
+##  Two-Sample T-Test (Un-equal Variances)
+Null hypothesis: $\mu_1 = \mu_2 \Leftrightarrow \mu_1 - \mu_2 = 0$
+```{r echo = TRUE}
+t.test(Samp1, Samp2)  # default assump: unequal variances
+```
+
+
+##  Two-Sample T-Test (Equal Variances)
+Null hypothesis: $\mu_1 = \mu_2 \Leftrightarrow \mu_1 - \mu_2 = 0$
+```{r echo = TRUE}
+t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
+```
+
+
+##  Two-Sample T-Test (Paired T-Test)
+Let $D \equiv \{x_i - y_i : i=1, \ldots, n \}$, then
+
+Null hypothesis: $\mu_D = 0$
+```{r echo = TRUE}
+t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
 ```
 
 
@@ -215,21 +196,12 @@ Here we use the "Prestige" dataset from the `car` package, which has the followi
     + prof: Professional, Managerial, and Technical
     + wc: White Collar
 
+
 ## Load Data
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-# install.packages("car", dependencies=TRUE)
-library(car)
-data(Prestige) # load the data
-str(Prestige)
+prestige <- read.csv(file="./data/prestige_v2.csv")
+summary(prestige)
 ```
-
-
-##  Look at the Data
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-summary(Prestige)
-```
-See 4 NA values for "type."
-Let's look at them.
 
 
 ## Examine Observations with NA values
