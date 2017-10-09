@@ -2,6 +2,7 @@
 ## This file contains code for analyzing the Prestige data from the car package
 ## with an emphasis on exploratory data analysis.
 ####################################################################################
+setwd("./dev/IDA-with-R")  # path to repo will differ for everyone
 
 ####################################################################################
 ######################## Data cleaning & preprocessing #############################
@@ -38,6 +39,9 @@ Prestige[ind.ch, "type"] <- rep("bc", 3)  # replace NAs with blue collar ("bc")
 summary(Prestige$type)  # check to see if it worked
 Prestige <- na.omit(Prestige)  # exclude any rows with NAs (one row here for athletes)
 summary(Prestige$type)
+
+## Save new version of Prestige to file
+write.table()
 
 ####################################################################################
 ################## Exploratory Data Analysis (EDA) #################################
