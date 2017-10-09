@@ -177,8 +177,28 @@ t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
 ```
 
 
-## Linear Regression Data Set Description
-Here we use the "prestige" dataset from the `car` package, which has the following variables
+## Linear Regression
+Add notes on basic theory with references!
+
+
+## Linear Regression in R
+We use ```lm()``` to fit linear regression models, which has requires us to pass in a regression formula.
+
+Some notes on ```formula```:
+
++ Response variable goes on the left and the predictors go on the right of a ```~```
+
++ Predictors are separated by ```+``` symbols (e.g., ```y ~ x + z```)
+
++ If you want to use all variables in a data frame, simply use ```.``` (e.g., ```y ~ .```)
+
++ By default, the formula contains an intercept. If you want to exclude it (i.e., force the intercept to be zero), can use either of ```y ~ 0 + .``` or ```y ~ . - 1```
+
++ Can include polynomial terms: Say we want to have a quadratic regression of ```y``` on ```x```, we simply use ```y ~ x + I(x^2)```
+
+
+## Linear Regression - Prestige Data
+We will fit a linear model using the Prestige data. Recall that we have the following variables
 
 + education: Average education of occupational incumbents, years, in 1971.
 
@@ -226,11 +246,10 @@ summary(myReg)
 ```
 
 
-##  Linear Regression - "summary" Contents
+##  Linear Regression - Summary Contents
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-sum.myReg = summary(myReg)
-names(sum.myReg) # show different contents
-
+myReg.summary <- summary(myReg)
+names(myReg.summary) # show different contents
 names(myReg) # this is what we had previously
 ```
 
@@ -248,34 +267,68 @@ confint(myReg, level=0.95)
 
 
 ##  Linear Regression - Adding Variables
+Recall that type of occupation has a relationship with prestige score.
+```{r echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, fig.height=5*(3/4), fig.width=5}
+boxplot(prestige ~ type, data = Prestige, col = "grey",
+        main = "Distribution of Prestige Score by Types",
+        xlab = "Occupation Types", ylab = "Prestige Score")
+```
+
+So let's add the predictor *type* into our regression model:
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-mod = update(myReg, ~ . + type); summary(mod)
+mod <- update(myReg, ~ . + type)
+summary(mod)
 ```
 
 
+##  Linear Regression - Comparing Models
+Suppose we want to test which of our two models is better when one model is *nested* within the other (i.e., both models contain the same terms and one has at least one additional term). 
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+formula(myReg)
+formula(mod)
+```
+
+We say that ```myReg``` is *nested within* ```mod```, or equivantley that ```myReg``` is the **reduced** model and ```mod``` is the **full** model.
+
+Hypothesis Test:
+
++ Null: Reduced model fits as well as the full model (formally, coefficients for the omitted terms are all zero).
+    
++ Alternative: Full model fits better than the reduced model (formally, at least one omitted coefficient is non-zero).
+
+
+##  Linear Regression - Comparing Models, contd.
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+anova(myReg, mod)
+```
+So we reject the null hypothesis and conclude that at least one of the levels of *type* contributes information about the prestige score. 
+
+
 ##  Linear Regression - Relevel a Factor
+Say we want the change the reference level for the covariate *type* so that the intercept of the model includes is for professionals. We simply relevel the variable *type* and re-fit the model. 
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 levels(prestige$type)
-prestige$type = relevel(prestige$type, "prof")
-
+prestige$type <- relevel(prestige$type, "prof")
 levels(prestige$type)
 ```
 
+**Note: This does not change the results of the model (e.g., predictions, F-statistics) but does change the interpretation and p-values of the type coefficients.**
 
-##  Linear Regression - Relevel a Factor
+##  Linear Regression - Relevel a Factor, contd.
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-mod = update(myReg, ~ . + type); summary(mod)
+mod <- update(myReg, ~ . + type)
+summary(mod)
 ```
 
 
 ##  Linear Regression - Diagnostics
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6.5, fig.width=8}
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=8}
 par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
 plot(myReg)
 ```
 
 
-##  Linear Regression - Predict
+##  Linear Regression - Prediction
 Predict the output for a new input
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 newData = data.frame(education=13.2, income=12000, women=12)
@@ -283,8 +336,17 @@ predict(myReg, newData, interval="predict")
 ```
 
 
-## End of Session 4
-BREAK!
+## Linear Regression - Variable Selection
+Add notes on forward, backward, stepwise, and all subsets regression.
+
+
+## End of Session 3
+Next up:
+
+1. Exercise 3
+2. Break
+
+Return at XXXX to discuss answers to Exercise 3!
 
 
 
