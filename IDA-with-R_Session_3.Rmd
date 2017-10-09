@@ -9,6 +9,7 @@ smaller: yes
 
 ```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(car)
 ```
 
 
@@ -177,7 +178,7 @@ t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
 
 
 ## Linear Regression Data Set Description
-Here we use the "Prestige" dataset from the `car` package, which has the following variables
+Here we use the "prestige" dataset from the `car` package, which has the following variables
 
 + education: Average education of occupational incumbents, years, in 1971.
 
@@ -205,152 +206,85 @@ head(prestige)
 ```
 
 
-<!-- ## Examine Observations with NA values -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- Prestige[is.na(Prestige$type),] -->
-<!-- ``` -->
-
-<!-- Find their row indices and corresponding names... -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- ind <- which(is.na(Prestige$type))  # gives index numbers of the NAs in the vector -->
-<!-- rbind(index=ind, name=rownames(Prestige)[ind])  # print index with rowname -->
-<!-- ``` -->
+## Another look at the scatterplot matrix
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+scatterplotMatrix(prestige[,c("prestige","education","income","women")])
+```
 
 
-<!-- ## Recode/Drop NA Values -->
-<!-- Let's recode newsboys, babysitters, and farmers as blue collar and exclude athletes. -->
-
-<!-- Use `rep()` to create a vector with 3 elements of "bc" -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- ind.ch <- ind[-1] -->
-<!-- Prestige[ind.ch,"type"] <- rep("bc", 3) -->
-<!-- summary(Prestige$type) -->
-<!-- ``` -->
-
-<!-- Exclude athletes... -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- Prestige <- na.omit(Prestige)  -->
-<!-- summary(Prestige$type) -->
-<!-- ``` -->
+## Linear Regression - Fit the Model
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+myReg <- lm(prestige ~ education + income + women, data = prestige)
+myReg
+names(myReg)
+```
 
 
-<!-- ## Plotting - Histograms -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- hist(Prestige$prestige, col = "grey",  -->
-<!--      main = "Histogram of Prestige Score", xlab = "Prestige Score") -->
-<!-- ``` -->
+##  Linear Regression - Summary of Fit
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+summary(myReg)
+```
 
 
-<!-- ## Plotting - Basic Scatter Plot -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- plot(Prestige$education, Prestige$prestige, -->
-<!--      main = "Prestige Score by Education", -->
-<!--      xlab = "Ave. Years of Education", ylab = "Prestige Score") -->
-<!-- ``` -->
+##  Linear Regression - "summary" Contents
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+sum.myReg = summary(myReg)
+names(sum.myReg) # show different contents
+
+names(myReg) # this is what we had previously
+```
 
 
-<!-- ## Plotting - Including Regression/Smoother Lines -->
-<!-- `abline()` adds a line to the plot, and `lm()` is a list object that contains regression coefficients. -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- plot(Prestige$education, Prestige$prestige, -->
-<!--      main = "Prestige Score by Education", -->
-<!--      xlab = "Avg Years of Education", ylab = "Prestige Score") -->
-<!-- abline(reg = lm(prestige ~ education, data = Prestige), col = "red", lwd = 2) -->
-<!-- lines(lowess(Prestige$education, Prestige$prestige), col = "blue", lty = 2, lwd = 2) -->
-<!-- legend("topleft",legend = c("Regression Line", "Smoother"), col = c("red","blue"), -->
-<!--        lwd = c(2,2), lty = c(1,2), bty = "n") -->
-<!-- ``` -->
+##  Linear Regression - Confidence Interval
++ 95% confidence interval for coefficient of 'income'
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+confint(myReg, 'income', level=0.95)
+```
+
++ 95% confidence interval for each coefficient
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+confint(myReg, level=0.95)
+```
 
 
-<!-- ## Plotting - Scatter Plot Matrix -->
-<!-- Use the `scatterplotMatrix()` function from the `car` package -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- # Use direct ordering of the varaibles to control how they are plotted -->
-<!-- scatterplotMatrix(Prestige[,c("prestige","education","income","women")]) -->
-<!-- ``` -->
+##  Linear Regression - Adding Variables
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+mod = update(myReg, ~ . + type); summary(mod)
+```
 
 
-<!-- ## Plotting - Boxplots  -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- boxplot(prestige ~ type, data = Prestige, col = "grey", -->
-<!--         main = "Distribution of Prestige Score by Types", -->
-<!--         xlab = "Occupation Types", ylab = "Prestige Score") -->
-<!-- ``` -->
+##  Linear Regression - Relevel a Factor
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+levels(prestige$type)
+prestige$type = relevel(prestige$type, "prof")
+
+levels(prestige$type)
+```
 
 
-<!-- ## Linear Regression - Fit the Model -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- myReg <- lm(prestige ~ education + income + women, data = Prestige) -->
-<!-- myReg -->
-<!-- names(myReg) -->
-<!-- ``` -->
+##  Linear Regression - Relevel a Factor
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+mod = update(myReg, ~ . + type); summary(mod)
+```
 
 
-<!-- ##  Linear Regression - Summary of Fit -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- summary(myReg) -->
-<!-- ``` -->
+##  Linear Regression - Diagnostics
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6.5, fig.width=8}
+par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
+plot(myReg)
+```
 
 
-<!-- ##  Linear Regression - "summary" Contents -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- sum.myReg = summary(myReg) -->
-<!-- names(sum.myReg) # show different contents -->
-
-<!-- names(myReg) # this is what we had previously -->
-<!-- ``` -->
-
-
-<!-- ##  Linear Regression - Confidence Interval -->
-<!-- + 95% confidence interval for coefficient of 'income' -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- confint(myReg, 'income', level=0.95) -->
-<!-- ``` -->
-
-<!-- + 95% confidence interval for each coefficient -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- confint(myReg, level=0.95) -->
-<!-- ``` -->
+##  Linear Regression - Predict
+Predict the output for a new input
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+newData = data.frame(education=13.2, income=12000, women=12)
+predict(myReg, newData, interval="predict")
+```
 
 
-<!-- ##  Linear Regression - Adding Variables -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- mod = update(myReg, ~ . + type); summary(mod) -->
-<!-- ``` -->
-
-
-<!-- ##  Linear Regression - Relevel a Factor -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- levels(Prestige$type) -->
-<!-- Prestige$type = relevel(Prestige$type, "prof") -->
-
-<!-- levels(Prestige$type) -->
-<!-- ``` -->
-
-
-<!-- ##  Linear Regression - Relevel a Factor -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- mod = update(myReg, ~ . + type); summary(mod) -->
-<!-- ``` -->
-
-
-<!-- ##  Linear Regression - Diagnostics -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6.5, fig.width=8} -->
-<!-- par(mfrow = c(2, 2), oma = c(0, 0, 2, 0)) -->
-<!-- plot(myReg) -->
-<!-- ``` -->
-
-
-<!-- ##  Linear Regression - Predict -->
-<!-- Predict the output for a new input -->
-<!-- ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE} -->
-<!-- newData = data.frame(education=13.2, income=12000, women=12) -->
-<!-- predict(myReg, newData, interval="predict") -->
-<!-- ``` -->
-
-
-<!-- ## End of Session 4 -->
-<!-- BREAK! -->
+## End of Session 4
+BREAK!
 
 
 
