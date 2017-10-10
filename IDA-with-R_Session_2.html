@@ -6,7 +6,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="date" content="2017-10-20" />
-  <title>Intro to Data Analysis in R: Session 2</title>
+  <title>Intro to Data Analysis with R: Session 2</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -50,7 +50,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Intro to Data Analysis in R: Session 2</h1>
+  <h1 class="title">Intro to Data Analysis with R: Session 2</h1>
   <h1 class="subtitle">UCI Data Science Initiative</h1>
   <p class="author">
 
@@ -60,12 +60,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="session-2---agenda" class="slide section level2">
 <h1>Session 2 - Agenda</h1>
 <ol style="list-style-type: decimal">
-<li>R Packages and Functions</li>
-<li>Exploratory Data Analysis</li>
+<li><p>R Packages, Functions &amp; Help</p></li>
+<li><p>Control Structures</p></li>
+<li><p>Exploratory Data Analysis</p>
+<ul>
+<li>Basic Plotting</li>
+<li>Histograms</li>
+<li>Boxplots</li>
+<li>Scatterplot Matrices</li>
+</ul></li>
 </ol>
 </div>
-<div id="functions-and-packages" class="slide section level2">
-<h1>Functions and Packages:</h1>
+<div id="functions-packages" class="slide section level2">
+<h1>Functions &amp; Packages</h1>
 <ol style="list-style-type: decimal">
 <li>R has many built-in functions</li>
 <li>Each function has a name followed by (), e.g., <code>mean()</code></li>
@@ -74,122 +81,111 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>Packages allow for easy, transparent and cross-platform extension of the R base system</li>
 </ol>
 </div>
-<div id="functions-and-packages-1" class="slide section level2">
-<h1>Functions and Packages:</h1>
+<div id="functions-and-packages" class="slide section level2">
+<h1>Functions and Packages</h1>
 <p>Terminology:</p>
-<ol style="list-style-type: decimal">
-<li>Package: an extension of the R base system with code, data and documentation in a standardized format</li>
-<li>Library: a directory containing installed packages</li>
-<li>Repository: a website providing packages for installation</li>
-<li>Source: the original version of a package with human-readable text and code</li>
-<li>Base packages: part of the R source tree, maintained by R Core</li>
-</ol>
 <ul>
-<li>for more info on how R packages are developed, please read: “Creating R Packages: A Tutorial” (Friedrich Leisch)</li>
-<li><a href="http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf" class="uri">http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf</a></li>
+<li><em>Package</em>: an extension of the R base system with code, data and documentation in a standardized format</li>
+<li><em>Library</em>: a directory containing installed packages</li>
+<li><em>Repository</em>: a website providing packages for installation</li>
+<li><em>Source</em>: the original version of a package with human-readable text and code</li>
+<li><em>Base packages</em>: part of the R source tree, maintained by R Core</li>
 </ul>
+<p>For more info on how R packages are developed, please read <a href="http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf">Creating R Packages: A Tutorial</a> by Friedrich Leisch</p>
 </div>
-<div id="how-to-install-a-package-in-r" class="slide section level2">
-<h1>How to install a package in R:</h1>
+<div id="installing-a-package" class="slide section level2">
+<h1>Installing a Package</h1>
 <p>There are two main ways to install a package in R:</p>
 <ol style="list-style-type: decimal">
-<li>Installing from CRAN: install a package directly from the repository</li>
-</ol>
+<li>Installing from CRAN: install a package directly from the repository
 <ul>
 <li>Using R studio: tools/install packages</li>
 <li>From R console: <code>install.packages()</code></li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>Installing from Source: first download the add-on R package and then type the following in your console:</li>
-</ol>
+</ul></li>
+<li>Installing from source: first download the add-on R package and then type the following in your console:
 <ul>
-<li><p><code>install.packages(&quot;path_to_file&quot;, repos = NULL, type = &quot;source&quot;)</code></p></li>
-<li><p>Once you install a package, you need to load it into R using the function <code>library()</code></p></li>
-</ul>
+<li><code>install.packages(&quot;path_to_file&quot;, repos = NULL, type = &quot;source&quot;)</code></li>
+</ul></li>
+</ol>
+<p>Once you install a package, you need to load it into R using the function <code>library()</code></p>
 </div>
-<div id="popular-packages-in-r" class="slide section level2">
-<h1>Popular Packages in R:</h1>
-<ol style="list-style-type: decimal">
-<li>To visualize data:</li>
-</ol>
+<div id="popular-packages" class="slide section level2">
+<h1>Popular Packages</h1>
 <ul>
-<li>ggplot2: to create beautiful graphics</li>
-<li>googleVis: to use Google Chart tools</li>
-</ul>
-<ol start="2" style="list-style-type: decimal">
-<li>To report results:</li>
-</ol>
+<li>To visualize data:
 <ul>
-<li>shiny: to create interactive web-based apps</li>
-<li>knitr: to combine R codes and Latex/Markdown codes</li>
-<li>slidify: to build HTML 5 slide shows</li>
-</ul>
-<ol start="3" style="list-style-type: decimal">
-<li>To write high-performance R code:</li>
-</ol>
+<li><code>ggplot2</code>: to create beautiful graphics</li>
+<li><code>googleVis</code>: to use Google Chart tools</li>
+</ul></li>
+<li>To report results:
 <ul>
-<li>Rcpp: to write R functions that call C++ code</li>
-<li>data.table: to organize datasets for fast operations</li>
-<li>parallel: to use parallel processing in R</li>
+<li><code>shiny</code>: to create interactive web-based apps</li>
+<li><code>knitr</code>: to combine R codes and Latex/Markdown codes</li>
+<li><code>slidify</code>: to build HTML 5 slide shows</li>
+</ul></li>
+<li>To write high-performance R code:
+<ul>
+<li><code>rcpp</code>: to write R functions that call C++ code</li>
+<li><code>data.table</code>: to organize datasets for fast operations</li>
+<li><code>parallel</code>: to use parallel processing in R</li>
+</ul></li>
 </ul>
 </div>
 <div id="functions-in-r" class="slide section level2">
 <h1>Functions in R</h1>
 <ul>
-<li>Consider the function sample(). Run ?sample to read the help file or str(sample) to see its arguments.</li>
+<li>Consider the function <code>sample()</code>.</li>
+<li>Run ?sample to read the help file or str(sample) to see its arguments.</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(sample)</code></pre></div>
 <pre><code>## function (x, size, replace = FALSE, prob = NULL)</code></pre>
 <ul>
-<li>sample() has four arguments:</li>
-<li>x: vector of elements from which to choose</li>
-<li>size: desired sample size</li>
-<li>replace: sampling with/without replacement (logical)</li>
-<li><p>prob: vector of probability weights</p></li>
-<li><p>The help file will specify which arguments have default values (and what those values are)</p></li>
+<li><code>sample()</code> has four arguments:
+<ul>
+<li><code>x</code>: vector of elements from which to choose</li>
+<li><code>size</code>: desired sample size</li>
+<li><code>replace</code>: sampling with/without replacement (logical)</li>
+<li><code>prob</code>: vector of probability weights</li>
+</ul></li>
+<li>The help file will specify which arguments have default values (and what those values are)</li>
 </ul>
 </div>
 <div id="calling-a-function-in-r" class="slide section level2">
-<h1>Calling a function in R</h1>
+<h1>Calling a Function in R</h1>
 <p>Function arguments can either be matched by position within the parentheses or by name</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sampSpace &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">6</span> 
 <span class="kw">sample</span>(sampSpace, <span class="dv">1</span>) <span class="co"># arguments with default values can be omitted</span></code></pre></div>
-<pre><code>## [1] 3</code></pre>
+<pre><code>## [1] 1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">x =</span> sampSpace) <span class="co"># no need to remember the order </span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 6</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, sampSpace)</code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
 <div id="some-useful-functions" class="slide section level2">
-<h1>Some Useful Functions:</h1>
+<h1>Some Useful Functions</h1>
 <ul>
-<li>Here we are going to talk about:</li>
-<li>str(): a function to explain internal structure of an object</li>
-<li>summary(): a function that summarizes variables in a data frame
+<li><code>str()</code>: a function to explain internal structure of an object</li>
+<li><code>summary()</code>: a function that summarizes variables in a data frame
 <ul>
-<li>Note: this function is also used to summarize results of model fitting functions, which we will go over in the afternoon</li>
+<li>Note: this function is also used to summarize results of model fitting functions, which we will go over in the afternoon.</li>
 </ul></li>
 </ul>
 </div>
 <div id="str" class="slide section level2">
-<h1>str():</h1>
-<ul>
-<li>str() is a compact way of understanding what an object is and what is in that object</li>
-</ul>
+<h1><code>str()</code></h1>
+<p>Compact way of understanding what an object is and what is in that object</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(str)</code></pre></div>
 <pre><code>## function (object, ...)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(sample)</code></pre></div>
 <pre><code>## function (x, size, replace = FALSE, prob = NULL)</code></pre>
 </div>
 <div id="str-1" class="slide section level2">
-<h1>str():</h1>
-<ul>
-<li>After loading a data frame, it is often useful to use <code>str()</code> in order to understand the structure of your data.</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;prestige.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<h1><code>str()</code></h1>
+<p>After loading a data frame, it is often useful to use <code>str()</code> in order to understand the structure of your data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;./data/prestige_v2.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
 <span class="kw">str</span>(prestige)</code></pre></div>
-<pre><code>## 'data.frame':    102 obs. of  7 variables:
-##  $ X        : Factor w/ 102 levels &quot;accountants&quot;,..: 41 40 1 70 18 62 11 4 19 53 ...
+<pre><code>## 'data.frame':    101 obs. of  7 variables:
+##  $ X        : Factor w/ 101 levels &quot;accountants&quot;,..: 40 39 1 69 17 61 10 4 18 52 ...
 ##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
 ##  $ income   : int  12351 25879 9271 8865 8403 11030 8258 14163 11377 11023 ...
 ##  $ women    : num  11.16 4.02 15.7 9.11 11.68 ...
@@ -198,27 +194,32 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ##  $ type     : Factor w/ 3 levels &quot;bc&quot;,&quot;prof&quot;,&quot;wc&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
 </div>
 <div id="summary" class="slide section level2">
-<h1>summary():</h1>
-<ul>
-<li><code>summary()</code> is another useful function for understanding your data</li>
-</ul>
+<h1><code>summary()</code></h1>
+<p>Another useful function for understanding your data</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summary</span>(prestige)</code></pre></div>
-<pre><code>##                   X        education          income          women       
-##  accountants       : 1   Min.   : 6.380   Min.   :  611   Min.   : 0.000  
-##  aircraft.repairmen: 1   1st Qu.: 8.445   1st Qu.: 4106   1st Qu.: 3.592  
-##  aircraft.workers  : 1   Median :10.540   Median : 5930   Median :13.600  
-##  architects        : 1   Mean   :10.738   Mean   : 6798   Mean   :28.979  
-##  athletes          : 1   3rd Qu.:12.648   3rd Qu.: 8187   3rd Qu.:52.203  
-##  auto.repairmen    : 1   Max.   :15.970   Max.   :25879   Max.   :97.510  
-##  (Other)           :96                                                    
+<pre><code>##                   X        education         income          women      
+##  accountants       : 1   Min.   : 6.38   Min.   :  611   Min.   : 0.00  
+##  aircraft.repairmen: 1   1st Qu.: 8.43   1st Qu.: 4075   1st Qu.: 3.59  
+##  aircraft.workers  : 1   Median :10.51   Median : 5902   Median :13.62  
+##  architects        : 1   Mean   :10.73   Mean   : 6784   Mean   :29.19  
+##  auto.repairmen    : 1   3rd Qu.:12.71   3rd Qu.: 8131   3rd Qu.:52.27  
+##  auto.workers      : 1   Max.   :15.97   Max.   :25879   Max.   :97.51  
+##  (Other)           :95                                                  
 ##     prestige         census       type   
-##  Min.   :14.80   Min.   :1113   bc  :44  
-##  1st Qu.:35.23   1st Qu.:3120   prof:31  
-##  Median :43.60   Median :5135   wc  :23  
-##  Mean   :46.83   Mean   :5402   NA's: 4  
-##  3rd Qu.:59.27   3rd Qu.:8312            
+##  Min.   :14.80   Min.   :1113   bc  :47  
+##  1st Qu.:35.20   1st Qu.:3117   prof:31  
+##  Median :43.50   Median :5137   wc  :23  
+##  Mean   :46.76   Mean   :5422            
+##  3rd Qu.:59.60   3rd Qu.:8313            
 ##  Max.   :87.20   Max.   :9517            
 ## </code></pre>
+</div>
+<div id="control-structures" class="slide section level2">
+<h1>Control Structures</h1>
+<p>Breif discussion of for loops, etc</p>
+</div>
+<div id="eda" class="slide section level2">
+<h1>EDA</h1>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

@@ -5,9 +5,8 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Emma Smith and Chris Galbraith" />
   <meta name="date" content="2017-10-20" />
-  <title>Intro To R Workshop: Session 1</title>
+  <title>Intro to Data Analysis with R: Session 1</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
 div.sourceCode { overflow-x: auto; }
@@ -51,10 +50,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Intro To R Workshop: Session 1</h1>
+  <h1 class="title">Intro to Data Analysis with R: Session 1</h1>
   <h1 class="subtitle">UCI Data Science Initiative</h1>
   <p class="author">
-Emma Smith and Chris Galbraith
+
   </p>
   <p class="date">October 20, 2017</p>
 </div>
@@ -76,11 +75,8 @@ Emma Smith and Chris Galbraith
 <div id="introduction" class="slide section level2">
 <h1>Introduction</h1>
 <ul>
-<li><p>Feel free to ask questions during lectures</p></li>
-<li>To access this presentation and the codes used during the workshop please visit:
-<ul>
-<li><a href="https://github.com/UCIDataScienceInitiative/IDA-with-R" class="uri">https://github.com/UCIDataScienceInitiative/IDA-with-R</a></li>
-</ul></li>
+<li>Please ask questions during lectures &amp; throughout the day!</li>
+<li>To access this presentation and the code used during the workshop please visit the <a href="https://github.com/UCIDataScienceInitiative/IDA-with-R">IDA-with-R GitHub page</a>.</li>
 </ul>
 </div>
 <div id="session-1---agenda" class="slide section level2">
@@ -89,7 +85,7 @@ Emma Smith and Chris Galbraith
 <li>What is R?</li>
 <li>Intro to RStudio</li>
 <li>Data Structures</li>
-<li>Subsetting/Indexing</li>
+<li>Subsetting &amp; Indexing</li>
 </ol>
 </div>
 <div id="what-is-r" class="slide section level2">
@@ -114,15 +110,15 @@ Emma Smith and Chris Galbraith
 </ul>
 </div>
 <div id="r-studio" class="slide section level2">
-<h1>R Studio:</h1>
-<ol style="list-style-type: decimal">
+<h1>R Studio</h1>
+<ul>
 <li>RStudio is a free and open source integrated development environment (IDE) for R.</li>
 <li>To download RStudio please visit: <a href="http://rstudio.org/" class="uri">http://rstudio.org/</a></li>
 <li>Please note that you must have R already installed before installing R Studio.</li>
-</ol>
+</ul>
 </div>
-<div id="fundamentals" class="slide section level2">
-<h1>Fundamentals</h1>
+<div id="fundamentals-of-r" class="slide section level2">
+<h1>Fundamentals of R</h1>
 <ul>
 <li>When you type commands at the prompt ‘&gt;’ and hit ENTER
 <ul>
@@ -130,7 +126,7 @@ Emma Smith and Chris Galbraith
 <li>If it understands what you’ve written, it does it (execution)</li>
 <li>If it doesn’t, it will likely give you an error or a warning</li>
 </ul></li>
-<li><p>Some commands trigger R to print to the screen, others don’t</p></li>
+<li>Some commands trigger R to print to the screen, others don’t</li>
 <li>If you type an incomplete command, R will usually respond by changing the command prompt to the ‘+’ character
 <ul>
 <li>Hit ESC on a MAC to cancel</li>
@@ -139,7 +135,7 @@ Emma Smith and Chris Galbraith
 </ul>
 </div>
 <div id="data-types-in-r" class="slide section level2">
-<h1>Data Types in R:</h1>
+<h1>Data Types in R</h1>
 <ul>
 <li>R has 5 main atomic data types:
 <ul>
@@ -152,7 +148,7 @@ Emma Smith and Chris Galbraith
 </ul>
 </div>
 <div id="data-structures-in-r" class="slide section level2">
-<h1>Data Structures in R:</h1>
+<h1>Data Structures in R</h1>
 <ol style="list-style-type: decimal">
 <li>One-dimensional:
 <ul>
@@ -174,7 +170,7 @@ Emma Smith and Chris Galbraith
 </ul>
 </div>
 <div id="vectors-in-r" class="slide section level2">
-<h1>Vectors in R:</h1>
+<h1>Vectors in R</h1>
 <ul>
 <li>A vector is the most basic object in R</li>
 <li>It is one-dimensional; its single dimension is its length</li>
@@ -198,11 +194,11 @@ logVec</code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE  TRUE FALSE</code></pre>
 </div>
 <div id="special-values" class="slide section level2">
-<h1>Special Values:</h1>
+<h1>Special Values</h1>
 <p>There are some special values in R:</p>
 <ul>
-<li>Inf: infinity</li>
-<li>NaN: “Not a number”</li>
+<li><code>Inf</code>: infinity</li>
+<li><code>NaN</code>: “Not a number”</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="ot">Inf</span>; b &lt;-<span class="st"> </span><span class="dv">0</span>
 rslt &lt;-<span class="st"> </span><span class="kw">c</span>(b/a, a/a)
@@ -210,7 +206,7 @@ rslt</code></pre></div>
 <pre><code>## [1]   0 NaN</code></pre>
 </div>
 <div id="data-type-coercion" class="slide section level2">
-<h1>Data Type Coercion:</h1>
+<h1>Data Type Coercion</h1>
 <ul>
 <li>In general, vectors CANNOT have mixed types of data</li>
 <li>If you create a vector with more than one type of data, R will automatically coerce it to a single type</li>
@@ -230,7 +226,7 @@ numToChar</code></pre></div>
 <pre><code>##  [1] &quot;1&quot;  &quot;2&quot;  &quot;3&quot;  &quot;4&quot;  &quot;5&quot;  &quot;6&quot;  &quot;7&quot;  &quot;8&quot;  &quot;9&quot;  &quot;10&quot;</code></pre>
 </div>
 <div id="factors" class="slide section level2">
-<h1>Factors:</h1>
+<h1>Factors</h1>
 <ul>
 <li>A factor is a vector object used to specify a discrete classification (categorical values)</li>
 <li>Factors can be ordered or un-ordered</li>
@@ -248,14 +244,14 @@ GenderFac1</code></pre></div>
 ## Levels: Female Male</code></pre>
 </div>
 <div id="missing-values" class="slide section level2">
-<h1>Missing Values:</h1>
+<h1>Missing Values</h1>
 <ul>
 <li>There are two kinds of missing values in R:
 <ul>
-<li>NaN: stands for “Not a Number” and is a missing value produced by numerical computation</li>
-<li>NA: stands for “Not Available” and is used when a value is missing</li>
+<li><code>NaN</code>: stands for “Not a Number” and is a missing value produced by numerical computation</li>
+<li><code>NA</code>: stands for “Not Available” and is used when a value is missing</li>
 </ul></li>
-<li>NaN is also considered as NA (the reverse is NOT true)</li>
+<li><code>NaN</code> is also considered as NA (the reverse is NOT true)</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)
 a[<span class="dv">3</span>]</code></pre></div>
@@ -264,8 +260,8 @@ a[<span class="dv">3</span>]</code></pre></div>
 b</code></pre></div>
 <pre><code>## [1] NaN</code></pre>
 </div>
-<div id="missing-values-1" class="slide section level2">
-<h1>Missing Values</h1>
+<div id="missing-values-contd." class="slide section level2">
+<h1>Missing Values, contd.</h1>
 <p><code>is.na()</code> and <code>is.nan()</code> are functions that indicate which value(s) of an object are missing</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="ot">NA</span>, <span class="dv">3</span>, <span class="ot">NaN</span>, <span class="ot">NA</span>, <span class="dv">5</span>, <span class="ot">NaN</span>)
 <span class="kw">is.na</span>(vec)</code></pre></div>
@@ -274,7 +270,7 @@ b</code></pre></div>
 <pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE</code></pre>
 </div>
 <div id="matrices" class="slide section level2">
-<h1>Matrices:</h1>
+<h1>Matrices</h1>
 <ul>
 <li>A matrix is a special case of a vector (matrices have dimension)
 <ul>
@@ -296,7 +292,7 @@ myMat</code></pre></div>
 ## [2,]    2    4    6    8</code></pre>
 </div>
 <div id="other-ways-to-create-a-matrix" class="slide section level2">
-<h1>Other Ways to Create a Matrix:</h1>
+<h1>Other Ways to Create a Matrix</h1>
 <ul>
 <li><p>Intuitively, matrices seem to be a combination of vectors that are put next to each other (either column-wise or row-wise)</p></li>
 <li><p><code>rbind()</code> and <code>cbind()</code> (row bind and column bind) achieve this</p></li>
@@ -312,8 +308,8 @@ colMat</code></pre></div>
 ## [3,]    3    7   11
 ## [4,]    4    8   12</code></pre>
 </div>
-<div id="other-ways-to-create-a-matrix-1" class="slide section level2">
-<h1>Other Ways to Create a Matrix:</h1>
+<div id="other-ways-to-create-a-matrix-contd." class="slide section level2">
+<h1>Other Ways to Create a Matrix, contd.</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rowMat &lt;-<span class="st"> </span><span class="kw">rbind</span>(vec1, vec2, vec3)
 rowMat</code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
@@ -331,7 +327,9 @@ rowMat</code></pre></div>
 </div>
 <div id="reading-data-into-r" class="slide section level2">
 <h1>Reading Data into R</h1>
-<p>Main functions for reading data into R:</p>
+<ul>
+<li>Main functions for reading data into R:</li>
+</ul>
 <ol style="list-style-type: decimal">
 <li><code>read.table()</code>, <code>read.csv()</code>: to read tabular data</li>
 <li><code>readLines()</code>: to read lines of a text file</li>
@@ -339,45 +337,39 @@ rowMat</code></pre></div>
 <li><code>load()</code>: to read saved workspaces</li>
 </ol>
 <ul>
-<li>Only <code>read.table()</code> and <code>read.csv()</code> are covered in this lecture.</li>
+<li>Only <code>read.table()</code> and <code>read.csv()</code> will be covered today.</li>
 </ul>
 </div>
-<div id="read.table" class="slide section level2">
-<h1>read.table():</h1>
+<div id="reading-data-into-r-contd." class="slide section level2">
+<h1>Reading Data into R, contd.</h1>
 <ul>
-<li><code>read.table()</code> is the most commonly used function to read data in R</li>
-<li><p>Type <code>?read.table</code> in your R console to see the important arguments in the function</p></li>
+<li><code>read.table()</code> is the most commonly used function to read data in R
+<ul>
+<li>Type <code>?read.table</code> in your R console to see the important arguments in the function</li>
+</ul></li>
 <li><code>read.csv()</code> is intended for reading comma separated value files
 <ul>
-<li>It is equivalent to read.table() with sep = “,” and header = TRUE</li>
+<li>Equivalent to read.table() with sep = “,” and header = TRUE</li>
 </ul></li>
 </ul>
 </div>
-<div id="read.table-1" class="slide section level2">
-<h1>read.table():</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;prestige.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>)
+<div id="read.table" class="slide section level2">
+<h1><code>read.table()</code></h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;./data/prestige.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names=</span><span class="dv">1</span>)
 <span class="kw">class</span>(prestige)</code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(prestige)</code></pre></div>
-<pre><code>##                     X education income women prestige census type
-## 1  gov.administrators     13.11  12351 11.16     68.8   1113 prof
-## 2    general.managers     12.26  25879  4.02     69.1   1130 prof
-## 3         accountants     12.77   9271 15.70     63.4   1171 prof
-## 4 purchasing.officers     11.42   8865  9.11     56.8   1175 prof
-## 5            chemists     14.62   8403 11.68     73.5   2111 prof
-## 6          physicists     15.64  11030  5.13     77.6   2113 prof</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(prestige)</code></pre></div>
-<pre><code>## 'data.frame':    102 obs. of  7 variables:
-##  $ X        : Factor w/ 102 levels &quot;accountants&quot;,..: 41 40 1 70 18 62 11 4 19 53 ...
-##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
-##  $ income   : int  12351 25879 9271 8865 8403 11030 8258 14163 11377 11023 ...
-##  $ women    : num  11.16 4.02 15.7 9.11 11.68 ...
-##  $ prestige : num  68.8 69.1 63.4 56.8 73.5 77.6 72.6 78.1 73.1 68.8 ...
-##  $ census   : int  1113 1130 1171 1175 2111 2113 2133 2141 2143 2153 ...
-##  $ type     : Factor w/ 3 levels &quot;bc&quot;,&quot;prof&quot;,&quot;wc&quot;: 2 2 2 2 2 2 2 2 2 2 ...</code></pre>
+<pre><code>##                     education income women prestige census type
+## gov.administrators      13.11  12351 11.16     68.8   1113 prof
+## general.managers        12.26  25879  4.02     69.1   1130 prof
+## accountants             12.77   9271 15.70     63.4   1171 prof
+## purchasing.officers     11.42   8865  9.11     56.8   1175 prof
+## chemists                14.62   8403 11.68     73.5   2111 prof
+## physicists              15.64  11030  5.13     77.6   2113 prof</code></pre>
 </div>
 <div id="write.table" class="slide section level2">
 <h1>write.table()</h1>
+<p>Save writing to table until after we have cleaned up <code>prestige</code>.</p>
 </div>
 <div id="subsetting" class="slide section level2">
 <h1>Subsetting</h1>
@@ -401,9 +393,7 @@ rowMat</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec &lt;-<span class="st"> </span><span class="dv">1</span>:<span class="dv">10</span>
 vec[<span class="dv">3</span>]</code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<ul>
-<li>Single brackets allow us to select more than one element of an object</li>
-</ul>
+<p>Single brackets allow us to select more than one element of an object</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec[<span class="dv">1</span>:<span class="dv">3</span>]</code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">vec[<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>)]</code></pre></div>
@@ -418,11 +408,11 @@ vec[<span class="dv">3</span>]</code></pre></div>
 </ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige[<span class="dv">1</span>:<span class="dv">2</span>,]</code></pre></div>
-<pre><code>##                    X education income women prestige census type
-## 1 gov.administrators     13.11  12351 11.16     68.8   1113 prof
-## 2   general.managers     12.26  25879  4.02     69.1   1130 prof</code></pre>
+<pre><code>##                    education income women prestige census type
+## gov.administrators     13.11  12351 11.16     68.8   1113 prof
+## general.managers       12.26  25879  4.02     69.1   1130 prof</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige[<span class="dv">1</span>,<span class="dv">2</span>]</code></pre></div>
-<pre><code>## [1] 13.11</code></pre>
+<pre><code>## [1] 12351</code></pre>
 </div>
 <div id="subsetting-data-frames-1" class="slide section level2">
 <h1>Subsetting Data Frames</h1>
@@ -465,11 +455,11 @@ logIndVec &lt;-<span class="st"> </span><span class="kw">is.na</span>(prestige$e
 <span class="kw">head</span>(logIndVec)</code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE  TRUE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige[logIndVec,]</code></pre></div>
-<pre><code>##                    X education income women prestige census type edMiss
-## 1 gov.administrators     13.11  12351 11.16     68.8   1113 prof     NA
-## 6         physicists     15.64  11030  5.13     77.6   2113 prof     NA
-## 7         biologists     15.09   8258 25.65     72.6   2133 prof     NA
-## 9    civil.engineers     14.52  11377  1.03     73.1   2143 prof     NA</code></pre>
+<pre><code>##                    education income women prestige census type edMiss
+## gov.administrators     13.11  12351 11.16     68.8   1113 prof     NA
+## physicists             15.64  11030  5.13     77.6   2113 prof     NA
+## biologists             15.09   8258 25.65     72.6   2133 prof     NA
+## civil.engineers        14.52  11377  1.03     73.1   2143 prof     NA</code></pre>
 </div>
 <div id="index-vector-of-positive-integers" class="slide section level2">
 <h1>2. Index Vector of Positive Integers</h1>
@@ -481,11 +471,11 @@ logIndVec &lt;-<span class="st"> </span><span class="kw">is.na</span>(prestige$e
 posIndVec</code></pre></div>
 <pre><code>## [1] 1 6 7 9</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige[posIndVec,]</code></pre></div>
-<pre><code>##                    X education income women prestige census type edMiss
-## 1 gov.administrators     13.11  12351 11.16     68.8   1113 prof     NA
-## 6         physicists     15.64  11030  5.13     77.6   2113 prof     NA
-## 7         biologists     15.09   8258 25.65     72.6   2133 prof     NA
-## 9    civil.engineers     14.52  11377  1.03     73.1   2143 prof     NA</code></pre>
+<pre><code>##                    education income women prestige census type edMiss
+## gov.administrators     13.11  12351 11.16     68.8   1113 prof     NA
+## physicists             15.64  11030  5.13     77.6   2113 prof     NA
+## biologists             15.09   8258 25.65     72.6   2133 prof     NA
+## civil.engineers        14.52  11377  1.03     73.1   2143 prof     NA</code></pre>
 </div>
 <div id="vector-of-character-strings" class="slide section level2">
 <h1>3. Vector of Character Strings</h1>
@@ -494,13 +484,13 @@ posIndVec</code></pre></div>
 <li>For example, we can use this to take a subset of the columns of the prestige data</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(prestige[,<span class="kw">c</span>(<span class="st">&quot;education&quot;</span>, <span class="st">&quot;income&quot;</span>)])</code></pre></div>
-<pre><code>##   education income
-## 1     13.11  12351
-## 2     12.26  25879
-## 3     12.77   9271
-## 4     11.42   8865
-## 5     14.62   8403
-## 6     15.64  11030</code></pre>
+<pre><code>##                     education income
+## gov.administrators      13.11  12351
+## general.managers        12.26  25879
+## accountants             12.77   9271
+## purchasing.officers     11.42   8865
+## chemists                14.62   8403
+## physicists              15.64  11030</code></pre>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

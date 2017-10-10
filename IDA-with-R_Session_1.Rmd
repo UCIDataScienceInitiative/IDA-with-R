@@ -6,8 +6,13 @@ date: "October 20, 2017"
 output: slidy_presentation
 smaller: yes
 ---
-## Schedule
 
+```{r,echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(ggplot2)
+```
+
+
+## Schedule
 
 + Session 1: Fundamentals of R
 + Exercise 1
@@ -20,37 +25,21 @@ smaller: yes
 + *Break*
 + Session 4: Logistic Regression 
 
-  
-
-
-
-```{r,echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
-library(ggplot2)
-```
 
 ## Introduction 
-
-+ Feel free to ask questions during lectures
-
-+ To access this presentation and the codes used during the workshop please visit:
-    + https://github.com/UCIDataScienceInitiative/IDA-with-R
-
-
-
-
++ Please ask questions during lectures & throughout the day!
++ To access this presentation and the code used during the workshop please visit the [IDA-with-R GitHub page](https://github.com/UCIDataScienceInitiative/IDA-with-R).
+  
 
 ## Session 1 - Agenda
 
 1. What is R?
 2. Intro to RStudio
 3. Data Structures
-4. Subsetting/Indexing
-
-
+4. Subsetting & Indexing
 
 
 ## What is R?
-
 + R is a free software environment for statistical computing and graphics
     + See http://www.r-project.org/ for more info 
 + R compiles and runs on a wide variety of UNIX platforms, Windows and Mac OS
@@ -62,35 +51,25 @@ library(ggplot2)
     + You can write your own custom functions
     + There are over 10,000 free add-on packages
 
- 
+
+## R Studio
++ RStudio is a free and open source integrated development environment (IDE) for R.
++ To download RStudio please visit: http://rstudio.org/
++ Please note that you must have R already installed before installing R Studio.
 
 
-## R Studio:
-
-1. RStudio is a free and open source integrated development environment (IDE) for R.
-2. To download RStudio please visit: http://rstudio.org/
-3. Please note that you must have R already installed before installing R Studio.
-
-
-
-## Fundamentals
-
+## Fundamentals of R
 + When you type commands at the prompt '>' and hit ENTER
     + R tries to interpret what you've asked it to do (evaluation)
     + If it understands what you've written, it does it (execution)
     + If it doesn't, it will likely give you an error or a warning
-
 + Some commands trigger R to print to the screen, others don't
-
 + If you type an incomplete command, R will usually respond by changing the command prompt to the '+' character
     + Hit ESC on a MAC to cancel
     + Type _Ctrl_ + *C* on Windows and Linux to cancel
 
 
-
-## Data Types in R:
-
-
+## Data Types in R
 + R has 5 main atomic data types:
     + Numeric
     + Character
@@ -99,11 +78,9 @@ library(ggplot2)
     + Complex
 
 
-## Data Structures in R:
-
+## Data Structures in R
 1. One-dimensional:
     + Vectors
-  
 2. Multi-dimensional:
     + Matrices
     + Data frames
@@ -115,8 +92,7 @@ library(ggplot2)
     + e.g., names, dimension, length
 
 
-## Vectors in R:
-
+## Vectors in R
 + A vector is the most basic object in R
 + It is one-dimensional; its single dimension is its length
 + A vector of length *n* has *n* cells
@@ -129,10 +105,7 @@ numVec
 ```
 
 
-
 ## Examples of Character and Logical Vectors
-
-
 ```{r echo=TRUE}
 charVec <- c("red", "green", "blue")
 charVec
@@ -143,13 +116,11 @@ logVec
 ```
 
 
-
-## Special Values:
-
+## Special Values
 There are some special values in R:
 
-  + Inf: infinity
-  + NaN: "Not a number"
+  + ```Inf```: infinity
+  + ```NaN```: "Not a number"
   
 ```{r echo=TRUE}
 a <- Inf; b <- 0
@@ -158,9 +129,7 @@ rslt
 ```
 
 
-
-## Data Type Coercion:
-
+## Data Type Coercion
 + In general, vectors CANNOT have mixed types of data
 + If you create a vector with more than one type of data, R will automatically coerce it to a single type
 
@@ -178,8 +147,8 @@ numToChar <- as(numVec, "character")
 numToChar
 ```
 
-## Factors:
 
+## Factors
 + A factor is a vector object used to specify a discrete classification (categorical values)
 + Factors can be ordered or un-ordered
 + Levels of a factor are better labeled (self-descriptive)
@@ -192,14 +161,11 @@ GenderFac1
 ```
 
 
-
-## Missing Values:
-
+## Missing Values
 + There are two kinds of missing values in R:
-    + NaN: stands for "Not a Number" and is a missing value produced by numerical computation
-    + NA: stands for "Not Available" and is used when a value is missing
-
-+ NaN is also considered as NA (the reverse is NOT true)
+    + ```NaN```: stands for "Not a Number" and is a missing value produced by numerical computation
+    + ```NA```: stands for "Not Available" and is used when a value is missing
++ ```NaN``` is also considered as NA (the reverse is NOT true)
 ```{r echo=TRUE}
 a <- c(1,2)
 a[3]
@@ -208,8 +174,8 @@ b <- 0/0
 b
 ```
 
-## Missing Values
 
+## Missing Values, contd.
 ```is.na()``` and ```is.nan()``` are functions that indicate which value(s) of an object are missing
 ```{r echo=TRUE}
 vec <- c(1, NA, 3, NaN, NA, 5, NaN)
@@ -218,8 +184,7 @@ is.nan(vec)
 ```
 
 
-## Matrices:
-
+## Matrices
 + A matrix is a special case of a vector (matrices have dimension)
     + Like vectors, all elements of a matrix should be of the same data type
 
@@ -236,8 +201,7 @@ myMat
 ```
 
 
-## Other Ways to Create a Matrix:
-
+## Other Ways to Create a Matrix
 + Intuitively, matrices seem to be a combination of vectors that are put next to each other (either column-wise or row-wise)
 
 + ```rbind()``` and ```cbind()``` (row bind and column bind) achieve this 
@@ -249,8 +213,8 @@ colMat <- cbind(vec1, vec2, vec3)
 colMat
 ```
 
-## Other Ways to Create a Matrix:
 
+## Other Ways to Create a Matrix, contd.
 ```{r echo=TRUE}
 rowMat <- rbind(vec1, vec2, vec3)
 rowMat
@@ -258,44 +222,38 @@ rowMat
 
 
 ## Data Frames:
-
 + A data frame looks very similar to a matrix; however, different columns in a data frame can be different data types
 + Often, data used for analysis will be in the form of a data frame
 + Let's learn how to read a data frame into R
 
 
 ## Reading Data into R
-
-Main functions for reading data into R:
++ Main functions for reading data into R:
 
 1. ```read.table()```, ```read.csv()```: to read tabular data 
 2. ```readLines()```: to read lines of a text file
 3. ```source()```, ```dget()```: to read R code
 4. ```load()```: to read saved workspaces
 
-+ Only ```read.table()``` and ```read.csv()``` are covered in this lecture. 
++ Only ```read.table()``` and ```read.csv()``` will be covered today. 
 
-## read.table():
 
+## Reading Data into R, contd.
 + ```read.table()``` is the most commonly used function to read data in R
-+ Type ```?read.table``` in your R console to see the important arguments in the function
-  
-
+    + Type ```?read.table``` in your R console to see the important arguments in the function
 + ```read.csv()``` is intended for reading comma separated value files 
-    + It is equivalent to read.table() with sep = "," and header = TRUE
+    + Equivalent to read.table() with sep = "," and header = TRUE
     
-## read.table():
-
+    
+## ```read.table()```
 ```{r echo = TRUE, eval=TRUE}
-prestige <- read.table(file = "prestige.csv", sep=",", header = TRUE)
+prestige <- read.table(file = "./data/prestige.csv", sep=",", header = TRUE, row.names=1)
 class(prestige)
 head(prestige)
 ```
 
-## write.table()
 
 ## Subsetting
-
 + Now that we have a data frame loaded, let's learn about subsetting data frames and vectors
 + Consider three main operators to take a subset of an object
     + [ ] single brackets return an object of the same class as the original object
@@ -306,18 +264,15 @@ head(prestige)
 + [[ ]] and $ allow us to select only one 
 
 
-
 ## Subsetting Vectors
-
 ```{r echo=TRUE}
 vec <- 1:10
 vec[3]
 ```
-+ Single brackets allow us to select more than one element of an object
+Single brackets allow us to select more than one element of an object
 ```{r echo=TRUE}
 vec[1:3]
 vec[c(2,4,6)]
-
 ```
 
 
@@ -329,6 +284,8 @@ prestige[1:2,]
 prestige[1,2]
 
 ```
+
+
 ## Subsetting Data Frames
 + We use $ when selecting an element by name
     + This is commonly used to subset a column of a data frame
@@ -336,8 +293,8 @@ prestige[1,2]
 head(prestige$education)
 ```
 
-## Index Vector
 
+## Index Vector
 + Another way to select more than one element from an object is by using index vectors
     + An index vector is a vector of indices that is used to select a subset of another vector (or matrix)
 + We will cover three types of index vectors: 
@@ -347,7 +304,6 @@ head(prestige$education)
 
 
 ## 1. Logical Index Vector
-
 + A vector of TRUE/FALSE values that should be the same length as the vector from which we are subsetting. 
     + Values corresponding to TRUE in the index vector are selected
 + We can treat ```is.na()``` as an index vector to subset rows containing NAs
@@ -359,7 +315,6 @@ logIndVec <- is.na(prestige$edMiss)
 head(logIndVec)
 prestige[logIndVec,]
 ```
-
 
 
 ## 2. Index Vector of Positive Integers
@@ -380,6 +335,14 @@ head(prestige[,c("education", "income")])
 ```
 
 
+## Writing Data to File
++ We can use ```write.table()``` to write a data frame to file
++ Similar to ```read.table()```, but we now also specify the name of the data frame in addition to the path
+    + ```write.csv``` is analagous to ```read.csv```
+
+```{r echo=TRUE}
+# write.table(prestige, "./data/prestige_v2.csv", sep = ",", header = TRUE, row.names = TRUE)
+```
 
 
 
