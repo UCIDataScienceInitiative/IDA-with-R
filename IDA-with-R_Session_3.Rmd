@@ -9,7 +9,6 @@ smaller: yes
 
 ```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(car)
 ```
 
 
@@ -23,6 +22,7 @@ library(car)
 
     + Fitting Models
     + Interpretation
+    + Comparing Models & Variable Selection
     + Diagnostics
     + Prediction
 
@@ -104,7 +104,6 @@ T-tests can be categorized into two groups:
 ```{r echo=TRUE}
 set.seed(123)
 oneSampData <- rnorm(100, mean = 0, sd = 1)
-
 mean(oneSampData)
 sd(oneSampData)
 ```
@@ -169,7 +168,7 @@ t.test(Samp1, Samp2, var.equal = TRUE)  # default assump: unequal variances
 
 
 ##  Two-Sample T-Test (Paired T-Test)
-Let $D \equiv \{x_i - y_i : i=1, \ldots, n \}$, then
+Let $D \equiv \{x_i - y_i : i=1, \ldots, n \}$.
 
 Null hypothesis: $\mu_D = 0$
 ```{r echo = TRUE}
@@ -178,23 +177,34 @@ t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
 
 
 ## Linear Regression
-Add notes on basic theory with references!
++ Approach to model the relationship between a *response* variable $Y$ and one or more *predictor* variables $X$.
+
++ $Y$ is a noisy linear combination of $X$: $$Y = X \beta + \epsilon$$
+
+    + $Y$ is a $n \times 1$ vector of response variables
+    + $X$ is a $n \times p$ matrix where each row $X_i$ is the predictor variables for the $i^{th}$ observation
+    + $\beta$ is the $p \times 1$ vector of regression coefficients
+    + $\epsilon \sim N(0,\sigma^2 I)$ is the $n \times 1$ error vector 
+    
++ Multiple ways to estimate $\beta$, but we will focus on the most basic method which is **ordinary least squares estimation**.
+
+    + Minimize sum of squared error (SSE): $\sum_{i=1}^{n} (y_i - X_i\beta)^2$
+    + Closed form solution: $\hat{\beta} = (X^T X)^{-1} X^T Y$
+    + Unbiased and consistent
 
 
 ## Linear Regression in R
-We use ```lm()``` to fit linear regression models, which has requires us to pass in a regression formula.
++ We use ```lm()``` to fit linear regression models, which has requires us to pass in a regression formula.
 
-Some notes on ```formula```:
++ Don't need to create the matrix $X$ (R does this for us), just tell it which predictors to include.
 
-+ Response variable goes on the left and the predictors go on the right of a ```~```
++ Some notes on ```formula```:
 
-+ Predictors are separated by ```+``` symbols (e.g., ```y ~ x + z```)
-
-+ If you want to use all variables in a data frame, simply use ```.``` (e.g., ```y ~ .```)
-
-+ By default, the formula contains an intercept. If you want to exclude it (i.e., force the intercept to be zero), can use either of ```y ~ 0 + .``` or ```y ~ . - 1```
-
-+ Can include polynomial terms: Say we want to have a quadratic regression of ```y``` on ```x```, we simply use ```y ~ x + I(x^2)```
+    + Response variable goes on the left and the predictors go on the right of a ```~```
+    + Predictors are separated by ```+``` symbols (e.g., ```y ~ x + z```)
+    + If you want to use all variables in a data frame, simply use ```.``` (e.g., ```y ~ .```)
+    + By default, the formula contains an intercept. If you want to exclude it (i.e., force the intercept to be zero), can use either of ```y ~ 0 + .``` or ```y ~ . - 1```
+    + Can include polynomial terms: Say we want to have a quadratic regression of ```y``` on ```x```, we simply use ```y ~ x + I(x^2)```
 
 
 ## Linear Regression - Prestige Data
@@ -228,6 +238,7 @@ head(prestige)
 
 ## Another look at the scatterplot matrix
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+library(car)
 scatterplotMatrix(prestige[,c("prestige","education","income","women")])
 ```
 
@@ -321,6 +332,46 @@ summary(mod)
 ```
 
 
+## Linear Regression - More on Variable Selection
++ Automated algorithms for automatic variable selection exist, but should be used with caution. 
+
++ Better to start with an *a priori* set of variables you need to include and then compare models, especially when goal is assocation instead of prediction.
+
++ **Stepwise regression**: start with a model and add (or remove) predictors until some criteria is met
+
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=8}
+null <- lm(prestige ~ 1, data=prestige)  # most basic model, intercept only
+full <- lm(prestige ~ education + income + women + type, data=prestige)  # saturated model, all predictors
+step(null, scope=list(lower=null, upper=full), direction='forward')
+step(full, scope=list(lower=null, upper=full), direction='backward')
+step(null, scope=list(lower=null, upper=full), direction='both')
+```
+
+
+## Linear Regression - More on Variable Selection
++ **All subsets regression**: test all possible subsets of the predictors 
+
+    + $p$ predictors $\Rightarrow 2^p$ combinations
+    + Pick the best model based on some well-defined criteria
+    + Pro: Exhaustive
+    + Con: Computationally expensive
+
++ **Best subsets regression**: similar to all subsets, but only look at the best model of each size
+
++ Multiple packages can do this, but we will use ```leaps```
+
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=5, fig.width=8}
+if (!require("leaps")) install.packages("leaps")  # install leaps if it isn't already
+library(leaps)
+bestSubsets <- regsubsets(prestige ~ education + income + women + type, data=prestige, nbest=1)
+summary(bestSubsets)
+par(mfrow=c(1,2))
+plot(bestSubsets, scale="adjr2"); plot(bestSubsets, scale="Cp")
+```
+
+Note: The plot on the right is Mallow's $C_p$, which is a statistic used to compare models that accounts for the number of predictors in the model (we want it to be roughly equal to the number of predictors included in the model). 
+
+
 ##  Linear Regression - Diagnostics
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=8}
 par(mfrow = c(2, 2), oma = c(0, 0, 2, 0))
@@ -336,17 +387,13 @@ predict(myReg, newData, interval="predict")
 ```
 
 
-## Linear Regression - Variable Selection
-Add notes on forward, backward, stepwise, and all subsets regression.
-
-
 ## End of Session 3
 Next up:
 
 1. Exercise 3
 2. Break
 
-Return at XXXX to discuss answers to Exercise 3!
+Return at XXXX to discuss solutions to Exercise 3!
 
 
 
