@@ -1,0 +1,135 @@
+---
+title: 'Intro to Data Analysis in R: Session 2'
+output: slidy_presentation
+date: "October 20, 2017"
+subtitle: UCI Data Science Initiative
+smaller: yes
+---
+
+```{r, include=FALSE, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Session 2 - Agenda
+
+1. R Packages and Functions
+2. Exploratory Data Analysis
+
+
+## Functions and Packages:
+
+1. R has many built-in functions
+2. Each function has a name followed by (), e.g., ```mean()```
+3. Arguments of a function are put within the parentheses
+4. R packages are a way to maintain collections of R functions and data sets
+5. Packages allow for easy, transparent and cross-platform extension of the R base system
+
+
+## Functions and Packages:
+
+Terminology:
+  
+  1. Package: an extension of the R base system with code, data and documentation in a standardized format
+2. Library: a directory containing installed packages
+3. Repository: a website providing packages for installation
+4. Source: the original version of a package with human-readable text and code
+5. Base packages: part of the R source tree, maintained by R Core
+
++ for more info on how R packages are developed, please read: "Creating R Packages: A Tutorial" (Friedrich Leisch)
++ http://cran.r-project.org/doc/contrib/Leisch-CreatingPackages.pdf
+
+
+## How to install a package in R:
+
+There are two main ways to install a package in R:
+  
+  1. Installing from CRAN: install a package directly from the repository
++ Using R studio: tools/install packages
++ From R console: ```install.packages()```
+2. Installing from Source: first download the add-on R package and then type the following in your console:
+  + ```install.packages("path_to_file", repos = NULL, type = "source")``` 
+
++ Once you install a package, you need to load it into R using the function ```library()```
+
+
+## Popular Packages in R:
+
+1. To visualize data:
+  + ggplot2: to create beautiful graphics
++ googleVis: to use Google Chart tools
+
+2. To report results:
+  + shiny: to create interactive web-based apps
++ knitr: to combine R codes and Latex/Markdown codes
++ slidify: to build HTML 5 slide shows
+
+3. To write high-performance R code:
+  + Rcpp: to write R functions that call C++ code
++ data.table: to organize datasets for fast operations
++ parallel: to use parallel processing in R
+
+
+
+## Functions in R
+
++ Consider the function sample(). Run ?sample to read the help file or str(sample) to see its arguments. 
+```{r echo=TRUE}
+str(sample)
+```
+
++ sample() has four arguments: 
+  + x: vector of elements from which to choose
++ size: desired sample size
++ replace: sampling with/without replacement (logical)
++ prob: vector of probability weights
+
++ The help file will specify which arguments have default values (and what those values are)
+
+
+## Calling a function in R
+
+Function arguments can either be matched by position within the parentheses or by name
+
+```{r echo=TRUE} 
+sampSpace <- 1:6 
+sample(sampSpace, 1) # arguments with default values can be omitted
+sample(size = 1, x = sampSpace) # no need to remember the order 
+sample(size = 1, sampSpace)
+```
+
+## Some Useful Functions:
+
++ Here we are going to talk about:
++ str(): a function to explain internal structure of an object
++ summary(): a function that summarizes variables in a data frame 
+    + Note: this function is also used to summarize results of model fitting functions, which we will go over in the afternoon
+
+
+## str():
+
++ str() is a compact way of understanding what an object is and what is in that object
+```{r echo=TRUE}
+str(str)
+str(sample)
+```
+
+## str():
+
++ After loading a data frame, it is often useful to use ```str()``` in order to understand the structure of your data. 
+
+```{r echo = TRUE, eval=TRUE}
+prestige <- read.table(file = "prestige.csv", sep=",", header = TRUE)
+str(prestige)
+```
+## summary():
+
++ ```summary()``` is another useful function for understanding your data
+
+```{r echo = TRUE, eval=TRUE}
+summary(prestige)
+```
+
+
+
+
+
