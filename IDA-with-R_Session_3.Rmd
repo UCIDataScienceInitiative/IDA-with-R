@@ -185,7 +185,10 @@ t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
     + $X$ is a $n \times p$ matrix where each row $X_i$ is the predictor variables for the $i^{th}$ observation
     + $\beta$ is the $p \times 1$ vector of regression coefficients
     + $\epsilon \sim N(0,\sigma^2 I)$ is the $n \times 1$ error vector 
-    
+    + Implies that $Y \sim N(X\beta, \sigma^2I)$
+
++ Linear regression equivalent to modeling the mean of $Y$. Namely, $\mu = E(Y) = X\beta$
+
 + Multiple ways to estimate $\beta$, but we will focus on the most basic method which is **ordinary least squares estimation**.
 
     + Minimize sum of squared error (SSE): $\sum_{i=1}^{n} (y_i - X_i\beta)^2$

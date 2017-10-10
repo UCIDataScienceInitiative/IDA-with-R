@@ -114,8 +114,8 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(rnorm) <span class="co"># generate random number from normal dist</span></code></pre></div>
 <pre><code>## function (n, mean = 0, sd = 1)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</code></pre></div>
-<pre><code>##  [1]  2.41933484 -0.08327791 -1.19947537  2.74716429  0.97269814
-##  [6] -1.30749332 -0.34464627  2.11813897 -0.20828841 -0.89692594</code></pre>
+<pre><code>##  [1] -0.1941109 -0.4713383 -1.2705903 -0.2483974  0.5534871 -0.1865564
+##  [7] -0.2932358  0.7982686  0.5692111 -0.3877030</code></pre>
 </div>
 <div id="standard-normal-distribution-3" class="slide section level2">
 <h1>Standard Normal Distribution</h1>
@@ -282,7 +282,9 @@ Samp2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="d
 <li><span class="math inline">\(X\)</span> is a <span class="math inline">\(n \times p\)</span> matrix where each row <span class="math inline">\(X_i\)</span> is the predictor variables for the <span class="math inline">\(i^{th}\)</span> observation</li>
 <li><span class="math inline">\(\beta\)</span> is the <span class="math inline">\(p \times 1\)</span> vector of regression coefficients</li>
 <li><span class="math inline">\(\epsilon \sim N(0,\sigma^2 I)\)</span> is the <span class="math inline">\(n \times 1\)</span> error vector</li>
+<li>Implies that <span class="math inline">\(Y \sim N(X\beta, \sigma^2I)\)</span></li>
 </ul></li>
+<li><p>Linear regression equivalent to modeling the mean of <span class="math inline">\(Y\)</span>. Namely, <span class="math inline">\(\mu = E(Y) = X\beta\)</span></p></li>
 <li><p>Multiple ways to estimate <span class="math inline">\(\beta\)</span>, but we will focus on the most basic method which is <strong>ordinary least squares estimation</strong>.</p>
 <ul>
 <li>Minimize sum of squared error (SSE): <span class="math inline">\(\sum_{i=1}^{n} (y_i - X_i\beta)^2\)</span></li>
