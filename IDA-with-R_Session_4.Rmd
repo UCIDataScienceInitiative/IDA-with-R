@@ -23,11 +23,79 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ## O-Ring Data
-asdf
++ On January 28, 1986, the USA Space Shuttle Challenger exploded 73 seconds into flight, killing all 7 crew members. The explosion was traced to failure of O-ring seals in the solid rocket booster at liftoff.
+
++ It was hypothesized that there is a inverse relationship between O-ring failure and temperature. 
+
++ The night before the flight, engineers had to make a decision whether or not to lauch Challenger the next day with a forecasted temperature of 31 degrees Fahrenheit.
+
++ The engineers had data available on 23 previous launches to aid in their decision with the following varaibles 
+
+    + Number of O-rings at risk on a given flight 
+    + Number experiencing thermal distress 
+    + Launch temperature (degrees F) 
+    + Leak-check pressure (psi) 
+    + Temporal order of flight
+
+
+## O-Ring Data, contd.
+More information about the O-ring data is available [here](https://archive.ics.uci.edu/ml/datasets/Challenger+USA+Space+Shuttle+O-Ring).
+
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+oring <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data")
+names(oring) <- c("n_risk", "n_fail", "temp", "psi", "order")
+head(oring)
+summary(oring)
+```
+
+
+## Visualizing the O-Ring Data
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+oring <- oring[order(oring$temp), ]  # sort by ascending temp
+# some flights have the same number of failures & launch temp, so make point size vary 
+pt.size <- rep(1, nrow(oring))
+dups <- oring[duplicated(cbind(oring$temp, oring$n_fail)), c("n_fail", "temp")]
+pt.size[as.numeric(rownames(dups))] <- 2
+trips <- dups[duplicated(dups), ]
+pt.size[as.numeric(rownames(trips))] <- 3
+plot(oring$temp, oring$n_fail, pch = 20, cex = pt.size, 
+     xlab = "Temperature (deg F)", ylab = "Number of Failures")  
+```
+
+
+## Naive Analysis of the O-Ring Data
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+## Fit a linear model
+linearMod <- lm(n_fail ~ temp, data = oring)
+summary(linearMod)
+```
+
+
+## Naive Analysis Results
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+## Predict the output for the Challenger launch day
+launchDay <- data.frame(temp = 31)
+predict(linearMod, launchDay, interval="predict")  # point estimate & 95% CI
+
+## Plot the fit extrapolating to launch day
+plot(oring$temp, oring$n_fail, pch = 20, cex = pt.size/2, 
+     xlab = "Temperature (deg F)", ylab = "Num O-Ring Failures",
+     xlim = c(30, 85), ylim = c(0, 5))
+abline(reg = linearMod, col = "red", lwd = 2)
+points(x=31, y=2.52, pch=4, col="black", lwd=2)
+x <- seq(25,90,.1)
+pred <- predict(linearMod, data.frame(temp=x), interval="predict")
+lines(x, pred[,2], lty=2, col="red")
+lines(x, pred[,3], lty=2, col="red")
+```
 
 
 ## Generalized Linear Models (GLMs)
-asdf
++ Linear regression clearly isn't the proper technique for this type of data, but GLMs can overcome these issues.
+
++ Flexible extension of linear regression that allows response variable to have non-Gaussian error distributions.
+
++ Instead of modeling the mean $\mu$ of the response variable directly as a linear combination of the predictors, we model some function $g(\mu)$.
 
 
 ## GLMs in R
