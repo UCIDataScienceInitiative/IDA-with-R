@@ -1,8 +1,9 @@
 ---
-title: 'Intro to Data Analysis in R: Session 2'
-output: slidy_presentation
-date: "October 20, 2017"
+title: "Intro to Data Analysis with R: Session 2"
 subtitle: UCI Data Science Initiative
+date: "October 20, 2017"
+#author: "Chris Galbraith, Emily Smith"
+output: slidy_presentation
 smaller: yes
 ---
 

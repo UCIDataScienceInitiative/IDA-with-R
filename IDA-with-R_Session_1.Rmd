@@ -1,12 +1,11 @@
 ---
-title: 'Intro To R Workshop: Session 1'
-subtitle: 'UCI Data Science Initiative'
-author: "Emma Smith and Chris Galbraith"
-date: October 20, 2017
+title: "Intro to Data Analysis with R: Session 1"
+subtitle: UCI Data Science Initiative
+date: "October 20, 2017"
+#author: "Emily Smith"
 output: slidy_presentation
 smaller: yes
 ---
-
 ## Schedule
 
 
