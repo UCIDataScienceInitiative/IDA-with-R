@@ -268,7 +268,7 @@ names(myReg) # this is what we had previously
 ```
 
 
-##  Linear Regression - Confidence Interval
+##  Linear Regression - Confidence Intervals
 + 95% confidence interval for coefficient of 'income'
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 confint(myReg, 'income', level=0.95)
