@@ -66,8 +66,8 @@ plot(oring$temp, oring$n_fail, pch = 20, cex = pt.size,
 ## Naive Analysis of the O-Ring Data
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 ## Fit a linear model
-linearMod <- lm(n_fail ~ temp, data = oring)
-summary(linearMod)
+linearReg <- lm(n_fail ~ temp, data = oring)
+summary(linearReg)
 ```
 
 
@@ -75,16 +75,16 @@ summary(linearMod)
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 ## Predict the output for the Challenger launch day
 launchDay <- data.frame(temp = 31)
-predict(linearMod, launchDay, interval="predict")  # point estimate & 95% CI
+predict(linearReg, launchDay, interval="predict")  # point estimate & 95% CI
 
 ## Plot the fit extrapolating to launch day
 plot(oring$temp, oring$n_fail, pch = 20, cex = pt.size/2, 
      xlab = "Temperature (deg F)", ylab = "Num O-Ring Failures",
      xlim = c(30, 85), ylim = c(0, 5))
-abline(reg = linearMod, col = "red", lwd = 2)
+abline(reg = linearReg, col = "red", lwd = 2)
 points(x=31, y=2.52, pch=4, col="black", lwd=2)
 x <- seq(25,90,.1)
-pred <- predict(linearMod, data.frame(temp=x), interval="predict")
+pred <- predict(linearReg, data.frame(temp=x), interval="predict")
 lines(x, pred[,2], lty=2, col="red")
 lines(x, pred[,3], lty=2, col="red")
 ```
@@ -95,140 +95,117 @@ lines(x, pred[,3], lty=2, col="red")
 
 + Flexible extension of linear regression that allows response variable to have non-Gaussian error distributions.
 
-+ Instead of modeling the mean $\mu$ of the response variable directly as a linear combination of the predictors, we model some function $g(\mu)$.
++ Instead of modeling the mean $\mu$ of the response variable directly as a linear combination of the predictors, we model a **link function** $g(\mu)$. $$g[E(Y)] = X \beta \Rightarrow E(Y) = g^{-1}(X \beta) $$
+
++ $Y$ must have a distribution from the *exponential family*, which includes the Normal, binomial, Poisson, gamma, and many others.
+
++ Choice of link function $g$ depends on the distributional form of $Y$. There can be multiple link functions for any singe distribution. 
+
+
+## Logistic Regression
++ Specific GLM when dealing with binary response data $Y_i \in \{0,1\}$ 
+$$Y_i \sim Bernoulli(p_i)$$
+$$\Rightarrow f(Y|p) = \prod_{i=1}^{n} \left[ p_i^{y_i} + (1-p_i)^{1-y_i} \right]$$
+where $p_i \in [0,1]$ is the probability that $Y_i = 1$.
+
++ Link function must map values in $(-\infty, \infty)$ to the range $[0,1]$
+    
+    + **logit**, probit (normal CDF)
+
++ Logit link function: 
+$g(p) = \log\left( \frac{p}{1-p} \right) = X\beta$
+
++ Inverse of logit function is the logistic function: 
+$p = g^{-1}(X\beta) = \frac{e^{X\beta}}{e^{X\beta} + 1} = \frac{1}{1+e^{-X\beta}}$
 
 
 ## GLMs in R
-asdf
++ ```glm()``` is used to fit generalized linear models.
+
++ The ```formula``` argument is equivalent to that of ```lm()``` used for linear regression
+
++ New argument: ```family```
+
+    + Specifies the distribution of the response varaible and the link function
+    + Logistic regression: ```family = binomial(link="logit")```
+    
++ ```Summary()```, ```update()```, ```predict()```, variable selection methods, etc. all work the same
 
 
-##  Logistic Regression - O-Ring Data
-+ `glm()` is used to fit generalized linear models (logistic regression in this example).
-+ Logistic regression is used to model the probability of a binary outcome.
-+ For instance, say we want to predict female labor force participation using the `Mroz` data.
-
+## Logistic Regression - Format Data
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-library(car)
-data(Mroz) # load Mroz data
-str(Mroz)
+## Reformat the response variable
+oring$fail <- as.numeric(oring$n_fail > 0)
+head(oring)
+
+plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
+     xlab = "Temperature (deg F)", ylab = "O-Ring Failure")
 ```
 
 
-## Logistic Regression - Data Description
-+ lfp: female labor-force participation (factor with levels no/yes)
-+ k5: number of children 5 years old or younger
-+ k618: number of children 6 to 18 years old
-+ age: in years
-+ wc: wife's college attendance (factor with levels no/yes)
-+ hc: husband's college attendance (factor with levels no/yes)
-+ lwg: log expected wage rate
-    + for women in the labor force, the actual wage rate
-    + for women not in the labor force, an imputed value 
-+ inc: family income exclusive of wife's income
-
-
-## Logistic Regression - Exploratory Data Analysis (EDA)
+## Logistic Regression - Fit the Model
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-summary(Mroz)
+## Fit a GLM with logistic link
+logisticReg <- glm(fail ~ temp, data = oring, family=binomial(link="logit"))
+summary(logisticReg)
 ```
 
 
-## Logistic Regression - EDA
+## Logistic Regression
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-barplot(table(Mroz$lfp), col = "blue", 
-        main = "Count of Females by Labor Force Participation",
-        xlab = "Labor Force Participation Status", ylab = "Number of Females")
+names(logisticReg)
 ```
 
 
-## Logistic Regression - EDA
+## Logistic Regression - Plot the Fit
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-counts <- table(Mroz$lfp, Mroz$k5)
-barplot(counts, col = c("blue","red"),
-        main = "Labor Force Participation by # of Children < 5",
-        xlab = "# of Children < 5", ylab = "Count",
-        legend = rownames(counts))
-```
-
-
-## Logistic Regression - EDA
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-counts <- table(Mroz$lfp, Mroz$k5)
-barplot(counts, col = c("blue","red"),
-        main = "Labor Force Participation by # of Children < 5",
-        xlab = "# of Children < 5", ylab = "Count",
-        legend = rownames(counts), beside = T)
-```
-
-
-## Logistic Regression - EDA
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-plot(Mroz$age, Mroz$lwg, col = ifelse(Mroz$lfp == "yes", "red", "blue"),
-     main = "Age vs. Log Wage by LFP", xlab = "Age (Years)", ylab = "Wage")
-legend(x = 50, y = -1.5, legend = c("in LF", "Out of LF"),
-       fill = c("red", "blue"), bty = "n")
-```
-
-
-## Logistic Regression - Model Fit
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-fitLogistic <- glm(lfp ~ k5 + age, family=binomial(logit), data=Mroz)
-fitLogistic
-```
-
-
-## Logistic Regression - Model Fit
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-summary(fitLogistic)
-```
-
-
-## Logistic Regression - Model Fit
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-names(fitLogistic)
+plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
+     xlab = "Temperature (deg F)", ylab = "O-Ring Failure")
+curve(predict(logisticReg, data.frame(temp=x), type="response"), add=TRUE, col="red", lwd=2)
 ```
 
 
 ## Logistic Regression - Exponentiated CIs
-+ 95% CI for exp(coefficients) (profile likelihood method)
++ $\exp(\beta)$ is the multiplicative change in the odds of O-ring failure for a one degree increase in temperature.
+
++ 95% CI for $\exp(\beta)$ (profile likelihood method)
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-exp(confint(fitLogistic, level=0.95))
+exp(confint(logisticReg, "temp", level=0.95))
 ```
 
-+ 95% CI for exp(coefficients) (Wald confidence interval)
++ 95% CI for $\exp(\beta)$ (Wald confidence interval)
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-exp(confint.default(fitLogistic, level=0.95))
-```
-
-
-## Logistic Regression - Predictions
-To get probabilities, be sure to use type = "response"
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-head(Mroz,1)
-XB <- as.vector(head(predict(fitLogistic),1))
-XB
-p <- as.vector(head(predict(fitLogistic, type = "response"),1))
-p
-exp(XB)/(1 + exp(XB))  # inverse logit function
+exp(confint.default(logisticReg, "temp", level=0.95))
 ```
 
 
 ## Logistic Regression - Updates
-+ Update model by adding 'inc' and 'lwg'
++ Update model by adding leak check pressure
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-fitLogistic2 = update(fitLogistic, . ~ . + inc + lwg, data=Mroz)
-```
-
-+ After update
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-fitLogistic2
+logisticReg2 = update(logisticReg, . ~ . + psi, data=oring)
+summary(logisticReg2)
 ```
 
 
-## Model Comparison
-+ Use change of deviance of fitted model
+## Logistic Regression - Model Comparison
++ Likelihood Ratio Test instead of F-test like in Linear Regression
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-anova(fitLogistic, fitLogistic2, test='LRT')
+anova(logisticReg, logisticReg2, test='LRT')
+```
+
+
+## Logistic Regression - Predictions
+To get probabilities, be sure to use ```type = "response"```.
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+launchDay
+predict(logisticReg, launchDay, type="response")
+```
+
+```predict()``` simply computes the linear combination & evaulates the inverse link
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
+XB  # estimated log-odds of o-ring failure on launch day
+exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
 ```
 
 
