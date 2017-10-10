@@ -15,13 +15,26 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Session 4 Agenda
 + Logistic Regression
 
-    + Fitting Models
+    + Brief Intro to Generalized Linear Models (GLMs)
+    + Fitting Models for Binary Response Data
     + Interpretation
     + Diagnostics
     + Prediction
 
 
-##  Logistic Regression - Data
+## O-Ring Data
+asdf
+
+
+## Generalized Linear Models (GLMs)
+asdf
+
+
+## GLMs in R
+asdf
+
+
+##  Logistic Regression - O-Ring Data
 + `glm()` is used to fit generalized linear models (logistic regression in this example).
 + Logistic regression is used to model the probability of a binary outcome.
 + For instance, say we want to predict female labor force participation using the `Mroz` data.
@@ -151,8 +164,8 @@ anova(fitLogistic, fitLogistic2, test='LRT')
 ```
 
 
-## End of Session 5
-Break
+## End of Session 4
+Make sure you submit course evaluation surveys!
 
 
 
