@@ -1,4 +1,4 @@
-# IDA-with-R
+# Description
 This course provides a brief introduction to the fundamentals of the R language and focuses on its use for data analysis--including exploratory data analysis, linear and logistic regression, variable selection, model diagnostics, and prediction.
 
 Please download and install R and RStudio before coming to class (see the [Pre-Workshop Instructions](#Instructions) for more details).
