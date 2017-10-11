@@ -105,7 +105,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li>R is highly extendable
 <ul>
 <li>You can write your own custom functions</li>
-<li>There are over 10,000 free add-on packages</li>
+<li>There are over 11,000 free add-on packages</li>
 </ul></li>
 </ul>
 </div>
@@ -367,25 +367,29 @@ rowMat</code></pre></div>
 ## chemists                14.62   8403 11.68     73.5   2111 prof
 ## physicists              15.64  11030  5.13     77.6   2113 prof</code></pre>
 </div>
-<div id="write.table" class="slide section level2">
-<h1>write.table()</h1>
-<p>Save writing to table until after we have cleaned up <code>prestige</code>.</p>
+<div id="data-frame" class="slide section level2">
+<h1>Data Frame</h1>
+<ul>
+<li>The prestige data frame has named rows. We can use the function <code>row.names()</code> to see the names of each row.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(<span class="kw">row.names</span>(prestige))</code></pre></div>
+<pre><code>## [1] &quot;gov.administrators&quot;  &quot;general.managers&quot;    &quot;accountants&quot;        
+## [4] &quot;purchasing.officers&quot; &quot;chemists&quot;            &quot;physicists&quot;</code></pre>
 </div>
 <div id="subsetting" class="slide section level2">
 <h1>Subsetting</h1>
 <ul>
 <li>Now that we have a data frame loaded, let’s learn about subsetting data frames and vectors</li>
-<li>Consider three main operators to take a subset of an object
+<li>Consider two main operators to take a subset of an object
 <ul>
 <li>[ ] single brackets return an object of the same class as the original object</li>
-<li>[[ ]] double brackets are used primarily for lists and dataframes</li>
-<li>$ used primarily for lists and dataframes (similar to double brackets)
+<li>$ used primarily for data frames
 <ul>
 <li>We use $ when selecting an element by name</li>
 </ul></li>
 </ul></li>
 <li>[ ] allows us to select more than one element</li>
-<li>[[ ]] and $ allow us to select only one</li>
+<li>$ allows us to select only one</li>
 </ul>
 </div>
 <div id="subsetting-vectors" class="slide section level2">
@@ -449,17 +453,15 @@ vec[<span class="dv">3</span>]</code></pre></div>
 </ul></li>
 <li>We can treat <code>is.na()</code> as an index vector to subset rows containing NAs</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige$edMiss &lt;-<span class="st"> </span>prestige$education
-prestige$edMiss[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">9</span>)] &lt;-<span class="st"> </span><span class="ot">NA</span>
-logIndVec &lt;-<span class="st"> </span><span class="kw">is.na</span>(prestige$edMiss)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">logIndVec &lt;-<span class="st"> </span><span class="kw">is.na</span>(prestige$type)
 <span class="kw">head</span>(logIndVec)</code></pre></div>
-<pre><code>## [1]  TRUE FALSE FALSE FALSE FALSE  TRUE</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE FALSE</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige[logIndVec,]</code></pre></div>
-<pre><code>##                    education income women prestige census type edMiss
-## gov.administrators     13.11  12351 11.16     68.8   1113 prof     NA
-## physicists             15.64  11030  5.13     77.6   2113 prof     NA
-## biologists             15.09   8258 25.65     72.6   2133 prof     NA
-## civil.engineers        14.52  11377  1.03     73.1   2143 prof     NA</code></pre>
+<pre><code>##             education income women prestige census type
+## athletes        11.44   8206  8.13     54.1   3373 &lt;NA&gt;
+## newsboys         9.62    918  7.00     14.8   5143 &lt;NA&gt;
+## babysitters      9.46    611 96.53     25.9   6147 &lt;NA&gt;
+## farmers          6.84   3643  3.60     44.1   7112 &lt;NA&gt;</code></pre>
 </div>
 <div id="index-vector-of-positive-integers" class="slide section level2">
 <h1>2. Index Vector of Positive Integers</h1>
@@ -467,15 +469,15 @@ logIndVec &lt;-<span class="st"> </span><span class="kw">is.na</span>(prestige$e
 <li>A vector of positive integers corresponding to the elements you want to subset</li>
 <li>We can use the function <code>which()</code> along with <code>is.na()</code> to create this index vector</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">posIndVec &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">is.na</span>(prestige$edMiss))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">posIndVec &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">is.na</span>(prestige$type))
 posIndVec</code></pre></div>
-<pre><code>## [1] 1 6 7 9</code></pre>
+<pre><code>## [1] 34 53 63 67</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige[posIndVec,]</code></pre></div>
-<pre><code>##                    education income women prestige census type edMiss
-## gov.administrators     13.11  12351 11.16     68.8   1113 prof     NA
-## physicists             15.64  11030  5.13     77.6   2113 prof     NA
-## biologists             15.09   8258 25.65     72.6   2133 prof     NA
-## civil.engineers        14.52  11377  1.03     73.1   2143 prof     NA</code></pre>
+<pre><code>##             education income women prestige census type
+## athletes        11.44   8206  8.13     54.1   3373 &lt;NA&gt;
+## newsboys         9.62    918  7.00     14.8   5143 &lt;NA&gt;
+## babysitters      9.46    611 96.53     25.9   6147 &lt;NA&gt;
+## farmers          6.84   3643  3.60     44.1   7112 &lt;NA&gt;</code></pre>
 </div>
 <div id="vector-of-character-strings" class="slide section level2">
 <h1>3. Vector of Character Strings</h1>
@@ -491,6 +493,72 @@ posIndVec</code></pre></div>
 ## purchasing.officers     11.42   8865
 ## chemists                14.62   8403
 ## physicists              15.64  11030</code></pre>
+</div>
+<div id="sorting" class="slide section level2">
+<h1>Sorting</h1>
+<ul>
+<li>We can use the <code>order()</code> function along with the subsetting operators to sort a data frame by a specific column.</li>
+<li>Let’s sort the prestige data in ascending order by education.</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sort.index &lt;-<span class="st"> </span><span class="kw">order</span>(prestige$education, <span class="dt">decreasing =</span> <span class="ot">FALSE</span>)
+prestige.sorted &lt;-<span class="st"> </span>prestige[sort.index,]
+<span class="kw">head</span>(prestige.sorted)</code></pre></div>
+<pre><code>##                       education income women prestige census type
+## sewing.mach.operators      6.38   2847 90.67     28.2   8563   bc
+## masons                     6.60   5959  0.52     36.2   8782   bc
+## railway.sectionmen         6.67   4696  0.00     27.3   8715   bc
+## textile.weavers            6.69   4443 31.36     33.3   8267   bc
+## textile.labourers          6.74   3485 39.48     28.8   8278   bc
+## farmers                    6.84   3643  3.60     44.1   7112 &lt;NA&gt;</code></pre>
+</div>
+<div id="subsetting-example" class="slide section level2">
+<h1>Subsetting Example</h1>
+<ul>
+<li>Let’s see an example of how subsetting might be use to manipulate data.</li>
+<li>We will replace some of the missing values in the type column with “bc”</li>
+<li>Recall that we used an index vector to subset the rows of prestige that contain NAs</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ind &lt;-<span class="st"> </span><span class="kw">which</span>(<span class="kw">is.na</span>(prestige$type)) 
+prestige[ind,]</code></pre></div>
+<pre><code>##             education income women prestige census type
+## athletes        11.44   8206  8.13     54.1   3373 &lt;NA&gt;
+## newsboys         9.62    918  7.00     14.8   5143 &lt;NA&gt;
+## babysitters      9.46    611 96.53     25.9   6147 &lt;NA&gt;
+## farmers          6.84   3643  3.60     44.1   7112 &lt;NA&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rbind</span>(<span class="dt">index=</span>ind, <span class="dt">name=</span><span class="kw">rownames</span>(prestige)[ind])</code></pre></div>
+<pre><code>##       [,1]       [,2]       [,3]          [,4]     
+## index &quot;34&quot;       &quot;53&quot;       &quot;63&quot;          &quot;67&quot;     
+## name  &quot;athletes&quot; &quot;newsboys&quot; &quot;babysitters&quot; &quot;farmers&quot;</code></pre>
+</div>
+<div id="subsetting-example-1" class="slide section level2">
+<h1>Subsetting Example</h1>
+<ul>
+<li>We will replace the last three NAs with “bc” (blue collar)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ind.ch &lt;-<span class="st"> </span>ind[<span class="dv">2</span>:<span class="dv">4</span>]
+prestige[ind.ch, <span class="st">&quot;type&quot;</span>] &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">&quot;bc&quot;</span>, <span class="dv">3</span>)
+<span class="kw">summary</span>(prestige$type)</code></pre></div>
+<pre><code>##   bc prof   wc NA's 
+##   47   31   23    1</code></pre>
+<ul>
+<li>Exclude any rows that still contain NA (one row for athletes)</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">na.omit</span>(prestige)
+<span class="kw">summary</span>(prestige$type)</code></pre></div>
+<pre><code>##   bc prof   wc 
+##   47   31   23</code></pre>
+</div>
+<div id="writing-data-to-file" class="slide section level2">
+<h1>Writing Data to File</h1>
+<ul>
+<li>We can use <code>write.table()</code> to write a data frame to file</li>
+<li>Similar to <code>read.table()</code>, but we now also specify the name of the data frame in addition to the path
+<ul>
+<li><code>write.csv</code> is analagous to <code>read.csv</code></li>
+</ul></li>
+<li>Let’s write our updated prestige data to a new csv file</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># write.table(prestige, &quot;./data/prestige_v2.csv&quot;, sep = &quot;,&quot;, header = TRUE, row.names = TRUE)</span></code></pre></div>
 </div>
 
   <!-- dynamically load mathjax for compatibility with self-contained -->

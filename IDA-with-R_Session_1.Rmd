@@ -49,7 +49,7 @@ library(ggplot2)
     + Everything in R is an object (data, functions, etc.)
 + R is highly extendable
     + You can write your own custom functions
-    + There are over 10,000 free add-on packages
+    + There are over 11,000 free add-on packages
 
 
 ## R Studio
@@ -252,16 +252,22 @@ class(prestige)
 head(prestige)
 ```
 
+## Data Frame
++ The prestige data frame has named rows. We can use the function ```row.names()``` to see the names of each row. 
+
+```{r echo = TRUE, eval=TRUE}
+head(row.names(prestige))
+```
+
 
 ## Subsetting
 + Now that we have a data frame loaded, let's learn about subsetting data frames and vectors
-+ Consider three main operators to take a subset of an object
++ Consider two main operators to take a subset of an object
     + [ ] single brackets return an object of the same class as the original object
-    + [[ ]] double brackets are used primarily for lists and dataframes
-    + $ used primarily for lists and dataframes (similar to double brackets)
+    + $ used primarily for data frames
         + We use $ when selecting an element by name
 + [ ] allows us to select more than one element 
-+ [[ ]] and $ allow us to select only one 
++ $ allows us to select only one 
 
 
 ## Subsetting Vectors
@@ -309,9 +315,7 @@ head(prestige$education)
 + We can treat ```is.na()``` as an index vector to subset rows containing NAs
 
 ```{r echo=TRUE}
-prestige$edMiss <- prestige$education
-prestige$edMiss[c(1, 6, 7, 9)] <- NA
-logIndVec <- is.na(prestige$edMiss)
+logIndVec <- is.na(prestige$type)
 head(logIndVec)
 prestige[logIndVec,]
 ```
@@ -321,7 +325,7 @@ prestige[logIndVec,]
 + A vector of positive integers corresponding to the elements you want to subset
 + We can use the function ```which()``` along with ```is.na()``` to create this index vector
 ```{r echo=TRUE}
-posIndVec <- which(is.na(prestige$edMiss))
+posIndVec <- which(is.na(prestige$type))
 posIndVec
 prestige[posIndVec,]
 ```
@@ -334,11 +338,47 @@ prestige[posIndVec,]
 head(prestige[,c("education", "income")])
 ```
 
+## Sorting
+
++ We can use the ```order()``` function along with the subsetting operators to sort a data frame by a specific column. 
++ Let's sort the prestige data in ascending order by education. 
+```{r echo=TRUE}
+sort.index <- order(prestige$education, decreasing = FALSE)
+prestige.sorted <- prestige[sort.index,]
+head(prestige.sorted)
+```
+
+## Subsetting Example
++ Let's see an example of how subsetting might be use to manipulate data. 
++ We will replace some of the missing values in the type column with "bc"
++ Recall that we used an index vector to subset the rows of prestige that contain NAs
+
+```{r echo=TRUE}
+ind <- which(is.na(prestige$type)) 
+prestige[ind,]
+rbind(index=ind, name=rownames(prestige)[ind])
+```
+
+## Subsetting Example
+
++ We will replace the last three NAs with "bc" (blue collar)
+```{r echo=TRUE}
+ind.ch <- ind[2:4]
+prestige[ind.ch, "type"] <- rep("bc", 3)
+summary(prestige$type)
+```
+
++ Exclude any rows that still contain NA (one row for athletes)
+```{r echo=TRUE}
+prestige <- na.omit(prestige)
+summary(prestige$type)
+```
 
 ## Writing Data to File
 + We can use ```write.table()``` to write a data frame to file
 + Similar to ```read.table()```, but we now also specify the name of the data frame in addition to the path
     + ```write.csv``` is analagous to ```read.csv```
++ Let's write our updated prestige data to a new csv file
 
 ```{r echo=TRUE}
 # write.table(prestige, "./data/prestige_v2.csv", sep = ",", header = TRUE, row.names = TRUE)
