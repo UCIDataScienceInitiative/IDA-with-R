@@ -6,16 +6,15 @@ date: "October 20, 2017"
 output: html_document
 ---
 
-```{r echo=FALSE}
-load("../data/auto_mpg_v2.Rda")
-```
-
 ## Introduction
 This set of exercises picks up where we left off with the Auto MPG data in Exercise 1. We now focus on exploratory data analysis.
 
 
 ### Part A 
-**A.1** Re-open the R script that you were using from Exercise 1 (or use the provided answer key in the `Solutions/Exercise_1.R` directory on the GitHub repo).
+**A.1** Open a new R script and load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from Exercise 1.
+```{r echo= TRUE}
+load("../data/auto_mpg_v2.Rda")
+```
 
 **A.2** Using the ```summary()``` function, look at descriptive statistics for the Auto MPG data. What do you notice?
 ```{r echo= TRUE}

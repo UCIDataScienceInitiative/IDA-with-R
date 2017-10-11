@@ -11,7 +11,7 @@ In this set of Exercises, we will explore linear regression, variable selection,
 
 
 ### Part A 
-**A.1** Re-open the R script that you were using from Exercise 2 (or use the provided answer key in the `Solutions/Exercise_2.R` directory on the GitHub repo).
+**A.1** Open a new R script and load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from Exercise 1.
 
 **A.2** Regress MPG on horsepower and look at the model results with the ```summary()``` function. Interpret the meaning of the coefficient of horsepower.
 
