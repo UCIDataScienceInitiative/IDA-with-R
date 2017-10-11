@@ -42,7 +42,9 @@ We will be focusing on the relationships between miles per gallon (mpg) and vari
 
 **A.3** Rename the variables (columns) using the following conventions: "mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr", "origin", "name"
 
-**A.4** Use the ```head()``` function to look at the first few rows of the data and make sure it looks like it was correctly loaded. You can compare the output here to the raw data by opening the url in A.2.
+**A.4** Convert ```cyl``` into a factor variable using ```factor()```. Convert ```name``` into a character vector using ```as()```.
+
+**A.5** Use the ```head()``` function to look at the first few rows of the data and make sure it looks like it was correctly loaded. You can compare the output here to the raw data by opening the url in A.2.
 
 
 ### Part B - Missing Values
