@@ -74,4 +74,4 @@ We will be focusing on the relationships between miles per gallon (mpg) and vari
 
 **D.4** Look at the structure of the ```auto``` data frame using ```str()``` to make sure that this was done correctly.
 
-
+**D.5** Save your data set as an R data (```.Rda```) file in the data directory (i.e.,  ```"/data/auto_mpg_v2.Rda"```) using the ```save()``` function.

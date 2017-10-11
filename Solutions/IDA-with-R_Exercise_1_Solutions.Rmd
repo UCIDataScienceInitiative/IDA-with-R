@@ -123,8 +123,7 @@ auto$diesel <- factor(auto$diesel)
 str(auto)
 ```
 
-
-```{r echo=FALSE}
-# write results from this file to a csv for use in later exercises
+**D.5** Save your data set as an R data (```.Rda```) file in the data directory (i.e.,  ```"/data/auto_mpg_v2.Rda"```) using the ```save()``` function.
+```{r echo=TRUE}
 save(auto, file="../data/auto_mpg_v2.Rda")
 ```
