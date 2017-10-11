@@ -1,0 +1,20 @@
+---
+title: "Intro to Data Analysis with R: Exercise 3 Solutions"
+subtitle: UCI Data Science Initiative
+date: "October 20, 2017"
+#author: "Chris Galbraith"
+output: html_document
+---
+
+```{r echo=FALSE}
+load("../data/auto_mpg_v2.Rda")
+```
+
+## Introduction
+
+
+
+### Part A 
+**A.1** Re-open the R script that you were using from Exercise 2 (or use the provided answer key in the `Solutions/Exercise_2.R` directory on the GitHub repo).
+
+**A.2** 

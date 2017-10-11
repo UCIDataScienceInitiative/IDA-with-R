@@ -76,7 +76,7 @@ scatterplotMatrix(auto[,c("mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr
 ####################################################################################
 #################################### EXERCISE 3 #################################### 
 ####################################################################################
-## A - regress mpg on horsepower & look at the summary & diagnostic plot... do you 
+### PART A ### - regress mpg on horsepower & look at the summary & diagnostic plot... do you 
 ##     think that this model adequately fits the data?
 modelA <- lm(mpg ~ hp, data=auto)
 summary(modelA)
