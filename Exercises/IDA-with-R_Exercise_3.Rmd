@@ -1,14 +1,10 @@
 ---
-title: "Intro to Data Analysis with R: Exercise 3 Solutions"
+title: "Intro to Data Analysis with R: Exercise 3"
 subtitle: UCI Data Science Initiative
 date: "October 20, 2017"
 #author: "Chris Galbraith"
 output: html_document
 ---
-
-```{r echo=FALSE}
-load("../data/auto_mpg_v2.Rda")
-```
 
 ## Introduction
 In this set of Exercises, we will explore linear regression, variable selection, model diagnostics and prediction.
@@ -18,95 +14,26 @@ In this set of Exercises, we will explore linear regression, variable selection,
 **A.1** Re-open the R script that you were using from Exercise 2 (or use the provided answer key in the `Solutions/Exercise_2.R` directory on the GitHub repo).
 
 **A.2** Regress MPG on horsepower and look at the model results with the ```summary()``` function. Interpret the meaning of the coefficient of horsepower.
-```{r echo=TRUE}
-linFit <- lm(mpg ~ hp, data=auto)
-summary(linFit)
-```
-
-*We estimate that, on average, fuel economy decreases by 0.16 mpg for every one unit increase in horsepower.*
 
 **A.3** Plot the model diagnostics. Do you think this model fits the data adequately? Why or why not?
-```{r echo=TRUE, fig.height=8, fig.width=8}
-par(mfrow=c(2,2))
-plot(linFit)
-```
 
 
 ### Part B
 **B.1** Add in a quadratic term for horsepower and look at the model fit results. HINT: Use the indicator function ```I()``` along with ```update()```.
-```{r echo=TRUE}
-quadFit <- update(linFit, ~ . + I(hp^2), data=auto)
-summary(quadFit)
-```
 
 **B.2** Plot the model diagnostics. Do you think this model fits the data adequately? Why or why not?
-```{r echo=TRUE, fig.height=8, fig.width=8}
-par(mfrow=c(2,2))
-plot(quadFit)
-```
 
 **B.3** Compare the model from Part A to the model you just fit using an F-test. What model do you conclude fits the data better?
-```{r echo=TRUE}
-anova(linFit, quadFit)
-```
-
-*We reject the null hypothesis and conclude that the full model with horsepower squared fits better than the reduced model.* 
 
 **B.4** Make a scatterplot of mpg versus horsepower. Add the estimated regression line from Part A using the ```abline()``` function and color it red. Add in the estimated regression line from Part B and color it blue. HINT: You will need to use the ```predict()``` and ```curve()``` functions.
-```{r echo=TRUE}
-plot(auto$hp, auto$mpg, pch=20, xlab="Horsepower", ylab="MPG")
-abline(reg = linFit, col="red", lwd=2)
-curve(predict(quadFit, data.frame(hp=x)), add=TRUE, col="blue", lwd=2)
-```
 
 
 ### Part C
 **C.1** Using what you've learned so far, fit the best possible linear model you can to predict MPG. Answers will vary. HINT: You can use automatic variable selection methods, or do so manually and compare models via adjusted $R^2$ and F-tests.
-```{r echo=TRUE, fig.height=8, fig.width=8}
-modelC1 <- lm(mpg ~ weight + model.yr, data=auto)
-summary(modelC1)
-par(mfrow=c(2,2)); plot(modelC1)
-auto[c(330, 334, 333), ]  # look at potential outliers... top 3 mpg values
-auto[52, c("mpg", "weight", "model.yr")]  # look at leverage point... heaviest vehicle
-
-modelC2 <- lm(mpg ~ weight + I(weight^2) + model.yr, data=auto)
-summary(modelC2)
-par(mfrow=c(2,2)); plot(modelC2)
-auto[c(330, 334, 396), c("mpg", "weight", "model.yr")]  # look at potential outliers... top 3 mpg values
-
-anova(modelC1, modelC2)
-
-finalModel <- lm(mpg ~ weight + I(weight^2) + model.yr + diesel, data=auto)
-summary(finalModel)
-par(mfrow=c(2,2)); plot(finalModel)
-auto[c(330, 403, 119), ]  # look at potential outliers...
-par(mfrow=c(1,1)); plot(auto$weight, auto$mpg, pch=20, xlab="Weight (lbs)", ylab="MPG", col=auto$diesel)
-
-anova(modelC2, finalModel)
-```
 
 **C.2** Using the model you just fit, predict the fuel economy of the 8 vehicles with missing mpg values.
-```{r echo=TRUE}
-missing.mpg <- auto[is.na(auto$mpg), ]
-cbind(missing.mpg, fit=predict(finalModel, newdata = missing.mpg))
-```
 
 
 ### Part D
 Write a function that performs linear contrasts. E.g., takes in the fitted linear regression object and a vector containing the difference in two predictor vectors and ourputs a point estimate and 95% confidence intervals. Specifically, do this comparing (1) two similar vehicles that differ by 10 model years, and (2) two similar vehicles that differ by 500 pounds. NOTE: You may not have included these variables in your final model. If you didn't, chose two other variables. HINT: This problem is difficult! You will need to get the covariance matrix on the coefficients with ```vcov()``` and perform some matrix multiplications using the ```%*%``` operator. Ask for help if you make it this far!
-```{r echo=TRUE}
-linContr <- function(model, contr){
-  beta.hat <- model$coef
-  cov.beta <- vcov(model)
-  est <- contr %*% beta.hat
-  se.est <- sqrt(contr %*% cov.beta %*% t(contr))
-  ci95.lo <- est - qnorm(0.975)*se.est
-  ci95.hi <- est + qnorm(0.975)*se.est
-  out <- data.frame(est, se.est, ci95.lo, ci95.hi)
-  round(out, 3)
-}
-
-linContr(finalModel, matrix(c(0, 0, 0, 10, 0), nrow=1, ncol=5))  # 10 yr diff
-linContr(finalModel, matrix(c(0, -500, -500^2, 0, 0), nrow=1, ncol=5))  # 500 lb diff
-```
 

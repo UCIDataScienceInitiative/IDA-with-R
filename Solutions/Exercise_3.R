@@ -76,25 +76,37 @@ scatterplotMatrix(auto[,c("mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr
 ####################################################################################
 #################################### EXERCISE 3 #################################### 
 ####################################################################################
-### PART A ### - regress mpg on horsepower & look at the summary & diagnostic plot... do you 
-##     think that this model adequately fits the data?
-modelA <- lm(mpg ~ hp, data=auto)
-summary(modelA)
-par(mfrow=c(2,2)); plot(modelA)
+### PART A ###
+# A.2
+linFit <- lm(mpg ~ hp, data=auto)
+summary(linFit)
 
-## B - fit a quadratic model with horsepower repeating what you did in Part A... does
-##     this model fit the data better than the model in Part A? which do you prefer?
-##     a plot may help here! or anova()
-modelB <- lm(mpg ~ hp + I(hp^2), data=auto)
-summary(modelB)
-par(mfrow=c(2,2)); plot(modelB)
-par(mfrow=c(1,1)); plot(auto$hp, auto$mpg, pch=20, xlab="Horsepower", ylab="MPG")
-abline(reg = modelA, col="red", lwd=2)
-curve(predict(modelB, data.frame(hp=x)), add=TRUE, col="green", lwd=2)
+# A.3 
+par(mfrow=c(2,2))
+plot(linFit)
 
-anova(modelA, modelB)
 
-## C - fit the best possible model for the Auto MPG data... may be an iterative process
+### PART B ###
+# B.1 
+quadFit <- update(linFit, ~ . + I(hp^2), data=auto)
+summary(quadFit)
+
+# B.2
+par(mfrow=c(2,2))
+plot(quadFit)
+
+# B.3
+anova(linFit, quadFit)
+
+# B.4
+par(mfrow=c(1,1))
+plot(auto$hp, auto$mpg, pch=20, xlab="Horsepower", ylab="MPG")
+abline(reg = linFit, col="red", lwd=2)
+curve(predict(quadFit, data.frame(hp=x)), add=TRUE, col="blue", lwd=2)
+
+
+### PART C ### 
+# C.1
 modelC1 <- lm(mpg ~ weight + model.yr, data=auto)
 summary(modelC1)
 par(mfrow=c(2,2)); plot(modelC1)
@@ -112,16 +124,13 @@ finalModel <- lm(mpg ~ weight + I(weight^2) + model.yr + diesel, data=auto)
 summary(finalModel)
 par(mfrow=c(2,2)); plot(finalModel)
 auto[c(330, 403, 119), ]  # look at potential outliers...
-par(mfrow=c(1,1)); plot(auto$weight, auto$mpg, pch=20, xlab="Weight (lbs)", ylab="MPG", col=auto$diesel)
-
 anova(modelC2, finalModel)
 
-## D - using your model in Part C, predict the MPG for the 8 observations with missing MPG
+# C.2
 missing.mpg <- auto[is.na(auto$mpg), ]
 cbind(missing.mpg, fit=predict(finalModel, newdata = missing.mpg))
 
-## E - contrasts... (1) 2500 vs 3000 lbs for same model year & engine type
-##                  (2) 1980 vs 1970 for same weight & engine type
+### PART D ### 
 linContr <- function(model, contr){
   beta.hat <- model$coef
   cov.beta <- vcov(model)
@@ -133,7 +142,9 @@ linContr <- function(model, contr){
   round(out, 3)
 }
 
-linContr(finalModel, matrix(c(0, -500, -500^2, 0, 0), nrow=1, ncol=5))  # 2500 - 3000
+# (1) 1980 vs 1970 for same weight & engine type
 linContr(finalModel, matrix(c(0, 0, 0, 10, 0), nrow=1, ncol=5))  # 1980 - 1970
+# (2) 2500 vs 3000 lbs for same model year & engine type
+linContr(finalModel, matrix(c(0, -500, -500^2, 0, 0), nrow=1, ncol=5))  # 2500 - 3000
 
 
