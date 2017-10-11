@@ -12,7 +12,7 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 | 	x			| [Exercise 1](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_1.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_1_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_1.R)|
 | 	x			| Break						| |
 |   x           | [Session 2: Exploratory Data Analysis](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_2.html) 	| |
-| 	x			| [Exercise 2](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_2.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_2_Solutions.html) [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_2.R) |
+| 	x			| [Exercise 2](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_2.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_2_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_2.R) |
 | 	x 		 	| Lunch						| |
 | 	x			| [Session 3: Linear Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_3.html)			| |
 | 	x			| [Exercise 3](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_3.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_3_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_3.R) |
