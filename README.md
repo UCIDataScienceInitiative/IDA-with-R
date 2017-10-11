@@ -5,6 +5,21 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 
 
 # Schedule
+
+## <a name="Schedule"></a>Tentative Schedule
+
+| 	   Time	    |           				|
+| ------------- | :-------------:			|
+| 	8:30-9:00  	| Sign-in & Coffee/Bagels	|
+| 	a 			| [Session 1: Fundamentals of R](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_1.html)			|
+|   b           | [Session 2: Exploratory Data Analysis](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_2.html) 	|
+| 	c 		 	| Lunch						|
+| 	d			| [Session 3: Linear Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_3.html)			|
+| 	e			| [Exercise 3](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_1.html)					|
+| 	f 			| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			|
+
+
+
 * [Session 1](http://ucidatascienceinitiative.github.io//IDA-with-R/IDA-with-R_Session_1.html)
 * [Session 2](http://ucidatascienceinitiative.github.io//IDA-with-R/IDA-with-R_Session_2.html)
 * [Session 3](http://ucidatascienceinitiative.github.io//IDA-with-R/IDA-with-R_Session_3.html)
