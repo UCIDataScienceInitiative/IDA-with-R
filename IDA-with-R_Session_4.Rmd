@@ -1,5 +1,5 @@
 ---
-title: 'Intro to R Workshop: Session 4'
+title: 'Intro to Data Analysis with R: Session 4'
 subtitle: UCI Data Science Initiative
 date: "October 20, 2017"
 #author: Chris Galbraith
