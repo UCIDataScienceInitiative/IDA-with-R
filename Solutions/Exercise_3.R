@@ -124,6 +124,8 @@ finalModel <- lm(mpg ~ weight + I(weight^2) + model.yr + diesel, data=auto)
 summary(finalModel)
 par(mfrow=c(2,2)); plot(finalModel)
 auto[c(330, 403, 119), ]  # look at potential outliers...
+par(mfrow=c(1,1)); plot(auto$weight, auto$mpg, pch=20, xlab="Weight (lbs)", ylab="MPG", col=auto$diesel)
+
 anova(modelC2, finalModel)
 
 # C.2
