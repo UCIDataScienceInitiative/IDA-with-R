@@ -56,19 +56,25 @@ str(auto)
 ####################################################################################
 #################################### EXERCISE 2 #################################### 
 ####################################################################################
-### PART A - Data Input ###
-# A.2
+### PART A ###
 summary(auto)
 
-## B - create a histogram of the response variable (mpg)
-hist(auto$mpg, col = "grey", main = "Histogram of MPG", xlab = "MPG")
+### PART B ###
+# B.1
+hist(auto$mpg, col = "grey", freq=FALSE, main = "Histogram of MPG", xlab = "MPG")
 
-## C - look at a boxplot of the response variable (mpg) grouped by number of cylinders
+# B.2
+lines(density(auto$mpg, na.rm=TRUE), col="red")
+
+# B.3
+abline(v = median(auto$mpg, na.rm=TRUE), col = "red", lwd = 2, lty=2)
+
+### PART C ###
 boxplot(mpg ~ cyl, data = auto, col = "grey",
         main = "Distribution of MPG by Number of Cylinders",
         xlab = "Cylinders", ylab = "MPG")
 
-## D - create a scatterplot matrix including only mpg, cylinders, displacement, horsepower, 
-##     weight, acceleration, and model year... what do you notice & what are the implications?
+### PART D ###
+library(car)
 scatterplotMatrix(auto[,c("mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr")])
 
