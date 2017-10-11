@@ -1,0 +1,16 @@
+---
+title: "Intro to Data Analysis with R: Exercise 2"
+subtitle: UCI Data Science Initiative
+date: "October 20, 2017"
+#author: "Chris Galbraith"
+output: html_document
+---
+
+## Introduction
+This set of exercises picks up where we left off with the Auto MPG data in Exercise 1. We now focus on exploratory data analysis.
+
+
+### Part A 
+**A.1** Re-open the R script that you were using from Exercise 1 (or use the provided answer key in the `Solutions/Exercise_1.R` directory on the GitHub repo).
+
+**A.2** 
