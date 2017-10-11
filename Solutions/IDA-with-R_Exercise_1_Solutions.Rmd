@@ -124,4 +124,7 @@ str(auto)
 ```
 
 
-
+```{r echo=FALSE}
+# write results from this file to a csv for use in later exercises
+write.csv(auto, file="../data/auto_mpg_v2.csv", row.names = FALSE)
+```
