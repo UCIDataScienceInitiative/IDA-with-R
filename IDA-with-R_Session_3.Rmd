@@ -232,8 +232,7 @@ We will fit a linear model using the Prestige data. Recall that we have the foll
 
 ## Load Data
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-prestige <- read.csv(file="/Users/CMG/dev/IDA-with-R/data/prestige_v2.csv", 
-                     row.names=1)  # path will vary
+prestige <- read.csv(file="./data/prestige_v2.csv", row.names=1)
 str(prestige)
 head(prestige)
 ```

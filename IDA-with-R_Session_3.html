@@ -114,8 +114,8 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(rnorm) <span class="co"># generate random number from normal dist</span></code></pre></div>
 <pre><code>## function (n, mean = 0, sd = 1)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</code></pre></div>
-<pre><code>##  [1]  0.40621085  0.50387717 -0.48471901 -0.92461987  0.44635110
-##  [6]  1.07488663 -0.75199301 -0.06277361 -1.32129244  1.22210919</code></pre>
+<pre><code>##  [1]  0.8013448  0.5174603 -0.2141582 -2.0672771  0.1837721  0.1906913
+##  [7]  0.2833143 -1.2218434 -0.8376527 -0.3658940</code></pre>
 </div>
 <div id="standard-normal-distribution-3" class="slide section level2">
 <h1>Standard Normal Distribution</h1>
@@ -327,8 +327,7 @@ Samp2 &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="d
 </div>
 <div id="load-data" class="slide section level2">
 <h1>Load Data</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;/Users/CMG/dev/IDA-with-R/data/prestige_v2.csv&quot;</span>, 
-                     <span class="dt">row.names=</span><span class="dv">1</span>)  <span class="co"># path will vary</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;./data/prestige_v2.csv&quot;</span>, <span class="dt">row.names=</span><span class="dv">1</span>)
 <span class="kw">str</span>(prestige)</code></pre></div>
 <pre><code>## 'data.frame':    101 obs. of  6 variables:
 ##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...
