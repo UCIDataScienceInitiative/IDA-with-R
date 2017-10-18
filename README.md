@@ -7,18 +7,20 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 # Schedule
 | 	   Time	    |           				|							|
 | ------------- | :---------------------:	|  :---------------------:	|
-| 	8:30-9:00  	| Sign-in & Coffee/Bagels	|
+| 	8:30-9:00  	| Registration & Breakfast	|
 | 	9:00-10:00	| [Session 1: Fundamentals of R](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_1.html)			| |
-| 	10:00-10:45	| [Exercise 1](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_1.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_1_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_1.R)|
-| 	10:45-11:00	| Break						| |
-|   10:45-11:45 | [Session 2: Exploratory Data Analysis](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_2.html) 	| |
-| 	11:45-12:30	| [Exercise 2](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_2.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_2_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_2.R) |
+| 	10:00-10:30	| [Exercise 1](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_1.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_1_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_1.R)|
+| 	10:30-10:45	| Break						| |
+| 	10:45-11:00	| Discuss Exercise 1		| |
+|   11:00-12:00 | [Session 2: Exploratory Data Analysis](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_2.html) 	| |
+| 	12:00-12:30	| [Exercise 2](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_2.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_2_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_2.R) |
 | 	12:30-1:00 	| Lunch						| |
-| 	1:00-2:15	| [Session 3: Linear Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_3.html)			| |
-| 	2:15-3:30	| [Exercise 3](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_3.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_3_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_3.R) |
-| 	3:30-3:45	| Break						| |
-| 	3:45-4:45	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			| |
-| 	4:45-5:00	| Closing Remarks & Course Evaluations	| |
+| 	1:00-1:15 	| Discuss Exercise 2		| |
+| 	1:15-2:30	| [Session 3: Linear Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_3.html)			| |
+| 	2:30-3:15	| [Exercise 3](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_3.html)					| [Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_3_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_3.R) |
+| 	3:15-3:30	| Break						| |
+| 	3:30-4:00	| Discuss Exercise 3		| |
+| 	4:00-5:00	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			| |
 
 
 # <a name="Instructions"></a>Pre-Workshop Instructions
