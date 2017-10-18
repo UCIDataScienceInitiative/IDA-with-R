@@ -127,9 +127,83 @@ summary(prestige)
 
 
 ## Control Structures
-Breif discussion of for loops, etc
 
++ A control structure is a block of programming that analyzes variables and chooses a direction in which to go based on given parameters
++ Control structures in R include:
+    + for loops
+    + if/else statements
+    + while loops 
+    + repeat
+    + break 
+    + next
+    + return
 
-## EDA
+## Exploratory Data Analysis
 
++ Before performing statistical analyses on your data, it is important to do exploratory data analysis (EDA) in order to better understand the variables and the relationships between them
++ Here we will cover some of the basic plotting functions in R
 
+## Histogram
+
++ One of the most basic plots in R is a histogram
++ Let's plot a histogram of the response variable prestige
+    + We can add arguments to the function to change the bar colors, title, and axis labels
+```{r echo = TRUE, eval=TRUE}
+hist(prestige$prestige, col = "grey", main = "Histogram of Prestige Score", xlab = "Prestige Score")
+```
+
+## Histogram
+
++ We can use the function ```abline()``` to add a vertical line at the median of prestige
+```{r echo = TRUE, eval=TRUE}
+hist(prestige$prestige, col = "grey", main = "Histogram of Prestige Score", xlab = "Prestige Score")
+abline(v = median(prestige$prestige), col = "blue")
+```
+
+## Scatterplot
+
++ We can use scatterplots to visualize the relationship between two variables, such as education and prestige
+```{r echo = TRUE, eval=TRUE}
+plot(prestige$education, prestige$prestige,
+     main = "Prestige Score by Education",
+     xlab = "Ave. Years of Education", ylab = "Prestige Score")
+```
+
+## Scatterplot
+
++ Use the functions ```lines()``` and ```lowess()``` to add a smoothed line through the plot
+```{r echo = TRUE, eval=TRUE}
+plot(prestige$education, prestige$prestige,
+     main = "Prestige Score by Education",
+     xlab = "Ave. Years of Education", ylab = "Prestige Score")
+lines(lowess(prestige$education, prestige$prestige), col = "blue", lty = 2, lwd = 2)
+```
+
+## Scatterplot Matrix
+
++ The function ```scatterplotMatrix()``` (found in the car package) produces scatterplots between all variables in a dataframe
++ We can use direct ordering of the variables to control the order in which they are plotted
+
+```{r echo = TRUE, eval=TRUE}
+library(car)
+scatterplotMatrix(prestige[,c("prestige","education","income","women")])
+```
+
+## Boxplot
+
++ The ```boxplot()``` function can be used to produce a boxplot of a single variable, or of a variable by categorical group
++ First let's make a boxplot of the response variable prestige
+
+```{r echo = TRUE, eval=TRUE}
+boxplot(prestige, data = prestige)
+```
+
+## Boxplot
+
++ Next we make a boxplot of prestige by the categorical variable "type"
+
+```{r echo = TRUE, eval=TRUE}
+boxplot(prestige ~ type, data = prestige, col = "grey",
+        main = "Distribution of Prestige Score by Type of Occupation",
+        xlab = "Occupation Types", ylab = "Prestige Score")
+```
