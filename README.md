@@ -20,7 +20,8 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 | 	2:30-3:15	| [Exercise 3](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_3.html)					| 
 | 	3:15-3:30	| Break						| 
 | 	3:30-4:00	| Discuss Exercise 3 ([Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_3_Solutions.html), [R code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_3.R))	| 
-| 	4:00-5:00	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			| 
+| 	4:00-4:55	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			| 
+| 	4:55-5:00	| Course Evaluations		| 
 
 
 # <a name="Instructions"></a>Pre-Workshop Instructions
