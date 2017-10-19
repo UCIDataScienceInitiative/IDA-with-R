@@ -18,7 +18,7 @@ The data consists of a collection of automobile records from 1970 to 1982 contai
 
 2. Number of Cylinders
 
-3. Engine Displacement (in cubin inches)
+3. Engine Displacement (in cubic inches)
 
 4. Horsepower
 
@@ -36,11 +36,11 @@ We will be focusing on the relationships between miles per gallon (mpg) and vari
 
 
 ### Part A - Data Input
-**A.1** Open a new R script file to write and save your code for the exercises. 
+**A.1** Open a new R script file to write and save your code for the exercises. Set your working directory to your local copy of the IDA-with-R GitHub repo using the ```setwd()``` function.
 
-**A.2** Read in the Auto MPG data to a data frame named ```auto``` from the following url using ```read.table()```:  https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original
+**A.2** Read in the Auto MPG data to a data frame named ```auto``` from the following url using ```read.table()```:  https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original HINT: Run ```?read.table()``` and read about how to use a url as a file path.
 
-**A.3** Rename the variables (columns) using the following conventions: "mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr", "origin", "name"
+**A.3** Rename the variables (columns) using the following conventions: "mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr", "origin", "name". HINT: You will need to use the ```names``` attribute of the data frame (i.e., ```names(auto)```).
 
 **A.4** Convert ```cyl``` into a factor variable using ```factor()```. Convert ```name``` into a character vector using ```as()```.
 
