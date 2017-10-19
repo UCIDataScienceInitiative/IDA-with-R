@@ -2,7 +2,7 @@
 title: "Intro to Data Analysis with R: Session 1"
 subtitle: UCI Data Science Initiative
 date: "October 20, 2017"
-#author: "Emily Smith"
+#author: "Chris Galbraith, Emily Smith"
 output: slidy_presentation
 smaller: yes
 ---
@@ -12,23 +12,10 @@ library(ggplot2)
 ```
 
 
-## Schedule
-
-+ Session 1: Fundamentals of R
-+ Exercise 1
-+ *Break*
-+ Session 2: Functions and Exploratory Data Analysis
-+ Exercise 2
-+ *Lunch*
-+ Session 3: Linear Regression
-+ Exercise 3
-+ *Break*
-+ Session 4: Logistic Regression 
-
-
 ## Introduction 
 + Please ask questions during lectures & throughout the day!
 + To access this presentation and the code used during the workshop please visit the [IDA-with-R GitHub page](https://github.com/UCIDataScienceInitiative/IDA-with-R).
++ Please download (or clone) this repo to your local machine!
   
 
 ## Session 1 - Agenda
@@ -52,7 +39,7 @@ library(ggplot2)
     + There are over 11,000 free add-on packages
 
 
-## R Studio
+## RStudio
 + RStudio is a free and open source integrated development environment (IDE) for R.
 + To download RStudio please visit: http://rstudio.org/
 + Please note that you must have R already installed before installing R Studio.
@@ -100,8 +87,9 @@ library(ggplot2)
     + In general, vectors can only hold ONE type of data 
   
 ```{r echo=TRUE}
-numVec <- c(2,3,4)      # <- is the assigning operator
+numVec <- c(2,3,4)  # <- is the assigning operator
 numVec
+length(numVec)  # gives the number of elements in the vector
 ```
 
 
@@ -113,19 +101,6 @@ charVec
 logVec <- c(TRUE, FALSE, FALSE, T, F)
 logVec
 
-```
-
-
-## Special Values
-There are some special values in R:
-
-  + ```Inf```: infinity
-  + ```NaN```: "Not a number"
-  
-```{r echo=TRUE}
-a <- Inf; b <- 0
-rslt <- c(b/a, a/a)
-rslt
 ```
 
 
@@ -161,29 +136,6 @@ GenderFac1
 ```
 
 
-## Missing Values
-+ There are two kinds of missing values in R:
-    + ```NaN```: stands for "Not a Number" and is a missing value produced by numerical computation
-    + ```NA```: stands for "Not Available" and is used when a value is missing
-+ ```NaN``` is also considered as NA (the reverse is NOT true)
-```{r echo=TRUE}
-a <- c(1,2)
-a[3]
-
-b <- 0/0
-b
-```
-
-
-## Missing Values, contd.
-```is.na()``` and ```is.nan()``` are functions that indicate which value(s) of an object are missing
-```{r echo=TRUE}
-vec <- c(1, NA, 3, NaN, NA, 5, NaN)
-is.na(vec)
-is.nan(vec)
-```
-
-
 ## Matrices
 + A matrix is a special case of a vector (matrices have dimension)
     + Like vectors, all elements of a matrix should be of the same data type
@@ -191,6 +143,8 @@ is.nan(vec)
 ```{r echo=TRUE}
 myMat <- matrix(nrow = 2, ncol = 4)
 myMat
+length(myMat)  # gives the total number of elements in the matrix, nrow*ncol
+dim(myMat)  # gives a vector containing the dimensions of the matrix, (nrow, ncol)
 ```
 
 + Matrices are filled column-wise (unless otherwise specified)
@@ -221,8 +175,46 @@ rowMat
 ```
 
 
-## Data Frames:
-+ A data frame looks very similar to a matrix; however, different columns in a data frame can be different data types
+## Special Values
+There are some special values in R:
+
+  + ```Inf```: infinity
+  + ```NaN```: "Not a number"
+  
+```{r echo=TRUE}
+a <- Inf
+b <- 0
+rslt <- c(b/a, a/a, 1/b)
+rslt
+```
+
+
+## Missing Values
++ There are two kinds of missing values in R:
+    + ```NaN```: stands for "Not a Number" and is a missing value produced by numerical computation
+    + ```NA```: stands for "Not Available" and is used when a value is missing
+```{r echo=TRUE}
+a <- c(1,2)
+a[3]
+
+b <- 0/0
+b
+```
+
+
+## Missing Values, contd.
++ ```is.na()``` and ```is.nan()``` are functions that indicate which value(s) of an object are missing
++ ```NaN``` is also considered as NA (the reverse is NOT true)
+```{r echo=TRUE}
+vec <- c(1, NA, 3, NaN, NA, 5, NaN)
+is.na(vec)
+is.nan(vec)
+```
+
+
+## Data Frames
++ A data frame looks very similar to a matrix
++ Caveat: **different columns** in a data frame can be **different data types**
 + Often, data used for analysis will be in the form of a data frame
 + Let's learn how to read a data frame into R
 
@@ -233,7 +225,7 @@ rowMat
 1. ```read.table()```, ```read.csv()```: to read tabular data 
 2. ```readLines()```: to read lines of a text file
 3. ```source()```, ```dget()```: to read R code
-4. ```load()```: to read saved workspaces
+4. ```load()```: to read saved workspaces and R data files (```.Rda```)
 
 + Only ```read.table()``` and ```read.csv()``` will be covered today. 
 
@@ -243,20 +235,46 @@ rowMat
     + Type ```?read.table``` in your R console to see the important arguments in the function
 + ```read.csv()``` is intended for reading comma separated value files 
     + Equivalent to read.table() with sep = "," and header = TRUE
+
+
+## Prestige Data
+We will be using the data frame you just read in throughout the day. It contains the following attributes:
+
++ ```education```: Average education of occupational incumbents, years, in 1971.
+
++ ```income```: Average income of incumbents, dollars, in 1971.
+
++ ```women```: Percentage of incumbents who are women.
+
++ ```prestige```: Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.
+
++ ```census```: Canadian Census occupational code.
+
++ ```type```: Type of occupation, a factor with levels
+
+    + ```bc```: Blue Collar
+    + ```prof```: Professional, Managerial, and Technical
+    + ```wc```: White Collar
     
     
-## ```read.table()```
+## Reading in the Prestige Data
++ Before executing the following commands, make sure that you are working in your local ```IDA-with-R-master``` directory!
+    + Use the ```setwd()``` function to accompish this
+    
 ```{r echo = TRUE, eval=TRUE}
 prestige <- read.table(file = "./data/prestige.csv", sep=",", header = TRUE, row.names=1)
-class(prestige)
-head(prestige)
+class(prestige)  # gives object type
+head(prestige)  # look at the first 5 rows, equivalent to prestige[1:5, ]  
+dim(prestige)  # (nrow, ncol)
 ```
 
-## Data Frame
-+ The prestige data frame has named rows. We can use the function ```row.names()``` to see the names of each row. 
+
+## Prestige Data Frame
++ The ```prestige``` data frame has named rows. 
++ We can use the function ```row.names()``` to see the names of each row. 
 
 ```{r echo = TRUE, eval=TRUE}
-head(row.names(prestige))
+head(row.names(prestige))  # equivalent to row.names(prestige)[1:5]
 ```
 
 
@@ -264,8 +282,8 @@ head(row.names(prestige))
 + Now that we have a data frame loaded, let's learn about subsetting data frames and vectors
 + Consider two main operators to take a subset of an object
     + [ ] single brackets return an object of the same class as the original object
-    + $ used primarily for data frames
-        + We use $ when selecting an element by name
+    + $ used primarily for selecting columns from data frames
+        + We use $ when selecting an attribute by name
 + [ ] allows us to select more than one element 
 + $ allows us to select only one 
 
@@ -286,23 +304,29 @@ vec[c(2,4,6)]
 + We also use the single square brackets to subset data frames
     + In the square brackets, the first position refers to the row(s) and the second position refers to the column(s)
 ```{r echo=TRUE}
-prestige[1:2,]
-prestige[1,2]
-
+prestige[1:2, ]  # get the first 2 rows
+prestige[1, 2]  # get the first row, second column
 ```
 
 
-## Subsetting Data Frames
-+ We use $ when selecting an element by name
+## Subsetting Data Frames, contd.
++ We use $ when selecting an attribute by name
     + This is commonly used to subset a column of a data frame
 ```{r echo=TRUE}
-head(prestige$education)
+head(prestige$income)  # select the first 5 values of the second column
+```
+
++ Can combine $ with [ ]
+```{r echo=TRUE}
+prestige$income[1]  # get the first element of the income vector
+prestige[1, 2]  # get the first row, second column
 ```
 
 
-## Index Vector
+## Index Vectors
 + Another way to select more than one element from an object is by using index vectors
-    + An index vector is a vector of indices that is used to select a subset of another vector (or matrix)
+    + Vector of integers taking values from 1 to ```n```, the length of the vector you wish to subset
+    + Used to select a subset of another vector (or matrix)
 + We will cover three types of index vectors: 
     1. Logical index vector
     2. Vector of positive integers
@@ -317,6 +341,7 @@ head(prestige$education)
 ```{r echo=TRUE}
 logIndVec <- is.na(prestige$type)
 head(logIndVec)
+length(logIndVec)  # same as the number of rows in prestige
 prestige[logIndVec,]
 ```
 
@@ -326,32 +351,44 @@ prestige[logIndVec,]
 + We can use the function ```which()``` along with ```is.na()``` to create this index vector
 ```{r echo=TRUE}
 posIndVec <- which(is.na(prestige$type))
-posIndVec
+posIndVec  # indices of missing elements of type vector
 prestige[posIndVec,]
 ```
 
++ This gives the same results as before, but a different way of getting there.
+```{r echo=TRUE}
+which(logIndVec == TRUE)
+```
 
-## 3. Vector of Character Strings
+
+## 3. Index Vector of Character Strings
 + If an object has a name attribute, we can take a subset of the vector by calling the names of the elements
 + For example, we can use this to take a subset of the columns of the prestige data
 ```{r echo=TRUE}
-head(prestige[,c("education", "income")])
+prestige[1:5, c("education", "income")]
 ```
 
-## Sorting
++ Same as subsetting by column number, but R looks up the column number for you
+```{r echo=TRUE}
+prestige[1:5, 1:2]
+```
 
+
+## Using Index Vectors to Sort a Data Frame
 + We can use the ```order()``` function along with the subsetting operators to sort a data frame by a specific column. 
-+ Let's sort the prestige data in ascending order by education. 
++ Let's sort the prestige data in ascending order by ```education```. 
 ```{r echo=TRUE}
 sort.index <- order(prestige$education, decreasing = FALSE)
-prestige.sorted <- prestige[sort.index,]
-head(prestige.sorted)
+sort.index[1:5]
+prestige.sorted <- prestige[sort.index, ]
+prestige.sorted[1:5, ]
 ```
+
 
 ## Subsetting Example
 + Let's see an example of how subsetting might be use to manipulate data. 
-+ We will replace some of the missing values in the type column with "bc"
-+ Recall that we used an index vector to subset the rows of prestige that contain NAs
++ We will replace some of the missing values in the ```type``` column with ```"bc"```
++ Recall that we used an index vector to subset the rows of ```prestige``` that contain ```NA```'s
 
 ```{r echo=TRUE}
 ind <- which(is.na(prestige$type)) 
@@ -359,20 +396,21 @@ prestige[ind,]
 rbind(index=ind, name=rownames(prestige)[ind])
 ```
 
-## Subsetting Example
 
-+ We will replace the last three NAs with "bc" (blue collar)
+## Subsetting Example, contd.
++ We will replace the last three ```NA```'s with ```"bc"``` (blue collar)
 ```{r echo=TRUE}
 ind.ch <- ind[2:4]
 prestige[ind.ch, "type"] <- rep("bc", 3)
 summary(prestige$type)
 ```
 
-+ Exclude any rows that still contain NA (one row for athletes)
++ Exclude any rows that still contain ```NA``` (one row for athletes)
 ```{r echo=TRUE}
 prestige <- na.omit(prestige)
 summary(prestige$type)
 ```
+
 
 ## Writing Data to File
 + We can use ```write.table()``` to write a data frame to file
@@ -385,4 +423,10 @@ summary(prestige$type)
 ```
 
 
+## End of Session 1
+Next up:
 
+1. Exercise 1
+2. Break
+
+**Return at 10:45 to discuss solutions to Exercise 1!**
