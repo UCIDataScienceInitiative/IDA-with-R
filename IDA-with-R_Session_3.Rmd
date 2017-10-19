@@ -54,7 +54,7 @@ dnorm(x = 0, mean = 0, sd = 1)
 ```{r echo=TRUE, fig.height = 4.5, fig.align='center'}  
 x <- seq(from = -3, to = 3, by = 0.05)
 y <- dnorm(x, mean = 0, sd = 1)
-plot(x, y, type = "l")
+plot(x, y, type = "l", ylab = "Density")
 ```
 
 ## Standard Normal Distribution
@@ -211,23 +211,23 @@ t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
 
 
 ## Linear Regression - Prestige Data
-We will fit a linear model using the Prestige data. Recall that we have the following variables
+We will fit a linear model using the prestige data. Recall that we have the following variables
 
-+ education: Average education of occupational incumbents, years, in 1971.
++ ```education```: Average education of occupational incumbents, years, in 1971.
 
-+ income: Average income of incumbents, dollars, in 1971.
++ ```income```: Average income of incumbents, dollars, in 1971.
 
-+ women: Percentage of incumbents who are women.
++ ```women```: Percentage of incumbents who are women.
 
-+ prestige: Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.
++ ```prestige```: Pineo-Porter prestige score for occupation, from a social survey conducted in the mid-1960s.
 
-+ census: Canadian Census occupational code.
++ ```census```: Canadian Census occupational code.
 
-+ type: Type of occupation, a factor with levels 
++ ```type```: Type of occupation, a factor with levels
 
-    + bc: Blue Collar
-    + prof: Professional, Managerial, and Technical
-    + wc: White Collar
+    + ```bc```: Blue Collar
+    + ```prof```: Professional, Managerial, and Technical
+    + ```wc```: White Collar
 
 
 ## Load Data
@@ -268,7 +268,7 @@ names(myReg) # this is what we had previously
 
 
 ##  Linear Regression - Confidence Intervals
-+ 95% confidence interval for coefficient of 'income'
++ 95% confidence interval for coefficient of ```income```
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 confint(myReg, 'income', level=0.95)
 ```
@@ -280,14 +280,14 @@ confint(myReg, level=0.95)
 
 
 ##  Linear Regression - Adding Variables
-Recall that type of occupation has a relationship with prestige score.
+Recall that ```type``` of occupation has a relationship with prestige score.
 ```{r echo=FALSE, error=FALSE, message=FALSE, warning=FALSE, fig.height=5*(3/4), fig.width=5}
 boxplot(prestige ~ type, data = Prestige, col = "grey",
         main = "Distribution of Prestige Score by Types",
         xlab = "Occupation Types", ylab = "Prestige Score")
 ```
 
-So let's add the predictor *type* into our regression model:
+So let's add the predictor ```type``` into our regression model:
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 mod <- update(myReg, ~ . + type)
 summary(mod)
@@ -314,11 +314,11 @@ Hypothesis Test:
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 anova(myReg, mod)
 ```
-So we reject the null hypothesis and conclude that at least one of the levels of *type* contributes information about the prestige score. 
+So we reject the null hypothesis and conclude that at least one of the levels of type of occupation contributes information about the prestige score. 
 
 
 ##  Linear Regression - Relevel a Factor
-Say we want the change the reference level for the covariate *type* so that the intercept of the model includes is for professionals. We simply relevel the variable *type* and re-fit the model. 
+Say we want the change the reference level for the covariate ```type``` so that the intercept of the model includes is for professionals. We simply relevel the variable ```type``` and re-fit the model. 
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 levels(prestige$type)
 prestige$type <- relevel(prestige$type, "prof")
@@ -395,7 +395,4 @@ Next up:
 1. Exercise 3
 2. Break
 
-Return at XXXX to discuss solutions to Exercise 3!
-
-
-
+**Return at 3:30 to discuss solutions to Exercise 3!**
