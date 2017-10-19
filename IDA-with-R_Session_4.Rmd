@@ -13,9 +13,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ## Session 4 Agenda
++ Brief Intro to Generalized Linear Models (GLMs)
 + Logistic Regression
-
-    + Brief Intro to Generalized Linear Models (GLMs)
     + Fitting Models for Binary Response Data
     + Interpretation
     + Diagnostics
@@ -105,12 +104,12 @@ lines(x, pred[,3], lty=2, col="red")
 ## Logistic Regression
 + Specific GLM when dealing with binary response data $Y_i \in \{0,1\}$ 
 $$Y_i \sim Bernoulli(p_i)$$
-$$\Rightarrow f(Y|p) = \prod_{i=1}^{n} \left[ p_i^{y_i} + (1-p_i)^{1-y_i} \right]$$
+$$\Rightarrow f(Y|p) = \prod_{i=1}^{n} \left[ p_i^{y_i} (1-p_i)^{1-y_i} \right]$$
 where $p_i \in [0,1]$ is the probability that $Y_i = 1$.
 
 + Link function must map values in $(-\infty, \infty)$ to the range $[0,1]$
     
-    + **logit**, probit (normal CDF)
+    + **logit**, probit (normal CDF), etc
 
 + Logit link function: 
 $g(p) = \log\left( \frac{p}{1-p} \right) = X\beta$
@@ -210,7 +209,7 @@ exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
 
 
 ## End of Session 4
-Make sure you submit course evaluation surveys!
+**Make sure you submit course evaluation surveys!**
 
 
 
