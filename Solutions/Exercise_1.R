@@ -3,9 +3,6 @@
 ############################# Author: Chris Galbraith ##############################
 ####################################################################################
 ### PART A - Data Input ###
-# A.1
-# setwd("<root path>/IDA-with-R-master")  # <root path> will vary!
-
 # A.2
 auto <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original")
 
@@ -57,5 +54,4 @@ auto$diesel <- factor(auto$diesel)
 str(auto)
 
 # D.5
-# save(auto, file="./data/auto_mpg_v2.Rda") 
-
+save(auto, file="../data/auto_mpg_v2.Rda") 
