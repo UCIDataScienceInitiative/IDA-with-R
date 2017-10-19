@@ -36,7 +36,7 @@ We will be focusing on the relationships between miles per gallon (mpg) and vari
 
 
 ### Part A - Data Input
-**A.1** Open a new R script file to write and save your code for the exercises. Save this file in a new directory (folder) of your local copy of the IDA-with-R GitHub repo, e.g., ```IDA-with-R-master/my_exercises/exercise_1```.
+**A.1** Open a new R script file to write and save your code for the exercises. Save this file in a new directory (folder) of your local copy of the IDA-with-R GitHub repo, e.g., ```IDA-with-R-master/my_exercises/exercise_1.R```.
 
 **A.2** Read in the Auto MPG data to a data frame named ```auto``` from the following url using ```read.table()```:  https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original HINT: Run ```?read.table()``` and read about how to use a url as a file path.
 
