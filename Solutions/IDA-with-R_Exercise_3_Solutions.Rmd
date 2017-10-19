@@ -15,7 +15,7 @@ In this set of Exercises, we will explore linear regression, variable selection,
 
 
 ### Part A 
-**A.1** Open a new R script and load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from Exercise 1.
+**A.1** Open a new R script and save it in the directory you created in Part A.1 of Exercise 1. Then, load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from the end of Exercise 1.
 ```{r echo= TRUE}
 load("../data/auto_mpg_v2.Rda")
 ```
@@ -60,6 +60,7 @@ anova(linFit, quadFit)
 plot(auto$hp, auto$mpg, pch=20, xlab="Horsepower", ylab="MPG")
 abline(reg = linFit, col="red", lwd=2)
 curve(predict(quadFit, data.frame(hp=x)), add=TRUE, col="blue", lwd=2)
+legend("topright", legend=c("Linear Model", "Quadratic Model"), col=c("red","blue"), lty=1, lwd=2, bty="n")
 ```
 
 
@@ -96,7 +97,7 @@ cbind(missing.mpg, fit=predict(finalModel, newdata = missing.mpg))
 
 
 ### Part D
-Write a function that performs linear contrasts. E.g., takes in the fitted linear regression object and a vector containing the difference in two predictor vectors and ourputs a point estimate and 95% confidence intervals. Specifically, do this comparing (1) two similar vehicles that differ by 10 model years, and (2) two similar vehicles that differ by 500 pounds. NOTE: You may not have included these variables in your final model. If you didn't, chose two other variables. HINT: This problem is difficult! You will need to get the covariance matrix on the coefficients with ```vcov()``` and perform some matrix multiplications using the ```%*%``` operator. Ask for help if you make it this far!
+Write a function that performs linear contrasts. E.g., takes in the fitted linear regression object and a vector containing the difference in two predictor vectors and ourputs a point estimate and 95% confidence interval. Specifically, do this comparing (1) two similar vehicles that differ by 10 model years, and (2) two similar vehicles that differ by 500 pounds. NOTE: You may not have included these variables in your final model. If you didn't, chose two other variables. HINT: This problem is difficult! You will need to get the covariance matrix on the coefficients with ```vcov()``` and perform some matrix multiplications using the ```%*%``` operator. Ask for help if you make it this far!
 ```{r echo=TRUE}
 linContr <- function(model, contr){
   beta.hat <- model$coef
