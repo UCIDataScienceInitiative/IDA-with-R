@@ -11,7 +11,7 @@ This set of exercises picks up where we left off with the Auto MPG data in Exerc
 
 
 ### Part A 
-**A.1** Open a new R script and load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from Exercise 1.
+**A.1** Open a new R script and save it in the directory you created in Part A.1 of Exercise 1. Then, load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from the end of Exercise 1. 
 
 **A.2** Using the ```summary()``` function, look at descriptive statistics for the Auto MPG data. What do you notice?
 
