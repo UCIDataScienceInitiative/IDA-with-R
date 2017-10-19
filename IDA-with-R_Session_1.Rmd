@@ -262,6 +262,7 @@ We will be using the data frame you just read in throughout the day. It contains
     + Use the ```setwd()``` function to accompish this
     
 ```{r echo = TRUE, eval=TRUE}
+# setwd("<root path>/IDA-with-R-master")  # <root path> will vary!
 prestige <- read.table(file = "./data/prestige.csv", sep=",", header = TRUE, row.names=1)
 class(prestige)  # gives object type
 head(prestige)  # look at the first 5 rows, equivalent to prestige[1:5, ]  

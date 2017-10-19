@@ -374,7 +374,8 @@ b</code></pre></div>
 <li>Use the <code>setwd()</code> function to accompish this</li>
 </ul></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;./data/prestige.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names=</span><span class="dv">1</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># setwd(&quot;&lt;root path&gt;/IDA-with-R-master&quot;)  # &lt;root path&gt; will vary!</span>
+prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;./data/prestige.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names=</span><span class="dv">1</span>)
 <span class="kw">class</span>(prestige)  <span class="co"># gives object type</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(prestige)  <span class="co"># look at the first 5 rows, equivalent to prestige[1:5, ]  </span></code></pre></div>
