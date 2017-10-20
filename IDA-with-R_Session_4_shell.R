@@ -1,12 +1,9 @@
 ####################################################################################
 #################################### SESSION 4 #####################################
-############################# Author: Chris Galbraith ##############################
 ####################################################################################
 ## O-Ring Data
 oring <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data")
 names(oring) <- c("n_risk", "n_fail", "temp", "psi", "order")
-head(oring)
-summary(oring)
 
 
 ## Visualizing the O-Ring Data
@@ -22,13 +19,11 @@ plot(oring$temp, oring$n_fail, pch = 20, cex = pt.size,
 
 
 ## Naive Analysis of the O-Ring Data - Linear Model
-linearReg <- lm(n_fail ~ temp, data = oring)
-summary(linearReg)
+linearReg <- 
 
 
 ## Naive Analysis Results - Predict for launch day
-launchDay <- data.frame(temp = 31)
-predict(linearReg, launchDay, interval="predict")  # point estimate & 95% CI
+launchDay <- 
 
 
 ## Naive Analysis Results - Plot the fit extrapolating to launch day
@@ -38,49 +33,37 @@ plot(oring$temp, oring$n_fail, pch = 20, cex = pt.size/2,
 abline(reg = linearReg, col = "red", lwd = 2)
 points(x=31, y=2.52, pch=4, col="black", lwd=2)
 x <- seq(25,90,.1)
-pred <- predict(linearReg, data.frame(temp=x), interval="predict")
-lines(x, pred[,2], lty=2, col="red")
-lines(x, pred[,3], lty=2, col="red")
+
 
 
 ## Logistic Regression - Format Data
-oring$fail <- as.numeric(oring$n_fail > 0)
-head(oring)
 
-plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
-     xlab = "Temperature (deg F)", ylab = "O-Ring Failure")
 
 
 ## Logistic Regression - Fit the Model
-logisticReg <- glm(fail ~ temp, data = oring, family=binomial(link="logit"))
-summary(logisticReg)
-names(logisticReg)
+logisticReg <- glm()
 
 
 ## Logistic Regression - Plot the Fit
+?curve
 plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
      xlab = "Temperature (deg F)", ylab = "O-Ring Failure")
 curve(predict(logisticReg, data.frame(temp=x), type="response"), add=TRUE, col="red", lwd=2)
 
 
 ## Logistic Regression - Exponentiated CIs
-exp(confint(logisticReg, "temp", level=0.95))  # profile likelihood method
-
-exp(confint.default(logisticReg, "temp", level=0.95))  # Wald CI
 
 
 ## Logistic Regression - Adding variables
-logisticReg2 = update(logisticReg, . ~ . + psi, data=oring)
-summary(logisticReg2)
+logisticReg2 <- 
 
 
 ## Logistic Regression - Model Comparison via LRT
-anova(logisticReg, logisticReg2, test='LRT')
 
 
 ## Logistic Regression - Predictions
 launchDay
-predict(logisticReg, launchDay, type="response")
+
 
 XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
 XB  # estimated log-odds of o-ring failure on launch day

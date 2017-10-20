@@ -77,9 +77,6 @@ prestige <- read.table(file = "./data/prestige.csv", sep=",", header = TRUE, row
 class(prestige)  # gives object type
 head(prestige)  # look at the first 5 rows, equivalent to prestige[1:5, ]  
 dim(prestige)  # (nrow, ncol)
-
-
-## Prestige Data Frame
 head(row.names(prestige))  # equivalent to row.names(prestige)[1:5]
 
 
