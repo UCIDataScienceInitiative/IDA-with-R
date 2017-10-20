@@ -81,16 +81,6 @@ prestige.sorted <-
 
 
 ## Subsetting Example
-ind <- which(is.na(prestige$type)) 
-prestige[ind,]
-rbind(index=ind, name=rownames(prestige)[ind])
-
-ind.ch <- ind[2:4]
-prestige[ind.ch, "type"] <- 
-summary(prestige$type)
-
-prestige <- na.omit(prestige)
-summary(prestige$type)
 
 
 ## Writing Data to File
