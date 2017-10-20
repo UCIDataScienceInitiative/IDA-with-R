@@ -420,7 +420,7 @@ summary(prestige$type)
 + Let's write our updated prestige data to a new csv file
 
 ```{r echo=TRUE}
-# write.table(prestige, "./data/prestige_v2.csv", sep = ",", header = TRUE, row.names = TRUE)
+write.table(prestige, "./data/prestige_v2.csv", sep = ",", col.names = TRUE, row.names = TRUE)
 ```
 
 
