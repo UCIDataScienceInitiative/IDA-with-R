@@ -209,7 +209,7 @@ exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
 
 
 ## End of Session 4
-**Make sure you submit course evaluation surveys!**
+**Make sure you submit [course evaluation surveys](https://docs.google.com/forms/d/e/1FAIpQLSdfsLJxNlEPGNwd2zHRgqPrKOafGi8Awyf9flkza3a_-HGSXA/viewform)!**
 
 
 
