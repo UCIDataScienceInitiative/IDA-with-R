@@ -6,9 +6,9 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 
 # Syllabus
 * **Fundamentals of R & RStudio**: the basics--including objects, subsetting, indexing, data I/O, and control structures.
-* **Exploratory Data Analysis**: all the necessary tools to investigate your data before performing any formal modeling--from summary statistics to visualization including plotting histgrams, boxplots, and scatterplots
-* **Linear Regression**: everything you need to know to begin fitting linear models--from simple t-tests to estimation of regression coefficients, variable selection, model diagnostics, and predection
-* **Logistic Regression**: the basics of generalized linear models (GLMs) with an emphais on binary response data--we extend the theory and modeling strategies of linear regression
+* **Exploratory Data Analysis**: all the necessary tools to investigate your data before performing any formal modeling--from summary statistics to visualization including plotting histograms, boxplots, and scatterplots
+* **Linear Regression**: everything you need to know to begin fitting linear models--from simple t-tests to estimation of regression coefficients, variable selection, model diagnostics, and prediction
+* **Logistic Regression**: the basics of generalized linear models (GLMs) with an emphasis on binary response data--we extend the theory and modeling strategies of linear regression
 
 
 
@@ -28,8 +28,8 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 | 	2:30-3:15	| [Exercise 3](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_3.html)					| |
 | 	3:15-3:30	| Break						| |
 | 	3:30-4:00	| [Discuss Exercise 3 Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_3_Solutions.html) | [Solution Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_3.R)	|
-| 	4:00-4:55	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			| [Shell Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_4_shell.R), [Complete Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_4_complete.R) |
-| 	4:55-5:00	| [Course Evaluation Survey](https://docs.google.com/forms/d/e/1FAIpQLSdfsLJxNlEPGNwd2zHRgqPrKOafGi8Awyf9flkza3a_-HGSXA/viewform)		| |
+| 	4:00-4:50	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			| [Shell Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_4_shell.R), [Complete Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_4_complete.R) |
+| 	4:50-5:00	| [Course Evaluation Survey](https://docs.google.com/forms/d/e/1FAIpQLSdfsLJxNlEPGNwd2zHRgqPrKOafGi8Awyf9flkza3a_-HGSXA/viewform)		| |
 
 
 # <a name="Instructions"></a>Pre-Workshop Instructions
