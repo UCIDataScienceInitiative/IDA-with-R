@@ -1,8 +1,8 @@
 ---
 title: "Intro to Data Analysis with R: Exercise 3"
 subtitle: UCI Data Science Initiative
-date: "October 20, 2017"
-#author: "Chris Galbraith"
+# date: "December 1, 2017"
+# author: "Chris Galbraith"
 output: html_document
 ---
 
