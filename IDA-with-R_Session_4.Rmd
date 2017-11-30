@@ -13,6 +13,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 
 ## Session 4 Agenda
++ [Motivating example](https://www.youtube.com/watch?v=j4JOjcDFtBE)
 + Brief Intro to Generalized Linear Models (GLMs)
 + Logistic Regression
     + Fitting Models for Binary Response Data
@@ -164,6 +165,21 @@ curve(predict(logisticReg, data.frame(temp=x), type="response"), add=TRUE, col="
 ```
 
 
+## Logistic Regression - Prediction
+To get probabilities, be sure to use ```type = "response"```.
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+launchDay
+predict(logisticReg, launchDay, type="response")
+```
+
+```predict()``` simply computes the linear combination & evaulates the inverse link
+```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
+XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
+XB  # estimated log-odds of o-ring failure on launch day
+exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
+```
+
+
 ## Logistic Regression - Exponentiated CIs
 + $\exp(\beta)$ is the multiplicative change in the odds of O-ring failure for a one degree increase in temperature.
 
@@ -190,21 +206,6 @@ summary(logisticReg2)
 + Likelihood Ratio Test instead of F-test like in Linear Regression
 ```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
 anova(logisticReg, logisticReg2, test='LRT')
-```
-
-
-## Logistic Regression - Predictions
-To get probabilities, be sure to use ```type = "response"```.
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-launchDay
-predict(logisticReg, launchDay, type="response")
-```
-
-```predict()``` simply computes the linear combination & evaulates the inverse link
-```{r echo=TRUE, error=FALSE, message=FALSE, warning=FALSE}
-XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
-XB  # estimated log-odds of o-ring failure on launch day
-exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
 ```
 
 

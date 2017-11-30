@@ -63,6 +63,15 @@ plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
 curve(predict(logisticReg, data.frame(temp=x), type="response"), add=TRUE, col="red", lwd=2)
 
 
+## Logistic Regression - Prediction
+launchDay
+predict(logisticReg, launchDay, type="response")
+
+XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
+XB  # estimated log-odds of o-ring failure on launch day
+exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
+
+
 ## Logistic Regression - Exponentiated CIs
 exp(confint(logisticReg, "temp", level=0.95))  # profile likelihood method
 
@@ -77,11 +86,3 @@ summary(logisticReg2)
 ## Logistic Regression - Model Comparison via LRT
 anova(logisticReg, logisticReg2, test='LRT')
 
-
-## Logistic Regression - Predictions
-launchDay
-predict(logisticReg, launchDay, type="response")
-
-XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
-XB  # estimated log-odds of o-ring failure on launch day
-exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day

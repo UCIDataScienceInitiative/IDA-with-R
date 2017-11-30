@@ -35,9 +35,7 @@ points(x=31, y=2.52, pch=4, col="black", lwd=2)
 x <- seq(25,90,.1)
 
 
-
 ## Logistic Regression - Format Data
-
 
 
 ## Logistic Regression - Fit the Model
@@ -51,6 +49,15 @@ plot(oring$temp, oring$fail, pch = 20, cex = pt.size,
 curve(predict(logisticReg, data.frame(temp=x), type="response"), add=TRUE, col="red", lwd=2)
 
 
+## Logistic Regression - Prediction
+launchDay
+
+
+XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
+XB  # estimated log-odds of o-ring failure on launch day
+exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
+
+
 ## Logistic Regression - Exponentiated CIs
 
 
@@ -60,11 +67,3 @@ logisticReg2 <-
 
 ## Logistic Regression - Model Comparison via LRT
 
-
-## Logistic Regression - Predictions
-launchDay
-
-
-XB <- as.numeric(coef(logisticReg)[1] + coef(logisticReg)[2]*31)
-XB  # estimated log-odds of o-ring failure on launch day
-exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
