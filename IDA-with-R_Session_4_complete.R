@@ -1,6 +1,6 @@
 ####################################################################################
-#################################### SESSION 4 #####################################
-############################# Author: Chris Galbraith ##############################
+### SESSION 4 - Complete code from slides
+### Author: Chris Galbraith 
 ####################################################################################
 ## O-Ring Data
 oring <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data")

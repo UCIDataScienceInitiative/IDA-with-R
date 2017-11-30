@@ -1,5 +1,5 @@
 ####################################################################################
-#################################### SESSION 4 #####################################
+### SESSION 4 - Shell code from slides
 ####################################################################################
 ## O-Ring Data
 oring <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/space-shuttle/o-ring-erosion-only.data")
