@@ -23,15 +23,11 @@ knitr::opts_chunk$set(echo = FALSE)
     + Scatterplot Matrices
     
 
-## Functions & Packages
-1. R has many built-in functions
-2. Each function has a name followed by (), e.g., ```mean()```
-3. Arguments of a function are put within the parentheses
-4. R packages are a way to maintain collections of R functions and data sets
-5. Packages allow for easy, transparent and cross-platform extension of the R base system
+## Packages
++ R packages are a way to maintain collections of R functions and data sets
++ Packages allow for easy, transparent and cross-platform extension of the R base system
 
-
-## Functions and Packages
+## Packages
 + Terminology:
   
     + *Package*: an extension of the R base system with code, data and documentation in a standardized format

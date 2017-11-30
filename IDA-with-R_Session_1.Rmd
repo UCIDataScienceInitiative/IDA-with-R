@@ -54,7 +54,13 @@ library(ggplot2)
 + If you type an incomplete command, R will usually respond by changing the command prompt to the '+' character
     + Hit ESC on a MAC to cancel
     + Type _Ctrl_ + *C* on Windows and Linux to cancel
-
+    
+## Functions in R
+1. R has many built-in functions
+2. Each function has a name followed by (), e.g., ```mean()```
+3. Arguments of a function are put within the parentheses
+4. Help files are available for each function by typing ? followed by the function name, e.g., ```?mean```
+5. We will be using functions throughout the workshop
 
 ## Data Types in R
 + R has 5 main atomic data types:
