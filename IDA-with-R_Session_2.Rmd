@@ -1,7 +1,7 @@
 ---
 title: "Intro to Data Analysis with R: Session 2"
 subtitle: UCI Data Science Initiative
-date: "October 20, 2017"
+date: "December 1, 2017"
 #author: "Chris Galbraith, Emily Smith"
 output: slidy_presentation
 smaller: yes
@@ -297,7 +297,7 @@ scatterplotMatrix( prestige[ ,c("prestige","education","income","women")] )
 ## End of Session 2
 Next up:
 
-1. Exercise 2
+1. [Exercise 2](https://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_2.html)
 2. Lunch
 
 **Return at 1:00 to discuss solutions to Exercise 2!**

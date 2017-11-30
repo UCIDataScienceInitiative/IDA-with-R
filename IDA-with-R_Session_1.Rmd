@@ -1,7 +1,7 @@
 ---
 title: "Intro to Data Analysis with R: Session 1"
 subtitle: UCI Data Science Initiative
-date: "October 20, 2017"
+date: "December 1, 2017"
 #author: "Chris Galbraith, Emily Smith"
 output: slidy_presentation
 smaller: yes
@@ -436,4 +436,4 @@ Next up:
 1. [Exercise 1](https://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_1.html)
 2. Break
 
-**Return at 10:45 to discuss solutions to Exercise 1!**
+**Return at 11:00 to discuss solutions to Exercise 1!**

@@ -1,7 +1,7 @@
 ---
 title: 'Intro to Data Analysis with R: Session 4'
 subtitle: UCI Data Science Initiative
-date: "October 20, 2017"
+date: "December 1, 2017"
 #author: Chris Galbraith
 output: slidy_presentation
 smaller: true
@@ -209,7 +209,7 @@ exp(XB)/(1 + exp(XB))  # estimated probability of o-ring failure on launch day
 
 
 ## End of Session 4
-**Make sure you submit [course evaluation surveys](https://docs.google.com/forms/d/e/1FAIpQLSdfsLJxNlEPGNwd2zHRgqPrKOafGi8Awyf9flkza3a_-HGSXA/viewform)!**
+**Make sure you submit [course evaluation surveys](https://docs.google.com/forms/d/e/1FAIpQLScRCXMWlui6e5XURTVqXsRlIHqMoPygTurX7VFsD8uGqVe-gg/viewform)!**
 
 
 
