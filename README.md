@@ -40,7 +40,7 @@ First, visit The R Project for Statistical Computing's website through <https://
 RStudio is a set of integrated tools designed to help you be more productive with R; it is known to be more user-friendly. You will be doing essentially all of your programming in RStudio. To download RStudio, go to <https://www.rstudio.com/products/rstudio/download/>. Download the installer for your platform under "Installers for Supported Platforms".
 
 ### Step 3: Join the Slack chatroom
-We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida-with-r/shared_invite/enQtMjYwMTE2NzE4Nzc0LTMxOTUzYzY0ODE3YWUxNDNjOGI0NTU0MTg1ZmNkZTRmYTgzYmI2YmQxZWI5MGU4YzE4NzM3NjM5YTVlNDE0MmQ) for you to have discussions and ask/answer questions that may arise throughout the day.
+We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida-with-r/shared_invite/enQtMjgwNjE4NDczMzY1LWQ4MGU4Y2UzMzc0NmQxZjIwNzMzYjFkODBmODNlMjFmOTA3YzE1MWIyNTYxMzMzY2Y5YWY2YWQ4NmJhZGVkYmU) for you to have discussions and ask/answer questions that may arise throughout the day.
 
 
 ## Authors
