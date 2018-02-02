@@ -13,6 +13,7 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 
 
 # Schedule
+
 | 	   Time	    |           				|							|
 | ------------- | :-----------------------:	| :-----------------------: |   
 | 	8:30-9:00  	| Registration & Breakfast	|							|
