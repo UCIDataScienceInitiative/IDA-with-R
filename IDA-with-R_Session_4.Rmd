@@ -1,7 +1,9 @@
 ---
 title: 'Intro to Data Analysis with R: Session 4'
 subtitle: UCI Data Science Initiative
-date: "December 1, 2017"
+params: 
+  reportdate: "x"  # to be replaced
+date: "`r params$reportdate`"
 #author: Chris Galbraith
 output: slidy_presentation
 smaller: true
