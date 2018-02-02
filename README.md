@@ -15,6 +15,7 @@ Please download and install R and RStudio before coming to class (see the [Pre-W
 # Schedule
 | 	   Time	    |           				|							|
 | ------------- | :-----------------------:	| :-----------------------: |   
+
 | 	8:30-9:00  	| Registration & Breakfast	|							|
 | 	9:00-10:15	| [Session 1: Fundamentals of R](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_1.html)			| [Shell Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_1_shell.R), [Complete Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_1_complete.R) |
 | 	10:15-10:45	| [Exercise 1](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_1.html)					| |
