@@ -1,2 +1,12 @@
 theme: jekyll-theme-slate
-markdown: kramdown
+markdown: redcarpet
+redcarpet:
+  extensions:
+    - no_intra_emphasis
+    - fenced_code_blocks
+    - autolink
+    - tables
+    - strikethrough
+    - superscript
+    - with_to_data
+    
