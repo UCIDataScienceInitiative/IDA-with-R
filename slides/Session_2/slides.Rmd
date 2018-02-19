@@ -120,7 +120,10 @@ str(sample)
 After loading a data frame, it is often useful to use ```str()``` in order to understand the structure of your data. 
 
 ```{r echo = TRUE, eval=TRUE}
-prestige <- read.table(file = "./data/prestige_v2.csv", sep=",", header=TRUE, row.names=1)
+prestige <- read.table(file = here::here("data", "prestige_v2.csv"), 
+                       sep=",", 
+                       header=TRUE, 
+                       row.names=1)
 str(prestige)
 ```
 

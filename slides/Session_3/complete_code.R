@@ -65,7 +65,8 @@ t.test(Samp1, Samp2[1:300], paired = TRUE) # must be of the same sample size
 
 
 ## Load Data
-prestige <- read.csv(file="./data/prestige_v2.csv", row.names=1)
+prestige <- read.csv(file = here::here("data", "prestige_v2.csv"),
+                     row.names=1)
 str(prestige)
 head(prestige)
 

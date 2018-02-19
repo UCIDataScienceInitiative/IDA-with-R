@@ -73,7 +73,13 @@ is.nan(vec)
 
 
 ## Reading in the Prestige Data
-prestige <- read.table(file = "./data/prestige.csv", sep=",", header = TRUE, row.names=1)
+getwd()
+path <- here::here("data", "prestige.csv")
+path
+prestige <- read.table(file = path, 
+                       sep=",", 
+                       header = TRUE, 
+                       row.names=1)
 class(prestige)  # gives object type
 head(prestige)  # look at the first 5 rows, equivalent to prestige[1:5, ]  
 dim(prestige)  # (nrow, ncol)
@@ -142,4 +148,8 @@ summary(prestige$type)
 
 
 ## Writing Data to File
-write.table(prestige, "./data/prestige_v2.csv", sep = ",", col.names = TRUE, row.names = TRUE)
+write.table(prestige, 
+            file = here::here("data", "prestige_v2.csv"), 
+            sep = ",", 
+            col.names = TRUE, 
+            row.names = TRUE)

@@ -158,11 +158,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Function arguments can either be matched by position within the parentheses or by name</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sampSpace &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span> 
 <span class="kw">sample</span>(sampSpace, <span class="dv">1</span>)  <span class="co"># arguments with default values can be omitted</span></code></pre></div>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 5</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">x =</span> sampSpace)  <span class="co"># no need to remember the order </span></code></pre></div>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 4</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, sampSpace)</code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<pre><code>## [1] 6</code></pre>
 </div>
 <div id="some-useful-functions" class="slide section level2">
 <h2>Some Useful Functions</h2>
@@ -185,7 +185,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="str-1" class="slide section level2">
 <h2><code>str()</code></h2>
 <p>After loading a data frame, it is often useful to use <code>str()</code> in order to understand the structure of your data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;./data/prestige_v2.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">row.names=</span><span class="dv">1</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;prestige_v2.csv&quot;</span>), 
+                       <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, 
+                       <span class="dt">header=</span><span class="ot">TRUE</span>, 
+                       <span class="dt">row.names=</span><span class="dv">1</span>)
 <span class="kw">str</span>(prestige)</code></pre></div>
 <pre><code>## 'data.frame':    101 obs. of  6 variables:
 ##  $ education: num  13.1 12.3 12.8 11.4 14.6 ...

@@ -60,8 +60,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>Introduction</h2>
 <ul>
 <li>Please ask questions during lectures &amp; throughout the day!</li>
-<li>To access this presentation and the code used during the workshop please visit the <a href="https://github.com/UCIDataScienceInitiative/IDA-with-R">IDA-with-R GitHub page</a>.</li>
-<li>Please download (or clone) this repo to your local machine!</li>
+<li>To access course materials please visit the <a href="https://ucidatascienceinitiative.github.io/IDA-with-R/">IDA-with-R website</a>.</li>
+<li><strong>Please <a href="https://github.com/UCIDataScienceInitiative/IDA-with-R/archive/master.zip">download</a> &amp; unzip the Github repository!</strong></li>
 </ul>
 </div>
 <div id="session-1---agenda" class="slide section level2">
@@ -98,8 +98,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2>RStudio</h2>
 <ul>
 <li>RStudio is a free and open source integrated development environment (IDE) for R.</li>
-<li>To download RStudio please visit: <a href="http://rstudio.org/" class="uri">http://rstudio.org/</a></li>
-<li>Please note that you must have R already installed before installing R Studio.</li>
+<li>Visit <a href="http://rstudio.org/" class="uri">http://rstudio.org/</a> for more info</li>
+<li>Please note that you must have R already installed before installing R Studio!</li>
+<li><strong>In the repository that you downloaded, there is a file called <code>IDA-with-R.Rproj</code> – please open it in RStudio.</strong></li>
 </ul>
 </div>
 <div id="fundamentals-of-r" class="slide section level2">
@@ -380,11 +381,18 @@ b</code></pre></div>
 <ul>
 <li>Before executing the following commands, make sure that you are working in your local <code>IDA-with-R-master</code> directory!
 <ul>
-<li>Use the <code>setwd()</code> function to accompish this</li>
+<li>Type <code>getwd()</code> into your R console</li>
+<li>This should return a string with a path to the directory, e.g. <code>&quot;~/IDA-with-R-master&quot;</code></li>
+<li>The function <code>here::here()</code> tells R where to look to find your data</li>
 </ul></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># setwd(&quot;&lt;root path&gt;/IDA-with-R-master&quot;)  # &lt;root path&gt; will vary!</span>
-prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> <span class="st">&quot;./data/prestige.csv&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>, <span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">row.names=</span><span class="dv">1</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">path &lt;-<span class="st"> </span>here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;prestige.csv&quot;</span>)
+path  <span class="co"># example path from Chris' machine</span></code></pre></div>
+<pre><code>## [1] &quot;/Users/cmg/dev/UCIDataScienceInitiative/IDA-with-R/data/prestige.csv&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">prestige &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">file =</span> path, 
+                       <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, 
+                       <span class="dt">header =</span> <span class="ot">TRUE</span>, 
+                       <span class="dt">row.names =</span> <span class="dv">1</span>)
 <span class="kw">class</span>(prestige)  <span class="co"># gives object type</span></code></pre></div>
 <pre><code>## [1] &quot;data.frame&quot;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(prestige)  <span class="co"># look at the first 5 rows, equivalent to prestige[1:5, ]  </span></code></pre></div>
@@ -615,7 +623,11 @@ prestige[ind.ch, <span class="st">&quot;type&quot;</span>] &lt;-<span class="st"
 </ul></li>
 <li>Let’s write our updated prestige data to a new csv file</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(prestige, <span class="st">&quot;./data/prestige_v2.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, <span class="dt">col.names =</span> <span class="ot">TRUE</span>, <span class="dt">row.names =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.table</span>(prestige, 
+            <span class="dt">file =</span> here<span class="op">::</span><span class="kw">here</span>(<span class="st">&quot;data&quot;</span>, <span class="st">&quot;prestige_v2.csv&quot;</span>), 
+            <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>, 
+            <span class="dt">col.names =</span> <span class="ot">TRUE</span>, 
+            <span class="dt">row.names =</span> <span class="ot">TRUE</span>)</code></pre></div>
 </div>
 <div id="end-of-session-1" class="slide section level2">
 <h2>End of Session 1</h2>

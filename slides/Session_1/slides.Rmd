@@ -16,8 +16,8 @@ library(ggplot2)
 
 ## Introduction 
 + Please ask questions during lectures & throughout the day!
-+ To access this presentation and the code used during the workshop please visit the [IDA-with-R GitHub page](https://github.com/UCIDataScienceInitiative/IDA-with-R).
-+ Please download (or clone) this repo to your local machine!
++ To access course materials please visit the [IDA-with-R website](https://ucidatascienceinitiative.github.io/IDA-with-R/).
++ **Please [download](https://github.com/UCIDataScienceInitiative/IDA-with-R/archive/master.zip) & unzip the Github repository!**
   
 
 ## Session 1 - Agenda
@@ -43,8 +43,9 @@ library(ggplot2)
 
 ## RStudio
 + RStudio is a free and open source integrated development environment (IDE) for R.
-+ To download RStudio please visit: http://rstudio.org/
-+ Please note that you must have R already installed before installing R Studio.
++ Visit http://rstudio.org/ for more info
++ Please note that you must have R already installed before installing R Studio!
++ **In the repository that you downloaded, there is a file called `IDA-with-R.Rproj` -- please open it in RStudio.**
 
 
 ## Fundamentals of R
@@ -267,11 +268,17 @@ We will be using the data frame you just read in throughout the day. It contains
     
 ## Reading in the Prestige Data
 + Before executing the following commands, make sure that you are working in your local ```IDA-with-R-master``` directory!
-    + Use the ```setwd()``` function to accompish this
+    + Type `getwd()` into your R console 
+    + This should return a string with a path to the directory, e.g. `"~/IDA-with-R-master"`
+    + The function `here::here()` tells R where to look to find your data
     
 ```{r echo = TRUE, eval=TRUE}
-# setwd("<root path>/IDA-with-R-master")  # <root path> will vary!
-prestige <- read.table(file = "./data/prestige.csv", sep=",", header = TRUE, row.names=1)
+path <- here::here("data", "prestige.csv")
+path  # example path from Chris' machine
+prestige <- read.table(file = path, 
+                       sep = ",", 
+                       header = TRUE, 
+                       row.names = 1)
 class(prestige)  # gives object type
 head(prestige)  # look at the first 5 rows, equivalent to prestige[1:5, ]  
 dim(prestige)  # (nrow, ncol)
@@ -428,7 +435,11 @@ summary(prestige$type)
 + Let's write our updated prestige data to a new csv file
 
 ```{r echo=TRUE}
-write.table(prestige, "./data/prestige_v2.csv", sep = ",", col.names = TRUE, row.names = TRUE)
+write.table(prestige, 
+            file = here::here("data", "prestige_v2.csv"), 
+            sep = ",", 
+            col.names = TRUE, 
+            row.names = TRUE)
 ```
 
 

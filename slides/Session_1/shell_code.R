@@ -46,7 +46,11 @@ vec <- c(1, NA, 3, NaN, NA, 5, NaN)
 
 
 ## Reading in the Prestige Data
-prestige <- read.table(file = "./data/prestige.csv", sep=",", header = TRUE, row.names=1)
+path <- here::here("data", "prestige.csv")
+prestige <- read.table(file = path, 
+                       sep=",", 
+                       header = TRUE, 
+                       row.names=1)
 
 
 
@@ -84,5 +88,5 @@ prestige.sorted <-
 
 
 ## Writing Data to File
-path <- "./data/prestige_v2.csv"
+path2 <- here::here("data", "prestige_v2.csv")
 write.table()
