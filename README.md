@@ -18,7 +18,12 @@ First, visit The R Project for Statistical Computing's website through <https://
 ### Step 2: Download and install RStudio
 RStudio is a set of integrated tools designed to help you be more productive with R; it is known to be more user-friendly. You will be doing essentially all of your programming in RStudio. To download RStudio, go to <https://www.rstudio.com/products/rstudio/download/>. Download the installer for your platform under "Installers for Supported Platforms".
 
-### Step 3: Join the Slack chatroom
+### Step 3: Install R packages
+In R, packages are used to share code. A package bundles together code, data, documentation, and tests. As of February 2018, there were over 12,000 packages available on the Comprehensive R Archive Network, or CRAN. This huge variety of packages is one of the reasons that R is so successful: the chances are that someone has already solved a problem that you’re working on, and you can benefit from their work by downloading their package.
+
+In this workshop, we will be using three packages-- `car`, `leaps`, and `here`. If everyone attempts to download them at the same time, the wireless internet will become very upset with us and work slowly. Therefore, I suggest installing them before coming to class. There are a few ways to do this (which we will discuss more during the workshop). For now, please download [install_packages.R](http://ucidatascienceinitiative.github.io/IDA-with-R/install_packages.R)
+
+### Step 4: Join the Slack chatroom
 We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida-with-r/shared_invite/enQtMjgwNjE4NDczMzY1LWQ4MGU4Y2UzMzc0NmQxZjIwNzMzYjFkODBmODNlMjFmOTA3YzE1MWIyNTYxMzMzY2Y5YWY2YWQ4NmJhZGVkYmU) for you to have discussions and ask/answer questions that may arise throughout the day.
 
 
