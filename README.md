@@ -11,17 +11,6 @@ Please follow the [Pre-Workshop Instructions](#Instructions) prior to coming to 
 * **Logistic Regression**: the basics of generalized linear models (GLMs) with an emphasis on binary response data--we extend the theory and modeling strategies of linear regression
 
 
-# <a name="Instructions"></a>Pre-Workshop Instructions
-### Step 1: Download and install R
-First, visit The R Project for Statistical Computing's website through <https://www.r-project.org/>. Click on "CRAN" under the Download section on the left-hand side of the page. Then, click on any of the nearby websites under the USA section near the bottom of the page. For example, the link from the University of California, Berkley, CA or University of California, Los Angeles, CA are both fine. Download R for your platform (Linux, Mac, or Windows).
-
-### Step 2: Download and install RStudio
-RStudio is a set of integrated tools designed to help you be more productive with R; it is known to be more user-friendly. You will be doing essentially all of your programming in RStudio. To download RStudio, go to <https://www.rstudio.com/products/rstudio/download/>. Download the installer for your platform under "Installers for Supported Platforms".
-
-### Step 3: Join the Slack chatroom
-We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida-with-r/shared_invite/enQtMjgwNjE4NDczMzY1LWQ4MGU4Y2UzMzc0NmQxZjIwNzMzYjFkODBmODNlMjFmOTA3YzE1MWIyNTYxMzMzY2Y5YWY2YWQ4NmJhZGVkYmU) for you to have discussions and ask/answer questions that may arise throughout the day.
-
-
 # Schedule
 
 | 	   Time	    |           				|							|
@@ -41,6 +30,28 @@ We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida
 | 	3:30-4:00	| [Discuss Exercise 3 Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_3_Solutions.html) | [Solution Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_3.R)	|
 | 	4:00-4:50	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io/IDA-with-R/IDA-with-R_Session_4.html)			| [Shell Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_4_shell.R), [Complete Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/IDA-with-R_Session_4_complete.R) |
 | 	4:50-5:00	| [Course Evaluation Survey](https://docs.google.com/forms/d/e/1FAIpQLScRCXMWlui6e5XURTVqXsRlIHqMoPygTurX7VFsD8uGqVe-gg/viewform)		| |
+
+
+# <a name="Instructions"></a>Pre-Workshop Instructions
+### Step 1: Download and install R
+First, visit The R Project for Statistical Computing's website through <https://www.r-project.org/>. Click on "CRAN" under the Download section on the left-hand side of the page. Then, click on any of the nearby websites under the USA section near the bottom of the page. For example, the link from the University of California, Berkley, CA or University of California, Los Angeles, CA are both fine. Download R for your platform (Linux, Mac, or Windows).
+
+### Step 2: Download and install RStudio
+RStudio is a set of integrated tools designed to help you be more productive with R; it is known to be more user-friendly. You will be doing essentially all of your programming in RStudio. To download RStudio, go to <https://www.rstudio.com/products/rstudio/download/>. Download the installer for your platform under "Installers for Supported Platforms".
+
+### Step 3: Install required R packages
+In R, packages are used to share code. A package bundles together code, data, documentation, and tests. As of February 2018, there were over 12,000 packages available on the Comprehensive R Archive Network, or CRAN. This huge variety of packages is one of the reasons that R is so successful: the chances are that someone has already solved a problem that you’re working on, and you can benefit from their work by downloading their package.
+
+In this workshop, we will be using three packages-- `car`, `leaps`, and `here`. If everyone attempts to download them at the same time, the wireless internet will become very upset with us and work slowly. Therefore, I suggest installing them before coming to class. There are a few ways to do this (which we will discuss more during the workshop). For now, please download [install_packages.R](http://ucidatascienceinitiative.github.io/IDA-with-R/install_packages.R) and open it in RStudio (`Right click > Open with > RStudio`). Once in RStudio, you should see the following three lines of code:
+```r
+install.packages("car")
+install.packages("leaps")
+install.packages("here")
+```
+Highlight all of this code (using your cursor, `Ctrl + A` on Windows, or `Cmd + A` on Mac) and click the Run icon (or hit `Ctrl + Enter` on Windows or `Cmd + Enter` on Mac).
+
+### Step 4: Join the Slack chatroom
+We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida-with-r/shared_invite/enQtMjgwNjE4NDczMzY1LWQ4MGU4Y2UzMzc0NmQxZjIwNzMzYjFkODBmODNlMjFmOTA3YzE1MWIyNTYxMzMzY2Y5YWY2YWQ4NmJhZGVkYmU) for you to have discussions and ask/answer questions that may arise throughout the day.
 
 
 ## Authors
