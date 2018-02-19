@@ -4,7 +4,7 @@
 ####################################################################################
 ### PART A ###
 # A.1
-load("../data/auto_mpg_v2.Rda")
+load(here::here("data", "auto_mpg_v2.Rda"))
 
 # A.2
 linFit <- lm(mpg ~ hp, data=auto)

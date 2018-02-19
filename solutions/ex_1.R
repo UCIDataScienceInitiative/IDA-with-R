@@ -54,4 +54,5 @@ auto$diesel <- factor(auto$diesel)
 str(auto)
 
 # D.5
-save(auto, file="../data/auto_mpg_v2.Rda") 
+save(auto, file=here::here("data", "auto_mpg_v2.Rda"))
+     
