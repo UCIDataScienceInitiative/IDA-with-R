@@ -395,7 +395,7 @@ predict(myReg, newData, interval="predict")
 ## End of Session 3
 Next up:
 
-1. [Exercise 3](https://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_3.html)
+1. [Exercise 3](http://ucidatascienceinitiative.github.io//IDA-with-R/exercises/ex_3.html)
 2. Break
 
 **Return at 3:30 to discuss solutions to Exercise 3!**
