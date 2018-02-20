@@ -16,7 +16,7 @@ Please follow the [Pre-Workshop Instructions](#Instructions) prior to coming to 
 | 	   Time	    |           				|							|
 | ------------- | :-----------------------:	| :-----------------------: |   
 | 	8:30-9:00  	| Registration & Breakfast	|							|
-| 	9:00-10:15	| [Session 1: Fundamentals of R](http://ucidatascienceinitiative.github.io/IDA-with-R/slides/Session_1/slides.html)			| [Shell Code](http://ucidatascienceinitiative.github.io/IDA-with-R/slides/Session_1/shell_code.R), [Complete Code](http://ucidatascienceinitiative.github.io/IDA-with-R/slides/Session_1/complete_code.R) |
+| 	9:00-10:15	| [Session 1: Fundamentals of R](http://ucidatascienceinitiative.github.io/IDA-with-R/slides/session_1/slides.html)			| [Shell Code](http://ucidatascienceinitiative.github.io/IDA-with-R/slides/session_1/shell_code.R), [Complete Code](http://ucidatascienceinitiative.github.io/IDA-with-R/slides/session_1/complete_code.R) |
 | 	10:15-10:45	| [Exercise 1](http://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_1.html)					| |
 | 	10:45-11:00	| Break						| |
 | 	11:00-11:15	| [Discuss Exercise 1 Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/Solutions/IDA-with-R_Exercise_1_Solutions.html) | [Solution Code](https://github.com/UCIDataScienceInitiative/IDA-with-R/blob/master/Solutions/Exercise_1.R)   |
