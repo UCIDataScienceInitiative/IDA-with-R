@@ -29,7 +29,7 @@ Please follow the [Pre-Workshop Instructions](#Instructions) prior to coming to 
 | 	3:15-3:30	| Break						| |
 | 	3:30-4:00	| [Discuss Exercise 3 Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/solutions/ex_3_soln.html) | [Chris' Solution Code](http://ucidatascienceinitiative.github.io//IDA-with-R/solutions/ex_3.R)	|
 | 	4:00-4:50	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io//IDA-with-R/slides/session_4/slides.html)			| [Shell Code](http://ucidatascienceinitiative.github.io//IDA-with-R/slides/session_4/shell_code.R), [Complete Code](http://ucidatascienceinitiative.github.io//IDA-with-R/slides/session_4/complete_code.R) |
-| 	4:50-5:00	| [Course Evaluation Survey](ADD ME)		| |
+| 	4:50-5:00	| [Course Evaluation Survey](https://docs.google.com/forms/d/1hcL2hbUchrrSqjd-__2dZEotk7wK2_GrJj_DsK-rxds/edit)		| |
 
 
 # <a name="Instructions"></a>Pre-Workshop Instructions

@@ -113,8 +113,8 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(rnorm) <span class="co"># generate random number from normal dist</span></code></pre></div>
 <pre><code>## function (n, mean = 0, sd = 1)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</code></pre></div>
-<pre><code>##  [1]  0.3011049  1.8126169 -0.5662786 -0.5748066 -0.2259715  0.4026695
-##  [7] -1.1487316 -1.4276444  0.6750533  1.0354521</code></pre>
+<pre><code>##  [1] -0.9195628  1.7945064 -0.5696425 -0.1574162 -0.4375521  0.7448410
+##  [7] -1.2767067 -1.2924301 -0.8929044 -1.0955692</code></pre>
 </div>
 <div id="standard-normal-distribution-3" class="slide section level2">
 <h2>Standard Normal Distribution</h2>
@@ -455,10 +455,10 @@ myReg</code></pre></div>
 <p>Suppose we want to test which of our two models is better when one model is <em>nested</em> within the other (i.e., both models contain the same terms and one has at least one additional term).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">formula</span>(myReg)</code></pre></div>
 <pre><code>## prestige ~ education + income + women
-## &lt;environment: 0x11908e0b0&gt;</code></pre>
+## &lt;environment: 0x115e541c0&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">formula</span>(mod)</code></pre></div>
 <pre><code>## prestige ~ education + income + women + type
-## &lt;environment: 0x11908e0b0&gt;</code></pre>
+## &lt;environment: 0x115e541c0&gt;</code></pre>
 <p>We say that <code>myReg</code> is <em>nested within</em> <code>mod</code>, or equivantley that <code>myReg</code> is the <strong>reduced</strong> model and <code>mod</code> is the <strong>full</strong> model.</p>
 <p>Hypothesis Test:</p>
 <ul>
