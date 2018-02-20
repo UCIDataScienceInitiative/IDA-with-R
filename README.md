@@ -51,7 +51,7 @@ install.packages("here")
 Highlight all of this code (using your cursor, `Ctrl + A` on Windows, or `Cmd + A` on Mac) and click the Run icon (or hit `Ctrl + Enter` on Windows or `Cmd + Enter` on Mac). Additional "dependencies," or other packages necessary to run the three above, will also be installed. This make take a few minutes.
 
 ### Step 4: Join the Slack chatroom
-We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida-with-r/shared_invite/enQtMjgwNjE4NDczMzY1LWQ4MGU4Y2UzMzc0NmQxZjIwNzMzYjFkODBmODNlMjFmOTA3YzE1MWIyNTYxMzMzY2Y5YWY2YWQ4NmJhZGVkYmU) for you to have discussions and ask/answer questions that may arise throughout the day.
+We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/dsi-ida-with-r/shared_invite/enQtMzE3NjIyODgxODEwLTFkYjdiMWQ2OWY5NWJlM2VlZWNiNzI4MWEwODViYWYxZmMzYWE4MDcwOGRkYmZiNzM2YjMwMWE1NTM0NTg3YWU) for you to have discussions and ask/answer questions that may arise throughout the day.
 
 
 ## Authors
