@@ -1,0 +1,128 @@
+---
+title: "Intro to Data Analysis with R: Exercise 1 Solutions"
+subtitle: UCI Data Science Initiative
+# author: "Chris Galbraith"
+output: html_document
+---
+
+## Introduction
+
+The first set of exercises will deal with reading a dataset into R, exploring various structural and content-related features of the data, and manipulating the dataset so that it is in a form we can use later for analyses. 
+
+We will be using the Auto MPG Data Set, available on the UCI Machine Learning Repository; https://archive.ics.uci.edu/ml/datasets/Auto+MPG
+
+The data consists of a collection of automobile records from 1970 to 1982 containing the following variables:
+
+1. Miles per Gallon (mpg) 
+
+2. Number of Cylinders
+
+3. Engine Displacement (in cubic inches)
+
+4. Horsepower
+
+5. Weight (in pounds) 
+
+6. Acceleration
+
+7. Model Year
+
+8. Origin: where the data originated from (ignore this)
+
+9. Car Name
+
+We will be focusing on the relationships between miles per gallon (mpg) and various other features of the car (such as model year, weight, number of cylinders, etc.). 
+
+
+### Part A - Data Input
+**A.1** Open a new R script to write and save your code for the exercises. Save this file in your local copy of the IDA-with-R-master directory, e.g., ```IDA-with-R-master/my_exercises/exercise_1.R```.
+
+**A.2** Read in the Auto MPG data to a data frame named ```auto``` from the following url using ```read.table()```:  https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original HINT: Run ```?read.table()``` and read about how to use a url as a file path.
+```{r echo=TRUE}
+auto <- read.table("https://archive.ics.uci.edu/ml/machine-learning-databases/auto-mpg/auto-mpg.data-original")
+```
+
+**A.3** Rename the variables (columns) using the following conventions: "mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr", "origin", "name". HINT: You will need to use the ```names``` attribute of the data frame (i.e., ```names(auto)```).
+```{r echo=TRUE}
+names(auto) <- c("mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr", "origin", "name")
+```
+
+**A.4** Convert ```cyl``` into a factor variable using ```factor()```. Convert ```name``` into a character vector using ```as()```.
+```{r echo=TRUE}
+auto$cyl <- factor(auto$cyl)
+auto$name <- as(auto$name, "character")
+```
+
+**A.5** Use the ```head()``` function to look at the first few rows of the data and make sure it looks like it was correctly loaded. You can compare the output here to the raw data by opening the url in A.2.
+```{r echo=TRUE}
+head(auto)
+```
+
+
+### Part B - Missing Values
+**B.1** Locate the observations (rows) with missing data using ```is.na()```. HINT: You may want use ```which()``` with ```arr.ind=TRUE``` to return the (row, column) locations of the missing values.
+```{r echo=TRUE}
+missing <- which(is.na(auto), arr.ind = TRUE)
+missing
+```
+
+**B.2** Look at the missing observations by subsetting the ```auto``` data frame.
+```{r echo=TRUE}
+auto[missing[,1], ]
+```
+
+**B.3** Which variables are missing? What are the implications of this missingness? 
+
+*MPG is the response variable, we will need to predict these after fitting models.*
+
+*Horsepower is a predictor variable, we  need to investigate its relationship with MPG.*
+
+
+### Part C - Sorting
+**C.1** Sort the Auto MPG data in descending order by mpg and store the result into a data frame named ```auto.sorted```. HINT: You will need to use ```order()``` with ```na.last=NA``` so that the values with missing mpg are not in the sorted data frame.
+```{r echo=TRUE}
+sort.index <- order(auto$mpg, decreasing = TRUE, na.last = NA)
+auto.sorted <- auto[sort.index, ]
+```
+
+**C.2** Look at the observations with the top five values for mpg using ```head()```. 
+```{r echo=TRUE}
+head(auto.sorted, 5)
+```
+
+**C.3** Look at the observations with the bottom five values for mpg using ```tail()```.
+```{r echo=TRUE}
+tail(auto.sorted, 5)
+```
+
+**C.4** Do you notice any patterns with these two groups? HINT: You may need to do some Googling about these vehicles. 
+
+*Answers will vary.*
+
+### Part D - String Manipulation
+**D.1** Locate the observations with diesel engines. HINT: If a vehicle has a diesel engine, it will mention "diesel" in the name of the car. Use the ```grep()``` function do accomplish this.
+```{r echo=TRUE}
+diesel.index <- grep("diesel", auto$name)
+diesel.index
+```
+
+**D.2** Create a new variable (column) in the ```auto``` data frame called ```diesel``` such that ```auto$diesel = 1``` if the car has a diesel engine and ```0```, otherwise.
+```{r echo=TRUE}
+auto$diesel <- 0
+auto$diesel[diesel.index] <- 1
+```
+
+**D.3** Coerce ```auto$diesel``` into a factor variable using ```as()```.
+```{r echo=TRUE}
+auto$diesel <- factor(auto$diesel)
+```
+
+**D.4** Look at the structure of the ```auto``` data frame using ```str()``` to make sure that this was done correctly.
+```{r echo=TRUE}
+str(auto)
+```
+
+**D.5** Save your data set as an R data (```.Rda```) file in the data directory (i.e.,  ```"IDA-with-R-master/data/auto_mpg_v2.Rda"```) using the ```save()``` function.
+```{r echo=TRUE, eval=FALSE}
+save(auto, file=here::here("data", "auto_mpg_v2.Rda"))
+```

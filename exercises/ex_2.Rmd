@@ -1,0 +1,32 @@
+---
+title: "Intro to Data Analysis with R: Exercise 2"
+subtitle: UCI Data Science Initiative
+# author: "Chris Galbraith"
+output: html_document
+---
+
+## Introduction
+This set of exercises picks up where we left off with the Auto MPG data in Exercise 1. We now focus on exploratory data analysis.
+
+
+### Part A 
+**A.1** Open a new R script and save it in the directory you created in Part A.1 of Exercise 1. Then, load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from the end of Exercise 1. 
+
+**A.2** Using the ```summary()``` function, look at descriptive statistics for the Auto MPG data. What do you notice?
+
+
+### Part B
+**B.1** Plot a relative frequency histogram of the response variable, MPG. Color the boxes grey. Make sure to name the plot and axes.
+
+
+**B.2** Add a density curve to the histogram you plotted in B.1 using the ```lines()``` and ```density()``` functions. Color it red using the ```col``` argument. HINT: You need to change the value of ```na.rm``` in the density function to avoid an error. You also need to make sure that the histogram is on the proper scale!
+
+**B.3** Add a vertical line to the plot from B.2 at the median of MPG. Make it dashed using the ```lty``` arguement, and make it red. HINT: You may need to use ```na.rm``` again.
+
+
+### Part C
+Create a boxplot of MPG grouped by the number of cylinders. Color the boxes grey. Make sure to name the plot and axes.
+
+
+### Part D
+Create a scatterplot matrix of the Auto MPG data. Include the following variables: "mpg", "cyl", "disp", "hp", "weight", "acc", "model.yr". What relationships do you see? Is there any confounding? Which variables should be included in a regression? 

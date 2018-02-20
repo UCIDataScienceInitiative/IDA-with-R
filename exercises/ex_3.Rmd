@@ -1,0 +1,38 @@
+---
+title: "Intro to Data Analysis with R: Exercise 3"
+subtitle: UCI Data Science Initiative
+# author: "Chris Galbraith"
+output: html_document
+---
+
+## Introduction
+In this set of Exercises, we will explore linear regression, variable selection, model diagnostics and prediction.
+
+
+### Part A 
+**A.1** Open a new R script and save it in the directory you created in Part A.1 of Exercise 1. Then, load the Auto MPG data set with the additional variable ```diesel``` using the ```load()``` function and file path from the end of Exercise 1.
+
+**A.2** Regress MPG on horsepower and look at the model results with the ```summary()``` function. Interpret the meaning of the coefficient of horsepower.
+
+**A.3** Plot the model diagnostics. Do you think this model fits the data adequately? Why or why not?
+
+
+### Part B
+**B.1** Add in a quadratic term for horsepower and look at the model fit results. HINT: Use the indicator function ```I()``` along with ```update()```.
+
+**B.2** Plot the model diagnostics. Do you think this model fits the data adequately? Why or why not?
+
+**B.3** Compare the model from Part A to the model you just fit using an F-test. What model do you conclude fits the data better?
+
+**B.4** Make a scatterplot of mpg versus horsepower. Add the estimated regression line from Part A using the ```abline()``` function and color it red. Add in the estimated regression line from Part B and color it blue. HINT: You will need to use the ```predict()``` and ```curve()``` functions.
+
+
+### Part C
+**C.1** Using what you've learned so far, fit the best possible linear model you can to predict MPG. Answers will vary. HINT: You can use automatic variable selection methods, or do so manually and compare models via adjusted $R^2$ and F-tests.
+
+**C.2** Using the model you just fit, predict the fuel economy of the 8 vehicles with missing mpg values.
+
+
+### Part D
+Write a function that performs linear contrasts. E.g., takes in the fitted linear regression object and a vector containing the difference in two predictor vectors and ourputs a point estimate and 95% confidence interval. Specifically, do this comparing (1) two similar vehicles that differ by 10 model years, and (2) two similar vehicles that differ by 500 pounds. NOTE: You may not have included these variables in your final model. If you didn't, chose two other variables. HINT: This problem is difficult! You will need to get the covariance matrix on the coefficients with ```vcov()``` and perform some matrix multiplications using the ```%*%``` operator. Ask for help if you make it this far!
+

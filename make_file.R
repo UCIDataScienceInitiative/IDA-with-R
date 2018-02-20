@@ -1,10 +1,12 @@
 # grab all .Rmd files in workind directory
-files_to_render <- fs::dir_ls(glob = "*.Rmd")
+files_to_render <- fs::dir_ls(path = here::here("slides"),
+                              glob = "*.Rmd", 
+                              recursive = TRUE)
 stopifnot(length(files_to_render) >= 1)
 
 # function to render .Rmd files to html that accepts date variable
 my_render <- function(x, d) {
-  rmarkdown::render(here::here(x), 
+  rmarkdown::render(x, 
                     params = list(reportdate=d)) 
 }
 
