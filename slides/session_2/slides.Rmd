@@ -302,7 +302,7 @@ scatterplotMatrix( prestige[ ,c("prestige","education","income","women")] )
 ## End of Session 2
 Next up:
 
-1. [Exercise 2](https://ucidatascienceinitiative.github.io//IDA-with-R/Exercises/IDA-with-R_Exercise_2.html)
+1. [Exercise 2](http://ucidatascienceinitiative.github.io//IDA-with-R/exercises/ex_2.html)
 2. Lunch
 
 **Return at 1:00 to discuss solutions to Exercise 2!**

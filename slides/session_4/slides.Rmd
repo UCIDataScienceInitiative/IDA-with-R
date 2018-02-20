@@ -212,7 +212,7 @@ anova(logisticReg, logisticReg2, test='LRT')
 
 
 ## End of Session 4
-**Make sure you submit [course evaluation surveys](https://docs.google.com/forms/d/e/1FAIpQLScRCXMWlui6e5XURTVqXsRlIHqMoPygTurX7VFsD8uGqVe-gg/viewform)!**
+**Make sure you submit a [course evaluation survey](ADD ME)!**
 
 
 
