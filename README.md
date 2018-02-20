@@ -29,7 +29,7 @@ Please follow the [Pre-Workshop Instructions](#Instructions) prior to coming to 
 | 	3:15-3:30	| Break						| |
 | 	3:30-4:00	| [Discuss Exercise 3 Solutions](http://ucidatascienceinitiative.github.io//IDA-with-R/solutions/ex_3_soln.html) | [Chris' Solution Code](http://ucidatascienceinitiative.github.io//IDA-with-R/solutions/ex_3.R)	|
 | 	4:00-4:50	| [Session 4: Logistic Regression](http://ucidatascienceinitiative.github.io//IDA-with-R/slides/session_4/slides.html)			| [Shell Code](http://ucidatascienceinitiative.github.io//IDA-with-R/slides/session_4/shell_code.R), [Complete Code](http://ucidatascienceinitiative.github.io//IDA-with-R/slides/session_4/complete_code.R) |
-| 	4:50-5:00	| [Course Evaluation Survey](ADD ME)		| |
+| 	4:50-5:00	| [Course Evaluation Survey](https://docs.google.com/forms/d/1hcL2hbUchrrSqjd-__2dZEotk7wK2_GrJj_DsK-rxds/edit)		| |
 
 
 # <a name="Instructions"></a>Pre-Workshop Instructions
@@ -51,7 +51,7 @@ install.packages("here")
 Highlight all of this code (using your cursor, `Ctrl + A` on Windows, or `Cmd + A` on Mac) and click the Run icon (or hit `Ctrl + Enter` on Windows or `Cmd + Enter` on Mac). Additional "dependencies," or other packages necessary to run the three above, will also be installed. This make take a few minutes.
 
 ### Step 4: Join the Slack chatroom
-We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/ida-with-r/shared_invite/enQtMjgwNjE4NDczMzY1LWQ4MGU4Y2UzMzc0NmQxZjIwNzMzYjFkODBmODNlMjFmOTA3YzE1MWIyNTYxMzMzY2Y5YWY2YWQ4NmJhZGVkYmU) for you to have discussions and ask/answer questions that may arise throughout the day.
+We have a chatroom set up at [ida-with-r.slack.com](https://join.slack.com/t/dsi-ida-with-r/shared_invite/enQtMzE3NjIyODgxODEwLTFkYjdiMWQ2OWY5NWJlM2VlZWNiNzI4MWEwODViYWYxZmMzYWE4MDcwOGRkYmZiNzM2YjMwMWE1NTM0NTg3YWU) for you to have discussions and ask/answer questions that may arise throughout the day.
 
 
 ## Authors
