@@ -44,9 +44,9 @@ In R, packages are used to share code. A package bundles together code, data, do
 
 In this workshop, we will be using three packages-- `car`, `leaps`, and `here`. If everyone attempts to download them at the same time, the wireless internet will become very upset with us and work slowly. Therefore, I suggest installing them before coming to class. There are a few ways to do this (which we will discuss more during the workshop). For now, please download [install_packages.R](http://ucidatascienceinitiative.github.io/IDA-with-R/install_packages.R) and open it in RStudio (`Right click > Open with > RStudio`). Once in RStudio, you should see the following three lines of code:
 ```r
-install.packages("car")
-install.packages("leaps")
-install.packages("here")
+install.packages("car", dependencies = TRUE)
+install.packages("leaps", dependencies = TRUE)
+install.packages("here", dependencies = TRUE)
 ```
 Highlight all of this code (using your cursor, `Ctrl + A` on Windows, or `Cmd + A` on Mac) and click the Run icon (or hit `Ctrl + Enter` on Windows or `Cmd + Enter` on Mac). Additional "dependencies," or other packages necessary to run the three above, will also be installed. This make take a few minutes.
 
