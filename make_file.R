@@ -11,4 +11,4 @@ my_render <- function(x, d) {
 }
 
 # loop over all .Rmd files & render with my function
-purrr::walk(files_to_render, my_render, d="March 2, 2017")  
+purrr::walk(files_to_render, my_render, d="April 20, 2018")  
