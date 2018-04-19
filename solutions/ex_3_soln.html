@@ -365,12 +365,14 @@ cbind(missing.mpg, fit=predict(finalModel, newdata = missing.mpg))</code></pre>
   round(out, 3)
 }
 
-linContr(finalModel, matrix(c(0, 0, 0, 10, 0), nrow=1, ncol=5))  # 10 yr diff</code></pre>
+linContr(finalModel, 
+         matrix(c(0, 0, 0, 10, 0), nrow=1, ncol=5))  # 10 yr diff</code></pre>
 <pre><code>##     est se.est ci95.lo ci95.hi
 ## 1 7.784  0.401   6.998   8.569</code></pre>
-<pre class="r"><code>linContr(finalModel, matrix(c(0, -500, -500^2, 0, 0), nrow=1, ncol=5))  # 500 lb diff</code></pre>
-<pre><code>##      est se.est ci95.lo ci95.hi
-## 1 10.466  0.598   9.295  11.638</code></pre>
+<pre class="r"><code>linContr(finalModel, 
+         matrix(c(0, 2500-3000, 2500^2-3000^2, 0, 0), nrow=1, ncol=5))  # 500 lb diff</code></pre>
+<pre><code>##     est se.est ci95.lo ci95.hi
+## 1 4.366  0.121   4.129   4.603</code></pre>
 </div>
 </div>
 

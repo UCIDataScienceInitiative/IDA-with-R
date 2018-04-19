@@ -5,6 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
+  <meta name="date" content="2018-04-20" />
   <title>Intro to Data Analysis with R: Session 2</title>
   <style type="text/css">code{white-space: pre;}</style>
   <style type="text/css">
@@ -54,7 +55,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
   <p class="author">
 
   </p>
-  <p class="date">March 2, 2017</p>
+  <p class="date">April 20, 2018</p>
 </div>
 <div id="session-2---agenda" class="slide section level2">
 <h2>Session 2 - Agenda</h2>
@@ -158,11 +159,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Function arguments can either be matched by position within the parentheses or by name</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sampSpace &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">6</span> 
 <span class="kw">sample</span>(sampSpace, <span class="dv">1</span>)  <span class="co"># arguments with default values can be omitted</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">x =</span> sampSpace)  <span class="co"># no need to remember the order </span></code></pre></div>
-<pre><code>## [1] 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, sampSpace)</code></pre></div>
 <pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, <span class="dt">x =</span> sampSpace)  <span class="co"># no need to remember the order </span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sample</span>(<span class="dt">size =</span> <span class="dv">1</span>, sampSpace)</code></pre></div>
+<pre><code>## [1] 2</code></pre>
 </div>
 <div id="some-useful-functions" class="slide section level2">
 <h2>Some Useful Functions</h2>

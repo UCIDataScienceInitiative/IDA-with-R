@@ -136,12 +136,12 @@ numToChar
 + A factor is a vector object used to specify a discrete classification (categorical values)
 + Factors can be ordered or un-ordered
 + Levels of a factor are better labeled (self-descriptive)
-    + Consider gender as (0, 1) as opposed to labeled ("F", "M")
+    + Consider sex as (0, 1) as opposed to labeled ("F", "M")
 ```{r echo=TRUE}
-Gender <- rep(c("Female", "Male"), times = 3)
-Gender
-GenderFac1 <- factor(Gender)
-GenderFac1
+sex <- rep(c("Female", "Male"), times = 3)
+sex
+sexFac1 <- factor(sex)
+sexFac1
 ```
 
 

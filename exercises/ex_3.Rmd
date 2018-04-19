@@ -24,7 +24,15 @@ In this set of Exercises, we will explore linear regression, variable selection,
 
 **B.3** Compare the model from Part A to the model you just fit using an F-test. What model do you conclude fits the data better?
 
-**B.4** Make a scatterplot of mpg versus horsepower. Add the estimated regression line from Part A using the ```abline()``` function and color it red. Add in the estimated regression line from Part B and color it blue. HINT: You will need to use the ```predict()``` and ```curve()``` functions.
+**B.4** Make a scatterplot of mpg versus horsepower. Add the estimated regression line from Part A using the ```abline()``` function and color it red. Add in the estimated regression line from Part B and color it blue. HINT: You will need to use the ```predict()``` and ```curve()``` functions, i.e., 
+```{r, eval=FALSE}
+plot()
+abline(, col = "red", lwd = 2)
+curve(predict(quadFit, data.frame(hp=x)), 
+      add=TRUE, col="blue", lwd=2)
+legend("topright", legend=c("Linear Model", "Quadratic Model"), 
+       col=c("red", "blue"), lty=1, lwd=2, bty="n")
+```
 
 
 ### Part C

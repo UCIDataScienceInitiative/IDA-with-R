@@ -105,7 +105,9 @@ linContr <- function(model, contr){
   round(out, 3)
 }
 
-linContr(finalModel, matrix(c(0, 0, 0, 10, 0), nrow=1, ncol=5))  # 10 yr diff
-linContr(finalModel, matrix(c(0, -500, -500^2, 0, 0), nrow=1, ncol=5))  # 500 lb diff
+linContr(finalModel, 
+         matrix(c(0, 0, 0, 10, 0), nrow=1, ncol=5))  # 10 yr diff
+linContr(finalModel, 
+         matrix(c(0, 2500-3000, 2500^2-3000^2, 0, 0), nrow=1, ncol=5))  # 500 lb diff
 ```
 

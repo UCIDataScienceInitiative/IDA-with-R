@@ -137,7 +137,13 @@ $(document).ready(function () {
 <p><strong>B.1</strong> Add in a quadratic term for horsepower and look at the model fit results. HINT: Use the indicator function <code>I()</code> along with <code>update()</code>.</p>
 <p><strong>B.2</strong> Plot the model diagnostics. Do you think this model fits the data adequately? Why or why not?</p>
 <p><strong>B.3</strong> Compare the model from Part A to the model you just fit using an F-test. What model do you conclude fits the data better?</p>
-<p><strong>B.4</strong> Make a scatterplot of mpg versus horsepower. Add the estimated regression line from Part A using the <code>abline()</code> function and color it red. Add in the estimated regression line from Part B and color it blue. HINT: You will need to use the <code>predict()</code> and <code>curve()</code> functions.</p>
+<p><strong>B.4</strong> Make a scatterplot of mpg versus horsepower. Add the estimated regression line from Part A using the <code>abline()</code> function and color it red. Add in the estimated regression line from Part B and color it blue. HINT: You will need to use the <code>predict()</code> and <code>curve()</code> functions, i.e.,</p>
+<pre class="r"><code>plot()
+abline(, col = &quot;red&quot;, lwd = 2)
+curve(predict(quadFit, data.frame(hp=x)), 
+      add=TRUE, col=&quot;blue&quot;, lwd=2)
+legend(&quot;topright&quot;, legend=c(&quot;Linear Model&quot;, &quot;Quadratic Model&quot;), 
+       col=c(&quot;red&quot;, &quot;blue&quot;), lty=1, lwd=2, bty=&quot;n&quot;)</code></pre>
 </div>
 <div id="part-c" class="section level3">
 <h3>Part C</h3>
