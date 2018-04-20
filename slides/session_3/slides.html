@@ -114,8 +114,8 @@ y &lt;-<span class="st"> </span><span class="kw">dnorm</span>(x, <span class="dt
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">str</span>(rnorm) <span class="co"># generate random number from normal dist</span></code></pre></div>
 <pre><code>## function (n, mean = 0, sd = 1)</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">rnorm</span>(<span class="dv">10</span>, <span class="dt">mean =</span> <span class="dv">0</span>, <span class="dt">sd =</span> <span class="dv">1</span>)</code></pre></div>
-<pre><code>##  [1]  0.43956318 -1.64485575  0.20842655  0.04630707  0.24656529
-##  [6]  0.49382761 -0.08550644 -0.12750461 -2.60386289 -0.23665443</code></pre>
+<pre><code>##  [1] -0.06119123  1.35703065 -0.42420890 -0.48579143 -1.34478334
+##  [6] -0.01492377  1.01789886  1.66025678  1.31331140  1.55496600</code></pre>
 </div>
 <div id="standard-normal-distribution-3" class="slide section level2">
 <h2>Standard Normal Distribution</h2>
@@ -456,10 +456,10 @@ myReg</code></pre></div>
 <p>Suppose we want to test which of our two models is better when one model is <em>nested</em> within the other (i.e., both models contain the same terms and one has at least one additional term).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">formula</span>(myReg)</code></pre></div>
 <pre><code>## prestige ~ education + income + women
-## &lt;environment: 0x116aa0d48&gt;</code></pre>
+## &lt;environment: 0x107231590&gt;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">formula</span>(mod)</code></pre></div>
 <pre><code>## prestige ~ education + income + women + type
-## &lt;environment: 0x116aa0d48&gt;</code></pre>
+## &lt;environment: 0x107231590&gt;</code></pre>
 <p>We say that <code>myReg</code> is <em>nested within</em> <code>mod</code>, or equivantley that <code>myReg</code> is the <strong>reduced</strong> model and <code>mod</code> is the <strong>full</strong> model.</p>
 <p>Hypothesis Test:</p>
 <ul>
